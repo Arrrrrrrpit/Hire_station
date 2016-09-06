@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+	<head>
+	
+
+		<style>
+		ul 
+		{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #808080;
+		}
+		li
+		{
+			float: left;
+		}
+
+		li a
+		{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover:not(.active) 
+		{
+			background-color: #111;
+		}
+		.signindropdown:hover .dropdown-content
+		{
+			display: block;
+		}
+		.signindropdown
+		{
+		position: relative;
+		display: inline-block;
+		}
+
+		body
+		{
+			background-image : url("texture1.jpg");
+		}
+		.mySlides{display:none;}
+		</head>
+		<body>
+		<div class="main">
+		<div>
+			<ul>
+				<li float: right;><a href="#post a job">post a job</a></li>
+				<li><a href="#search">search</a></li>
+				<li class="signindropdown" style="float:right">
+					<a href="signup" class="dropbtn">signup</a>
+					<div class="dropdown-content">
+					<a href="#">company</a>
+					<a href="#">job seeker</a>
+					
+				  </div>
+				</li>
+				<li  style="float:right"><a href="#login">login</a></li>
+			</ul>
+		</div>
+		<div class="animationimages" style="max-width:500px">
+			<img class="mySlides" src="1.jpg" style="width:100%">
+			<img class="mySlides" src="2.jpg" style="width:100%">
+			<img class="mySlides" src="3.jpg" style="width:100%">
+			<img class="mySlides" src="4.jpg" style="width:100%">
+			<img class="mySlides" src="5.jpg" style="width:100%">
+		</div>
+		<script>
+			var myIndex=0;
+			element();
+			function element()
+			{
+				var i;
+				var x=document.getElementsByClassName("mySlides");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex++;
+				if(myIndex > x.length)
+				{
+				myIndex=1;
+				}
+				x[myIndex-1].style.display = "block";
+				setTimeout(element, 2000);
+			}
+		
+		</script>	
+		
+		
+	
+		</body>
+</html>

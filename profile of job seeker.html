@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 	<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 		ul 
 		{
@@ -28,7 +27,11 @@
 		{
 			background-color: #111;
 		}
-		div.signup
+		body
+		{
+			background-image : url("texture1.jpg");
+		}
+		div.info
 		{
 			position : relative;
 			border: 3px solid #000000;
@@ -39,52 +42,56 @@
 			padding: 3% ;
 		}
 		
-		div.login
+		div.rating
 		{
 			position : relative;
 			border: 3px solid #000000;
 			float: right;
 			width: 43.5%;
 			height: 20%;
-			padding: 3% 3% 5% 3%;
+			padding: 3% 3% 15% 3%;
 			
 			
 		}
+		.button
+		{
+		float: right
+		}
 		</style>
 				
-			</head>
-			<body>
+	</head>
+	<body>
 				<div>
 					<ul>
 						<li><a href="#post a job">post a job</a></li>
 						<li><a href="#search">search</a></li>
-						
+						<li style="float:right"><a href="#signup">signup</a></li>
+						<li style="float:right"><a href="#login">login</a></li>
 					</ul>
 				</div>
-				
-		<div>
-		<img  src="a.jpg" alt="main image" width="40%%" height="20%">
+		
+		<div class="profile1">
+			<img id="img2" src="a.jpg" alt="your image" width="10%" height="10%" float: left clear: right >
+			<textarea rows="8" cols="100">bjjd</textarea>
 		</div>
 		
-		<div class="signup">
-			<h1>signup</h1>
+		<div class="info">
+			<h1>information</h1>
 			<form>
 			 first name:<input type="text" name="first name" value="john"><br><br>
 			 last name:<input type="text" name="last name" value="singh"><br><br>
 			 email:<input type="email"  name="email" value="aa@gmail.com"><br><br>
 			 contact no.:<input type="number" name="contact no." value="9999999999"><br><br>
-			 <button> submit</button>
+			
 			</form>
 		</div>
 		
-		<div class="login">
-			<h1>login</h1>
-			<form>
-			 username:<input type="text" name="username" value="johnsingh"><br><br>
-			 password:<input type="pasword" name="password" value="********"><br><br>
-			<button> submit</button>
-			</form>
+		<div class="rating">
+			<h1>rating</h1>
 		</div>
+		<br>
+		<br>
+		 <button> submit</button>
 	</body>
 </html>
 		
