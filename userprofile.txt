@@ -27,14 +27,13 @@
 			text-decoration: none;
 		}
 		
-		li.a:active{
-		background-color: #C0C0C0;}
+		
 		li a:hover:not(.active) 
 		{
 			background-color:  #C0C0C0;;
 		}
 		
-		li.a:active
+		li a:active
 		{
 			background-color: #C0C0C0;
 		}
@@ -77,30 +76,6 @@
 		color: white;
 		font-size :125%;
 		}
-		.button 
-		{
-			  display: inline-block;
-			  padding: .1% .1%;
-			  font-size: 150%;
-			  cursor: pointer;
-			  text-align: center;
-			  text-decoration: none;
-			  outline: none;
-			  color: #fff;
-			  background-color:	#FFE4C4;
-			  border-color: 	#D2691E;
-			  border-radius: 20%;
-			  box-shadow: 0 6px #999;
-			  color: black;
-			}
-
-.button:hover {background-color: 	#DEB887}
-
-.button:active {
-  background-color: #BDB76B;
-  box-shadow: 0 3px 	#F5F5DC;
-  transform: translateY(4px);
-}
 		</style>
 		
 		
@@ -127,18 +102,15 @@
 			
 			<div class="user">
 			<div align="center">
-			<h1>USER</h1>
+			<h1>LOGIN</h1>
 			<form>
-			 User Name:<input type="text" name="username" value="design_25"><br><br>
-			 First name:<input type="text" name="first name" value="john"><br><br>
-			 Last name:<input type="text" name="last name" value="singh"><br><br>
-			 Email Id : <input type="email"  name="email" value="aa@gmail.com"><br><br>
+			
+			  Name:<input type="text" name="name" value="design_25"><br><br>
+			  Date of birth:<input type="text" name="name" value="design_25"><br><br>
+			  Address:<input type="text" name="name" value="design_25"><br><br> 
+			  E-mail id:<input type="text" name="name" value="design_25"><br><br>
 			 Password : <input type="password" name="password" value="23john"><br><br>
-			 Address  :  <input type="text" name="address" value="123 ABC colony"><br><br>
-		    Contact No.:<input type="number" name="contact no." value="9999999999"><br><br>
-			 Captcha :     <input type="text" name="captcha" value="vhxvhjb"><br><br> 
-	  Payment mode: <input type="text" name="payment" value="paypal"><br><br>
-			 <button class="button"> submit</button>
+			<button> submit</button>
 			</form>
 			</div>
 			</div>
