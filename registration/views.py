@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import UserRegister, JobSubmit, ApplicationSubmit
-from .models import JobSeeker, JobDetails, JobApplication
+from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister
+from .models import JobSeeker,JobDetails, JobProvider, JobApplication
 from django.utils import timezone
 
 
-def get_name(request):
+def get_user(request):
     form = UserRegister()
     if request.method == 'POST':
         form = UserRegister(request.POST)
@@ -25,6 +25,29 @@ def get_name(request):
             job_obj.save()
 
             return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
+    return render(request, 'registration/name.html', {'form': form})
+
+def get_comapny(request):
+    form = CompanyRegister()
+    if request.method == 'POST':
+        form = CompanyRegister(request.POST)
+
+        if form.is_valid():
+            user_name_temp = form.cleaned_data["company_name"]
+            first_name_temp = form.cleaned_data["first_name"]
+            last_name_temp = form.cleaned_data["last_name"]
+            email_temp = form.cleaned_data["email"]
+            password_temp = form.cleaned_data["password"]
+            address_temp = form.cleaned_data["address"]
+            contact_temp = form.cleaned_data["contact"]
+            job_obj1 = JobProvider.objects.create(company_name=user_name_temp, first_name=first_name_temp,
+                                                last_name=last_name_temp,
+                                                email_id=email_temp, password=password_temp,
+                                                address=address_temp, contact_number=contact_temp)
+            job_obj1.save()
+
+            return HttpResponseRedirect('/registration/jobprovider/thanks/')
 
     return render(request, 'registration/name.html', {'form': form})
 
@@ -51,6 +74,8 @@ def get_job(request):
         return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
     return render(request, 'JobSubmit/JobSubmit.html', {'form': form})
+
+
 
 
 def get_application(request):
