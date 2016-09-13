@@ -11,9 +11,9 @@ def get_name(request):
         form = UserRegister(request.POST)
         print(form.is_valid())
         if form.is_valid():
-            user_name_temp = form.cleaned_data["user_N"]
-            first_name_temp = form.cleaned_data["first_N"]
-            last_name_temp = form.cleaned_data["last_N"]
+            user_name_temp = form.cleaned_data["user_name"]
+            first_name_temp = form.cleaned_data["first_name"]
+            last_name_temp = form.cleaned_data["last_name"]
             email_temp = form.cleaned_data["email"]
             password_temp = form.cleaned_data["password"]
             address_temp = form.cleaned_data["address"]
