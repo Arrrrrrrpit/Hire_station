@@ -1,0 +1,203 @@
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="./css/home.css">
+		
+			
+
+
+	
+			<header>
+			<div>
+				<ul>
+				  <li><a class="active" href="#home">Home</a></li>
+				  <li><a href="#news">Post a job</a></li>
+				  <li><a href="#contact">Search</a></li>
+				  <li id="login"><a href="#about">login</a></li>
+				  <li id="signup"><a href="#about">Signup</a>
+				  <ul class="dropdown">
+				  <li><a href="#">Company</a></li>
+				  <li><a href="#">Job seeker</a></li>
+				  </ul>
+				  </li>
+				  
+				 
+				</ul>
+			</div>
+			</header>
+	</head>
+	<body>   
+	
+	
+	
+			<div class="animationimages" >
+			<img class="mySlides" src="./image/heroimage1.png" >
+			<img class="mySlides" src="./image/heroimage2.png" >
+			
+			</div>
+			
+			
+		
+			<div class="aboutscriber">
+				<div class="scriberheading">
+				<h1> About Scriber</h1>
+				</div>
+				<div class="scribertext">
+				<p>
+				<div>Aggregator refers to a web site or computer software that aggregates a specific type of information
+				from multiple online sources:</div>
+				<div>This project mainly focus on the writers group of our society those who are efficient enough to write professionally. </div>
+				<div>This website will provide them a platform to work in their respective writing domain from home or remote locations. </div>
+				<div>This website also benefit the organizations who require literature content or written material but not as frequent due to
+				which they have to hire someone.</div>
+				<div>So they can post their job in acquaintance with their content’s specifications so that people can apply 
+				and post their job applications comfortably.</div></p>
+				</div>
+			</div>
+			
+		<div class="company">	
+		 <div class="animationcompany" >
+			<img class="slidecompany" src="./image/advertisement3.png" >
+			<img class="slidecompany" src="./image/advertisement3text.png" >
+		</div>	
+		</div>
+		
+		<div class="genre">
+			<div class="genreheading">
+			<h1>Genre</h1>
+			</div>
+			<div class="genretext">
+			<p>
+					<div> Blog</div>
+					<div> Novel</div>
+					<div> Magzine</div>
+					<div> editorial</div>
+					<div> short story</div>
+			</p>
+			
+			</div>
+			
+		</div>
+		
+		
+		
+		<div class="jobseeker">	
+		 <div class="animationjobseeker" >
+			<img class="slidejobseeker" src="./image/jobseekerphoto.png" >
+			<img class="slidejobseeker" src="./image/jobseekertext.png" >
+		</div>	
+		</div>
+		
+		<div class="companyrights">
+				<div class="companyinfo">
+				<h1>Company Info</h1> 
+				<p>
+					<div>Projects</div>
+					<div>Contests</div>
+					<div>Sitemap</div>
+					<div>Freelancer Local</div>
+					<div>Services</div>
+					<div>Escrow</div>
+					<div>Warrior Forum</div>
+					<div>Freemarket</div>
+				</p>
+
+
+				</div>
+				<div class="additionalservices">
+					<h1>Additional Services</h1>
+					<p>
+					<div>Projects</div>
+					<div>Contests</div>
+					<div>Sitemap</div>
+					<div>Freelancer Local</div>
+					<div>Services</div>
+					<div>Escrow</div>
+					<div>Warrior Forum</div>
+					<div>Freemarket</div>
+					
+					</p>
+				</div>
+				<div class="browser">
+					<h1>browser</h1>
+					<p>
+					<div>Projects</div>
+					<div>Contests</div>
+					<div>Sitemap</div>
+					<div>Freelancer Local</div>
+					<div>Services</div>
+					<div>Escrow</div>
+					<div>Warrior Forum</div>
+					<div>Freemarket</div>
+					
+					
+					
+					</p>
+				</div>
+		</div>
+	</div>	
+		
+		<script>
+			var myIndex1=0;
+			element1();
+			function element1()
+			{
+				var i;
+				var x=document.getElementsByClassName("mySlides");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex1++;
+				if(myIndex1 > x.length)
+				{
+				myIndex1=1;
+				}
+				x[myIndex1-1].style.display = "block";
+				setTimeout(element1, 2000);
+			}
+			
+			
+			
+			var myIndex2=0;
+			element2();
+			function element2()
+			{
+				var i;
+				var x=document.getElementsByClassName("slidecompany");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex2++;
+				if(myIndex2 > x.length)
+				{
+				myIndex2=1;
+				}
+				x[myIndex2-1].style.display = "block";
+				setTimeout(element2, 4000);
+			}
+			
+			
+			
+			var myIndex3=0;
+			element3();
+			function element3()
+			{
+				var i;
+				var x=document.getElementsByClassName("slidejobseeker");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex3++;
+				if(myIndex3 > x.length)
+				{
+				myIndex3=1;
+				}
+				x[myIndex3-1].style.display = "block";
+				setTimeout(element3, 4000);
+			}
+		</script>	
+    </body>
+		
+</html>
