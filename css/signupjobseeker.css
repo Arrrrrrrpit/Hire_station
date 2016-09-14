@@ -149,3 +149,43 @@ ul {
 		  float: left;
 		  padding: 2% 3%;
 		}
+		
+		
+		
+			.companyrights
+			{width:100%;
+			height:50%;
+				background-color:#808080;
+				
+			}	
+			
+			
+				.companyinfo
+			{	border: 1px solid black;
+				display:block;
+				float:left;
+				clear:right;
+				padding:2% 2% 2% 2%;
+				margin-left:8%;
+				margin-top:2%;
+			}
+			.additionalservices
+			{    border: 1px solid black;
+				 display: block;
+				 float: left;
+				 clear:right;
+				 padding:2% 2% 2% 2%;
+				 margin:0% 10% 0% 15%;
+				 	margin-top:2%;
+			}
+			.browser
+			{   border: 1px solid black;
+				display:block;
+				float:right;
+				 padding:2% 2% 2% 2%;
+				 margin-right:8%;
+				 	margin-top:2%;
+				
+				
+
+			}
