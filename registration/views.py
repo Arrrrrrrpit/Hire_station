@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister
+from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister,logInUser,logInCompany
 from .models import JobSeeker,JobDetails, JobProvider, JobApplication
 from django.utils import timezone
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def get_user(request):
@@ -62,7 +63,7 @@ def get_job(request):
         form = JobSubmit(request.POST)
         print(form.is_valid())
         if form.is_valid():
-            company_name = "kunal organisation"
+            company_name = "kunal organisatioformn"
             genre = form.cleaned_data["genre"]
             details = form.cleaned_data["details"]
             pay = form.cleaned_data["pay"]
@@ -90,5 +91,42 @@ def get_application(request):
                                              pay_expected=pay_expected, status=False)
         temp.save()
         return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
+    return render(request, 'JobApplication/JobApplication.html', {'form': form})
+
+def login_user(request):
+    form = logInUser()
+    if request.method =='POST':
+        form = logInUser(request.POST)
+        if form.is_valid():
+
+            username_tmp = form.cleaned_data["user_name"]
+            password_tmp = form.cleaned_data["password"]
+            try:
+                username_check = JobSeeker.objects.get(user_name=username_tmp)
+                if username_check.password == password_tmp:
+                  return HttpResponse("successful")
+                else:
+                    return HttpResponse("unsuccessful")
+            except ObjectDoesNotExist:
+                return HttpResponse("unsuccesful")
+
+    return render(request, 'JobApplication/JobApplication.html', {'form': form})
+
+def login_Company(request):
+    form = logInCompany()
+    if request.method =='POST':
+        form = logInCompany(request.POST)
+        if form.is_valid():
+            companyname_tmp = form.cleaned_data["company_name"]
+            password_tmp = form.cleaned_data["password"]
+            try:
+                Companyname_check = JobProvider.objects.get(company_name=companyname_tmp)
+                if Companyname_check.password == password_tmp:
+                  return HttpResponse("successful")
+                else:
+                    return HttpResponse("unsuccessful")
+            except ObjectDoesNotExist:
+                return HttpResponse("unsuccesful")
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})

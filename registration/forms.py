@@ -35,3 +35,17 @@ class JobSubmit(forms.Form):
 class ApplicationSubmit(forms.Form):
     application = forms.CharField(required="true", label="Job Application", max_length=200000)
     pay_expected = forms.CharField(required="true", label="Pay Expected", max_length=50)
+
+class logInUser(forms.Form):
+    user_name = forms.CharField(required="true", label="User name", max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput())
+    widgets = {
+         'password': forms.PasswordInput(),
+     }
+class logInCompany(forms.Form):
+    company_name = forms.CharField(required="true", label="Company name", max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput())
+    widgets = {
+         'password': forms.PasswordInput(),
+     }
+
