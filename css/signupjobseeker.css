@@ -1,0 +1,151 @@
+ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background-color:black ;
+				cursor: pointer;
+			}
+
+			li {
+				float: left;
+				font-size:152%;
+				
+				margin:1% 2% 1% 2%;
+			}
+
+			
+
+			li a {
+				display: block;
+				color: white;
+				
+			
+				text-decoration: none;
+			}
+
+			li a:hover:not(.active)
+			{
+				background-color: #D5DBDB;
+				color:black;
+				
+			}
+
+			.active {
+				background-color: #D6EAF8  ;
+				color:black;
+				
+			}
+			
+			li ul.dropdown
+			{
+				 
+			background-color: black;
+			display: none;
+			position: absolute;
+			color: white;
+			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-size:50%;
+			width:9%;
+			 padding: 1%;
+			
+		   
+
+			}
+			
+			li:hover ul.dropdown
+			{display:block;
+			lor: black;
+			}
+			li:hover ul.dropdown{
+				display:block;
+			}
+			
+			#signup
+			{
+				float:right;
+			}
+
+		#login
+		{
+			float:right;
+			
+		}	
+		#img1
+		{   background-size: cover;
+			width:90%;
+			height:80%;
+			padding:3% 0% 2% 13%;
+			
+		}
+		.image
+		{	
+			float:left;
+			clear:right;
+			
+		}
+		.login
+		{
+			
+			
+		}
+		.login
+		{ padding-right:5%;
+		padding-top:2%;
+			
+		}
+		form {
+		  border: 1% solid #c6c7cc;
+		  border-radius: 3%;
+		  font-size:100%;
+		  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		  overflow: hidden;
+		  width: 30%;
+		  float:right;
+		  background-color:white;
+		  
+
+		}
+		fieldset {
+		  border: 0;
+		  margin: 0;
+		  padding: 0;
+		}
+		input {
+		  border-radius: 3%;
+		  font-size: 100%;
+		  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+		  margin: 0;
+		}
+		.account-info {
+		  padding: 5% 5% 0 5%;
+		}
+		.account-info label {
+		  color: #395870;
+		  display: block;
+		  font-weight: bold;
+		  margin-bottom: 5%;
+		}
+		.account-info input {
+		  background: #fff;
+		  border: 1% solid #c6c7cc;
+		   
+		  color: #636466;
+		  padding: 2%;
+		  margin-top: 2%;
+		  width: 100%;
+		}
+		.account-action {
+		  background: #f0f0f2;
+		  border-top: 1% solid #c6c7cc;
+		  padding: 5%;
+		}
+		.account-action .btn {
+		  background: linear-gradient(#49708f, #293f50);
+		  border: 0;
+		  color: #fff;
+		  cursor: pointer;
+		  font-weight: bold;
+		  float: left;
+		  padding: 2% 3%;
+		}
