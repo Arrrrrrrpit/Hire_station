@@ -10,6 +10,8 @@ ul {
 			li {
 				float: left;
 				font-size:152%;
+				
+				padding:1% 2% 0.4% 2%;
 			}
 
 			
@@ -17,8 +19,8 @@ ul {
 			li a {
 				display: block;
 				color: white;
-				text-align: center;
-				padding: 4% 3%;
+				
+			
 				text-decoration: none;
 			}
 
@@ -26,13 +28,14 @@ ul {
 			{
 				background-color: #D5DBDB;
 				color:black;
-				padding: 4% 3%;
+			
+				
 			}
 
 			.active {
 				background-color: #D6EAF8  ;
 				color:black;
-					padding: 4% 3%;
+				
 			}
 			
 			li ul.dropdown
@@ -48,7 +51,6 @@ ul {
 			 padding: 1%;
 			
 		   
-			
 
 			}
 			
@@ -59,9 +61,8 @@ ul {
 			li:hover ul.dropdown{
 				display:block;
 			}
-
-
-		#signup
+			
+			#signup
 			{
 				float:right;
 			}
@@ -69,35 +70,36 @@ ul {
 		#login
 		{
 			float:right;
-		}		
-			#img1
-			{   background-size: cover;
-				width:85%;
-				height:90%;
-				padding:3% 5% 2% 13%;
-				
-			}
-			.login
-			{
-				padding:2% 6% 3% 2%;
-			}
-			.image
-			{	
+		}
+
+			.company
+			{   width:30%;
+				margin-left:5%;
+				margin-top:5%;
 				float:left;
 				clear:right;
+				margin-bottom:5%;
 				
 			}
 			
+			.jobseeker
+			{  width:30%;
+				margin-top:5%;
+				float:right;
+				margin-right:5%;
+				margin-bottom:5%;
+			
+			}
+		
 			form {
 			  border: 1% solid #c6c7cc;
 			  border-radius: 3%;
 			  font-size:100%;
 			  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 			  overflow: hidden;
-			  width: 30%;
-			  float:right;
+			  width: 100%;
+			  float:left;
 			  background-color:white;
-			  
 
 			}
 			fieldset {
@@ -149,14 +151,14 @@ ul {
 			  padding: 2% 3%;
 			}
 			
-			
+		
 			footer
-			{    margin-top:41%;
+			{    margin-top:45%;
 				 margin-right:0%;
-				 width:101%;
+				 width:100%;
 				position:absolute;
-				background-color: 	696969;
-				margin-left:-1%;
+				background-color: 	#696969;
+				margin-left:-0.8%;
 				
 			}
 			
