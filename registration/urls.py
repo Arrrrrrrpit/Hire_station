@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^jobsubmit/$', views.get_job, name='Job Submit'),
     url(r'^jobapplication/$', views.get_application, name='Job Application'),
     url(r'^loginuser/$', views.login_user, name='loginUser'),
-    url(r'^logincompany/$', views.login_Company, name='loginCompany'),
+    url(r'^search/$', views.search_job, name='SearchJob'),
 ]

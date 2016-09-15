@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister,logInUser,logInCompany
+from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister,logInUser,logInCompany,SearchJob
 from .models import JobSeeker,JobDetails, JobProvider, JobApplication
 from django.utils import timezone
 from django.core.exceptions import ObjectDoesNotExist
@@ -130,3 +130,22 @@ def login_Company(request):
                 return HttpResponse("unsuccesful")
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
+
+def search_job(request):
+     form=SearchJob()
+     if request.method == 'POST':
+         form=SearchJob(request.POST)
+         if form.is_valid():
+             search_tmp=form.cleaned_data["search"]
+             pay_tmp=form.cleaned_data["pay_Salary"]
+             try:
+                 search_check = JobDetails.objects.get(genre=search_tmp)
+                 if search_check.pay == pay_tmp:
+                     return HttpResponse("Search successfull")
+                 else:
+                     return HttpResponse("Seach Not Found")
+
+             except:
+                return HttpResponse("Search Not Found")
+
+     return render(request, 'JobApplication/JobApplication.html', {'form': form})

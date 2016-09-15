@@ -49,3 +49,6 @@ class logInCompany(forms.Form):
          'password': forms.PasswordInput(),
      }
 
+class SearchJob(forms.Form):
+    search=forms.CharField(required="true", label="search",max_length=100)
+    pay_Salary=forms.CharField(required="true",max_length=50)
