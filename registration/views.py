@@ -1,9 +1,9 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister,logInUser,logInCompany,SearchJob
-from .models import JobSeeker,JobDetails, JobProvider, JobApplication
+from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister, ProfileAdd, LogInCompany, LogInUser, SearchJob
+from .models import JobSeeker, JobDetails, JobProvider, JobApplication, UserDetails
 from django.utils import timezone
-from django.core.exceptions import ObjectDoesNotExist
 
 
 def get_user(request):
@@ -29,6 +29,7 @@ def get_user(request):
 
     return render(request, 'registration/name.html', {'form': form})
 
+
 def get_comapny(request):
     form = CompanyRegister()
     if request.method == 'POST':
@@ -43,9 +44,9 @@ def get_comapny(request):
             address_temp = form.cleaned_data["address"]
             contact_temp = form.cleaned_data["contact"]
             job_obj1 = JobProvider.objects.create(company_name=user_name_temp, first_name=first_name_temp,
-                                                last_name=last_name_temp,
-                                                email_id=email_temp, password=password_temp,
-                                                address=address_temp, contact_number=contact_temp)
+                                                  last_name=last_name_temp,
+                                                  email_id=email_temp, password=password_temp,
+                                                  address=address_temp, contact_number=contact_temp)
             job_obj1.save()
 
             return HttpResponseRedirect('/registration/jobprovider/thanks/')
@@ -63,20 +64,18 @@ def get_job(request):
         form = JobSubmit(request.POST)
         print(form.is_valid())
         if form.is_valid():
-            company_name = "kunal organisatioformn"
+            company_name = "kunal organisation"
             genre = form.cleaned_data["genre"]
             details = form.cleaned_data["details"]
             pay = form.cleaned_data["pay"]
             dead_line = form.cleaned_data["dead_line"]
             pub_date = timezone.now()
-        temp = JobDetails.objects.create(company_name=company_name, job_id=1, genre=genre, details=details, pay=pay,
+        temp = JobDetails.objects.create(company_name=company_name, genre=genre, details=details, pay=pay,
                                          deadline=dead_line, pub_date=pub_date)
         temp.save()
         return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
     return render(request, 'JobSubmit/JobSubmit.html', {'form': form})
-
-
 
 
 def get_application(request):
@@ -87,17 +86,38 @@ def get_application(request):
         if form.is_valid():
             application = form.cleaned_data["application"]
             pay_expected = form.cleaned_data["pay_expected"]
-        temp = JobApplication.objects.create(user_name="kunal", job_id=1, application_text=application,
+        temp = JobApplication.objects.create(user_name="kunal", application_text=application,
                                              pay_expected=pay_expected, status=False)
         temp.save()
         return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
 
+
+def edit_profile(request):
+    form = ProfileAdd()
+    if request.method == 'POST':
+        form = ProfileAdd(request.POST, request.FILES)
+        print (form.is_valid())
+
+        profile_img = form.cleaned_data['profile_img']
+        website_linked = form.cleaned_data['website_linked']
+        user_introduction = form.cleaned_data['user_introduction']
+        temp = UserDetails.objects.create(user_name="user_name_temp", first_name='first_name_temp',
+                                          last_name='last_name_temp',
+                                          email_id='email_temp@gmail.com', address='address_temp',
+                                          contact_number=9012670877, img=profile_img,
+                                          website_linked=website_linked, user_introduction=user_introduction)
+
+        temp.save()
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+    return render(request, 'ProfileEdit.html', {'form': form})
+
+
 def login_user(request):
-    form = logInUser()
-    if request.method =='POST':
-        form = logInUser(request.POST)
+    form = LogInUser()
+    if request.method == 'POST':
+        form = LogInUser(request.POST)
         if form.is_valid():
 
             username_tmp = form.cleaned_data["user_name"]
@@ -105,7 +125,7 @@ def login_user(request):
             try:
                 username_check = JobSeeker.objects.get(user_name=username_tmp)
                 if username_check.password == password_tmp:
-                  return HttpResponse("successful")
+                    return HttpResponse("successful")
                 else:
                     return HttpResponse("unsuccessful")
             except ObjectDoesNotExist:
@@ -113,17 +133,18 @@ def login_user(request):
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
 
+
 def login_Company(request):
-    form = logInCompany()
-    if request.method =='POST':
-        form = logInCompany(request.POST)
+    form = LogInCompany()
+    if request.method == 'POST':
+        form = LogInCompany(request.POST)
         if form.is_valid():
             companyname_tmp = form.cleaned_data["company_name"]
             password_tmp = form.cleaned_data["password"]
             try:
                 Companyname_check = JobProvider.objects.get(company_name=companyname_tmp)
                 if Companyname_check.password == password_tmp:
-                  return HttpResponse("successful")
+                    return HttpResponse("successful")
                 else:
                     return HttpResponse("unsuccessful")
             except ObjectDoesNotExist:
@@ -131,21 +152,22 @@ def login_Company(request):
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
 
-def search_job(request):
-     form=SearchJob()
-     if request.method == 'POST':
-         form=SearchJob(request.POST)
-         if form.is_valid():
-             search_tmp=form.cleaned_data["search"]
-             pay_tmp=form.cleaned_data["pay_Salary"]
-             try:
-                 search_check = JobDetails.objects.get(genre=search_tmp)
-                 if search_check.pay == pay_tmp:
-                     return HttpResponse("Search successfull")
-                 else:
-                     return HttpResponse("Seach Not Found")
 
-             except:
+def search_job(request):
+    form = SearchJob()
+    if request.method == 'POST':
+        form = SearchJob(request.POST)
+        if form.is_valid():
+            search_tmp = form.cleaned_data["search"]
+            pay_tmp = form.cleaned_data["pay_Salary"]
+            try:
+                search_check = JobDetails.objects.get(genre=search_tmp)
+                if search_check.pay == pay_tmp:
+                    return HttpResponse("Search successfull")
+                else:
+                    return HttpResponse("Seach Not Found")
+
+            except:
                 return HttpResponse("Search Not Found")
 
-     return render(request, 'JobApplication/JobApplication.html', {'form': form})
+    return render(request, 'JobApplication/JobApplication.html', {'form': form})

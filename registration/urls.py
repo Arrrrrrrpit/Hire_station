@@ -8,6 +8,8 @@ urlpatterns = [
     url(r'^jobprovider/thanks/$', views.thanks, name='thanks'),
     url(r'^jobsubmit/$', views.get_job, name='Job Submit'),
     url(r'^jobapplication/$', views.get_application, name='Job Application'),
-    url(r'^loginuser/$', views.login_user, name='loginUser'),
-    url(r'^search/$', views.search_job, name='SearchJob'),
+    url(r'^profile/edit/$', views.edit_profile, name='Profile Edit'),
+    url(r'^loginuser/$', views.login_user, name='login User'),
+    url(r'^search/$', views.search_job, name='Search Job'),
+    url(r'^logincompany/$', views.login_Company, name='login company')
 ]
