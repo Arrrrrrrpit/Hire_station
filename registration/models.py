@@ -65,3 +65,5 @@ class UserDetails(models.Model):
     width_field = models.IntegerField(default=0)
     user_introduction = models.CharField(max_length=20000, default= "")
 
+
+
