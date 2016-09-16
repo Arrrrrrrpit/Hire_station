@@ -93,7 +93,7 @@ def get_job(request):
         temp.save()
         return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
-    return render(request, 'JobSubmit/JobSubmit.html', {'form': form})
+    return render(request, 'post_job.html', {'form': form})
 
 
 def get_application(request):
@@ -214,7 +214,6 @@ def search_job(request):
                 return HttpResponse("Search Not Found")
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
-
 
 
 def userprofile(request):
