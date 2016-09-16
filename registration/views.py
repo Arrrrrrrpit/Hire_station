@@ -6,6 +6,21 @@ from .models import JobSeeker, JobDetails, JobProvider, JobApplication, UserDeta
 from django.utils import timezone
 
 
+def checkuserlogin(request):
+   if request.session.has_key('username'):
+      username = request.session['username']
+      return HttpResponseRedirect('/registration/jobseeker/thanks/' , {"username" : username})
+   else:
+       return HttpResponseRedirect('/registration/login/user')
+
+
+def checkcompanylogin(request):
+   if request.session.has_key('companyname'):
+      companyname = request.session['companyname']
+      return HttpResponseRedirect('/registration/jobseeker/thanks/' , {"username" : companyname})
+   else:
+       return HttpResponseRedirect('/registration/login/company')
+
 def get_user(request):
     form = UserRegister()
     if request.method == 'POST':
@@ -126,11 +141,12 @@ def login_user(request):
             try:
                 username_check = JobSeeker.objects.get(user_name=username_tmp)
                 if username_check.password == password_tmp:
-                    return HttpResponse("successful")
+                    request.session['username'] = username_tmp
+                    return HttpResponseRedirect('/registration/userprofile/')
                 else:
-                    return HttpResponse("unsuccessful")
+                    return HttpResponseRedirect('/registration/loginuser/')
             except ObjectDoesNotExist:
-                return HttpResponse("unsuccesful")
+                return HttpResponseRedirect('/registration/loginuser/')
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
 
@@ -145,6 +161,7 @@ def login_Company(request):
             try:
                 Companyname_check = JobProvider.objects.get(company_name=companyname_tmp)
                 if Companyname_check.password == password_tmp:
+                    request.session['companyname'] = companyname_tmp
                     return HttpResponse("successful")
                 else:
                     return HttpResponse("unsuccessful")
@@ -172,3 +189,20 @@ def search_job(request):
                 return HttpResponse("Search Not Found")
 
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
+
+
+
+def userprofile(request):
+    username = request.session['username']
+    username_temp = UserDetails.objects.get(user_name=username)
+
+
+    return render(request, 'profile.html',{'user':username_temp})
+
+
+def logout(request):
+   try:
+      del request.session['username']
+   except:
+      pass
+   return HttpResponse("<strong>You are logged out.</strong>")
