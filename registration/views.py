@@ -27,13 +27,14 @@ def get_user(request):
 
             return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
-    return render(request, 'registration/name.html', {'form': form})
+    return render(request, 'register_user.html', {'form': form})
 
 
 def get_comapny(request):
     form = CompanyRegister()
     if request.method == 'POST':
         form = CompanyRegister(request.POST)
+        print("hello")
 
         if form.is_valid():
             user_name_temp = form.cleaned_data["company_name"]
@@ -51,7 +52,7 @@ def get_comapny(request):
 
             return HttpResponseRedirect('/registration/jobprovider/thanks/')
 
-    return render(request, 'registration/name.html', {'form': form})
+    return render(request, 'register_company.html', {'form': form})
 
 
 def thanks(request):
