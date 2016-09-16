@@ -21,6 +21,7 @@ def checkcompanylogin(request):
    else:
        return HttpResponseRedirect('/registration/login/company')
 
+
 def get_user(request):
     form = UserRegister()
     if request.method == 'POST':
@@ -38,9 +39,9 @@ def get_user(request):
                                                last_name=last_name_temp,
                                                email_id=email_temp, password=password_temp,
                                                address=address_temp, contact_number=contact_temp)
+            request.session['username'] = user_name_temp
             job_obj.save()
-
-            return HttpResponseRedirect('/registration/jobseeker/thanks/')
+            return HttpResponseRedirect('/registration/userprofile/edit/')
 
     return render(request, 'register_user.html', {'form': form})
 
@@ -59,13 +60,14 @@ def get_comapny(request):
             password_temp = form.cleaned_data["password"]
             address_temp = form.cleaned_data["address"]
             contact_temp = form.cleaned_data["contact"]
+            request.session['username'] = user_name_temp
             job_obj1 = JobProvider.objects.create(company_name=user_name_temp, first_name=first_name_temp,
                                                   last_name=last_name_temp,
                                                   email_id=email_temp, password=password_temp,
                                                   address=address_temp, contact_number=contact_temp)
             job_obj1.save()
 
-            return HttpResponseRedirect('/registration/jobprovider/thanks/')
+            return HttpResponseRedirect('/registration/companyprofile/edit/')
 
     return render(request, 'register_company.html', {'form': form})
 
@@ -110,7 +112,7 @@ def get_application(request):
     return render(request, 'JobApplication/JobApplication.html', {'form': form})
 
 
-def edit_profile(request):
+def edit_profile_user(request):
     form = ProfileAdd()
     if request.method == 'POST':
         form = ProfileAdd(request.POST, request.FILES)
@@ -119,14 +121,37 @@ def edit_profile(request):
         profile_img = form.cleaned_data['profile_img']
         website_linked = form.cleaned_data['website_linked']
         user_introduction = form.cleaned_data['user_introduction']
-        temp = UserDetails.objects.create(user_name="user_name_temp", first_name='first_name_temp',
-                                          last_name='last_name_temp',
-                                          email_id='email_temp@gmail.com', address='address_temp',
-                                          contact_number=9012670877, img=profile_img,
+        username = request.session['username']
+        user_temp = JobSeeker.objects.get(user_name = username )
+        temp = UserDetails.objects.create(user_name=user_temp.user_name, first_name=user_temp.first_name,
+                                          last_name=user_temp.last_name,
+                                          email_id=user_temp.email_id, address=user_temp.address,
+                                          contact_number=user_temp.contact_number, img=profile_img,
                                           website_linked=website_linked, user_introduction=user_introduction)
 
         temp.save()
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+        return HttpResponseRedirect('/registration/userprofile/')
+    return render(request, 'ProfileEdit.html', {'form': form})
+
+
+def edit_profile_company(request):
+    form = ProfileAdd()
+    if request.method == 'POST':
+        form = ProfileAdd(request.POST, request.FILES)
+        print (form.is_valid())
+        profile_img = form.cleaned_data['profile_img']
+        website_linked = form.cleaned_data['website_linked']
+        user_introduction = form.cleaned_data['user_introduction']
+        username_temp = request.session['username']
+        user_temp = JobProvider.objects.get(company_name=username_temp )
+        temp = UserDetails.objects.create(user_name=user_temp.company_name, first_name=user_temp.first_name,
+                                          last_name=user_temp.last_name,
+                                          email_id=user_temp.email_id, address=user_temp.address,
+                                          contact_number=user_temp.contact_number, img=profile_img,
+                                          website_linked=website_linked, user_introduction=user_introduction)
+
+        temp.save()
+        return HttpResponseRedirect('/registration/companyprofile/')
     return render(request, 'ProfileEdit.html', {'form': form})
 
 
@@ -148,7 +173,7 @@ def login_user(request):
             except ObjectDoesNotExist:
                 return HttpResponseRedirect('/registration/loginuser/')
 
-    return render(request, 'JobApplication/JobApplication.html', {'form': form})
+    return render(request, 'login_user.html', {'form': form})
 
 
 def login_Company(request):
@@ -161,14 +186,14 @@ def login_Company(request):
             try:
                 Companyname_check = JobProvider.objects.get(company_name=companyname_tmp)
                 if Companyname_check.password == password_tmp:
-                    request.session['companyname'] = companyname_tmp
-                    return HttpResponse("successful")
+                    request.session['username'] = companyname_tmp
+                    return HttpResponseRedirect('/registration/companyprofile/')
                 else:
                     return HttpResponse("unsuccessful")
             except ObjectDoesNotExist:
                 return HttpResponse("unsuccesful")
 
-    return render(request, 'JobApplication/JobApplication.html', {'form': form})
+    return render(request, 'login_company.html', {'form': form})
 
 
 def search_job(request):
@@ -200,9 +225,19 @@ def userprofile(request):
     return render(request, 'profile_user.html',{'user':username_temp})
 
 
+
+def companyprofile(request):
+    username = request.session['username']
+    username_temp = UserDetails.objects.get(user_name=username)
+
+
+    return render(request, 'profile_company.html',{'user':username_temp})
+
+
 def logout(request):
    try:
       del request.session['username']
    except:
       pass
    return HttpResponse("<strong>You are logged out.</strong>")
+
