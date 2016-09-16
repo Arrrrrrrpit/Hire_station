@@ -197,7 +197,7 @@ def userprofile(request):
     username_temp = UserDetails.objects.get(user_name=username)
 
 
-    return render(request, 'profile.html',{'user':username_temp})
+    return render(request, 'profile_user.html',{'user':username_temp})
 
 
 def logout(request):
