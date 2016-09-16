@@ -19,9 +19,8 @@ ul {
 			li a {
 				display: block;
 				color: white;
-				
-			
-				text-decoration: none;
+				font-family: verdana;
+			    text-decoration: none;
 			}
 
 			li a:hover:not(.active)
@@ -44,7 +43,7 @@ ul {
 			display: none;
 			position: absolute;
 			color: white;
-			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-family: verdana;
 			 font-size:50%;
 			width:9%;
 			 padding: 1%;
@@ -98,7 +97,7 @@ ul {
 		  border: 1% solid #c6c7cc;
 		  border-radius: 3%;
 		  font-size:100%;
-		  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		  font-family: verdana;
 		  overflow: hidden;
 		  width: 30%;
 		  float:right;
@@ -114,7 +113,7 @@ ul {
 		input {
 		  border-radius: 3%;
 		  font-size: 100%;
-		  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+		  font-family:verdana;
 		  margin: 0;
 		}
 		.account-info {
@@ -151,7 +150,7 @@ ul {
 		}
 		footer
 		{    margin-top:45%;
-
+             
 		     width:99.80%;
 			position:absolute;
 			background-color: 	696969;
@@ -164,11 +163,11 @@ ul {
 			float:left;
 			clear:right;
 			padding-right:20%;
-			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-family: verdana;
 		}
 		.followus
 		{
 			float:right;
-		 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		 font-family: verdana;
 		padding-right:3%;
 		}

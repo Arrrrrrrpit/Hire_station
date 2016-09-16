@@ -31,16 +31,22 @@
 
 		<div class="profile">
 			<h2>User Name : {{ user.user_name }}</h2>
-            <h3>Personal Details</h3>
-            <p>First Name : {{ user.first_name }}<p>
-            <p>Last Name : {{ user.last_name }}<p>
-            <h3>Contact Details</h3>
-            <p>Email Id: {{ user.email_id }}<p>
-            <p>Address : {{ user.address }}<p>
-            <p>Contact Number : {{ user.contact_number }}<p>
-            <h3>Official Details </h3>
-            <p>Website Linked : <a href="google.com">{{ user.website_linked }}</a></p>
-            <p>User Introduction : {{ user.user_introduction }}</p>
+            <div class="personal">
+            	<h3>Personal Details</h3>
+                <p>First Name : {{ user.first_name }}<p>
+                <p>Last Name : {{ user.last_name }}<p>
+            </div>
+            <div class="contact">
+            	<h3>Contact Details</h3>
+                <p>Email Id: {{ user.email_id }}<p>
+                <p>Address : {{ user.address }}<p>
+                <p>Contact Number : {{ user.contact_number }}<p>
+            </div>
+            <div class="official">
+            	<h3>Official Details </h3>
+                <p>Website Linked : <a href="google.com">{{ user.website_linked }}</a></p>
+                <p>User Introduction : {{ user.user_introduction }}</p>
+            </div>
 
 		</div>
 	

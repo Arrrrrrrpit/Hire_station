@@ -29,10 +29,7 @@
 
 	<body background="{% static './image/blue.png' %}">
 	
-
-		<div class="company">
-
-				<div class="companyform">
+            <div class="companyform">
 				<form method="post">
 			        {% csrf_token %}
 				    {{ form.as_p }}
@@ -43,7 +40,15 @@
 			    </form>
 				
 			</div>
-		</div>
+	    <div class="img">
+           <img src="{% static './image/jobpost.png' %}" height="25%" width="20%" >
+
+	    </div>
+	    <div class="content">
+          <p class="post">It's always nice to hire the best talent available for the best efficiency and scribber offers you tha way to achieve the Same.<br>Post a job and hire the best one suited for the job,Posting the Job on Our site means that all our users can see the Job as well as they can apply for any job by searching according to the Genre and Pay fields.</p>
+
+	    </div>
+		
 		 
 
 		 
@@ -51,7 +56,7 @@
 		<footer>
 			<div class="Manageby">
 			<h4> MANAGE AND PUBLISHEDBY:</h4>
-				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+				<div>VAIBHAV BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
 			</div>
 			<div class="followus">
 				<h4>FOLLOW US:</h4>

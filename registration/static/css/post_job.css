@@ -20,7 +20,7 @@ ul {
 				display: block;
 				color: white;
 
-
+                font-family: verdana;
 				text-decoration: none;
 			}
 
@@ -45,7 +45,7 @@ ul {
 			display: none;
 			position: absolute;
 			color: white;
-			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-family:  verdana;
 			 font-size:50%;
 			width:9%;
 			 padding: 1%;
@@ -56,7 +56,7 @@ ul {
 
 			li:hover ul.dropdown
 			{display:block;
-			lor: black;
+			color: black;
 			}
 			li:hover ul.dropdown{
 				display:block;
@@ -95,11 +95,12 @@ ul {
 			  border: 1% solid #c6c7cc;
 			  border-radius: 3%;
 			  font-size:100%;
-			  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			  font-family: verdana;
 			  overflow: hidden;
 			  width: 100%;
 			  float:left;
 			  background-color:white;
+			  padding: 2%;
 
 			}
 			fieldset {
@@ -111,7 +112,7 @@ ul {
 			{
 			  border-radius: 3%;
 			  font-size: 100%;
-			  font-family:"sans-serif", Helvetica, Arial, Helvetica Neue;
+			  font-family:verdana;
 			  margin: 0;
 			}
 
@@ -153,8 +154,8 @@ ul {
 
 
 			footer
-			{    margin-top:45%;
-				 margin-right:0%;
+			{    margin-top:2.8%;
+				 margin-right:1%;
 				 width:100%;
 				position:absolute;
 				background-color: 	#696969;
@@ -167,12 +168,12 @@ ul {
 				float:left;
 				clear:right;
 				padding-right:20%;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				 font-family:verdana;
 			}
 			.followus
 			{
 				float:right;
-			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-family: verdana;
 			padding-right:3%;
 			}
 
@@ -183,3 +184,31 @@ ul {
 						background-size: cover;
 					}
 
+.companyform
+{
+    margin-top: 4%;
+	float: right;
+	margin-right: 1%;
+
+}
+.img 
+{   
+position: relative;
+margin-left: 25%;
+margin-top: 2%;
+width: 55%;
+
+
+	
+}
+.content .post
+{   position: relative;
+	text-align: center;
+	font-size: 23px;
+	font-weight: bold;
+	font-family: verdana;
+	width: 55%;
+	margin-left: 6%;
+
+
+}

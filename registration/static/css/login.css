@@ -19,7 +19,8 @@ ul {
 			li a {
 				display: block;
 				color: white;
-				
+				font-family: verdana;
+
 			
 				text-decoration: none;
 			}
@@ -45,7 +46,7 @@ ul {
 			display: none;
 			position: absolute;
 			color: white;
-			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-family: verdana;
 			 font-size:50%;
 			width:9%;
 			 padding: 1%;
@@ -56,7 +57,7 @@ ul {
 			
 			li:hover ul.dropdown
 			{display:block;
-			lor: black;
+			color: black;
 			}
 			li:hover ul.dropdown{
 				display:block;
@@ -79,6 +80,7 @@ ul {
 				float:right;
 				clear:right;
 				margin-bottom:5%;
+				margin-right: 5%;
 				
 			}
 			
@@ -95,11 +97,12 @@ ul {
 			  border: 1% solid #c6c7cc;
 			  border-radius: 3%;
 			  font-size:100%;
-			  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			  font-family: sans-serif;
 			  overflow: hidden;
 			  width: 100%;
 			  float:left;
 			  background-color:white;
+
 
 			}
 			fieldset {
@@ -111,8 +114,9 @@ ul {
 			{
 			  border-radius: 3%;
 			  font-size: 100%;
-			  font-family:"sans-serif", Helvetica, Arial, Helvetica Neue;
-			  margin: 0;
+			  font-family:verdana;
+			  
+
 			}
 			
 			.account-info 
@@ -167,12 +171,12 @@ ul {
 				float:left;
 				clear:right;
 				padding-right:20%;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				 font-family: verdana;
 			}
 			.followus
 			{
 				float:right;
-			 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			 font-family: verdana;
 			padding-right:3%;
 			}
 			
@@ -183,3 +187,11 @@ ul {
 						background-size: cover;
 					}
 					
+    .loginuser img
+    {
+    	position: absolute;
+    	margin-top: 7%;
+    	margin-left: 12%;
+    	height: 70%;
+    	width: 40%;
+    }
