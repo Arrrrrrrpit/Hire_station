@@ -1,0 +1,93 @@
+{% load static %}
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="{% static './css/search.css' %}">
+		
+			
+
+
+	
+			<header>
+			<div>
+				<ul>
+				  <li><a class="active" href="#home">Home</a></li>
+				  <li><a href="#news">Post a job</a></li>
+				  <li><a href="#contact">Search</a></li>
+				  <li id="login"><a href="#about">login</a></li>
+				  <li id="signup"><a href="#about">Signup</a>
+				  <ul class="dropdown">
+				  <li><a href="#">Company</a></li>
+				  <li><a href="#">Job seeker</a></li>
+				  </ul>
+				  </li>
+				  
+				 
+				</ul>
+			</div>
+			</header>
+	</head>
+	<body background="{% static './image/blue.png' %}">
+	<div class="search">
+	<h1> SEARCH:</h1>
+		<form>
+		  
+			<label>
+			  
+			  <input type="text" name="search" placeholder="Enter to search">
+			</label>
+			<br>
+			<label>
+			<input class="btn" type="submit" name="submit" value="Search ">
+			</label>
+			
+		</form>
+	
+	</div>
+	
+		<div class="animationimages" >
+			<img class="mySlides" src="{% static './image/heroimage1.png' %}" >
+			<img class="mySlides" src="{% static './image/heroimage2.png' %}" >
+			
+			</div>
+			
+		
+	
+
+	<footer>
+			<div class="Manageby">
+			<h4> MANAGE AND PUBLISHEDBY:</h4>
+				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+			</div>
+			<div class="followus">
+				<h4>FOLLOW US:</h4>
+				<a href="https://www.facebook.com/">
+				<img id="link" alt="followus" src="{% static './image/facebook.png' %}" >
+				<a href="http://www.twitter.com">
+				<img id="link" alt="followus" src="{% static './image/twitter.png' %}"> 
+				<a href="https://www.youtube.com">
+				<img id="link" alt="followus" src="{% static './image/youtube.png' %}" >
+			</div>
+		</footer>
+	
+		<script>
+			var myIndex1=0;
+			element1();
+			function element1()
+			{
+				var i;
+				var x=document.getElementsByClassName("mySlides");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex1++;
+				if(myIndex1 > x.length)
+				{
+				myIndex1=1;
+				}
+				x[myIndex1-1].style.display = "block";
+				setTimeout(element1, 4000);
+			}
+			</script>
+ </body>
+</html>
