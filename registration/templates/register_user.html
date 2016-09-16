@@ -1,7 +1,7 @@
 {% load static %}
 <html>
 	<head>
-			<link rel="stylesheet" type="text/css" href="{% static '../static/css/signupjobseeker.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static '../static/css/signupcompany.css' %}">
 		
 			<header>
 			<div>
@@ -30,16 +30,17 @@
 		 </div>
 
 			<div class="login">
-			<form>
-		  {% csrf_token %}
+			<form method="POST">
+		        {% csrf_token %}
 			{{ form.as_p }}
-		</form>
-		</div>
+	
+		
 		 <fieldset class="account-action">
 			<input class="btn" type="submit" name="submit" value="Submit">
 		   
 		  </fieldset>
-		</form>
+		  </div>
+		  </form>
 		
 
 		
