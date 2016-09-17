@@ -73,7 +73,7 @@ def get_comapny(request):
 
 
 def thanks(request):
-    return HttpResponse("Thanks for the Registration you will be redirected to your profile")
+    return HttpResponse("looks like you are already logged in")
 
 
 def get_job(request):
@@ -104,18 +104,25 @@ def get_application(request):
     if request.method == 'POST':
         form = ApplicationSubmit(request.POST)
         print (form.is_valid())
-        if form.is_valid():
-            application = form.cleaned_data["application"]
-            pay_expected = form.cleaned_data["pay_expected"]
-        temp = JobApplication.objects.create(user_name="kunal", application_text=application,
-                                             pay_expected=pay_expected, status=False)
-        temp.save()
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+        try :
+            if form.is_valid():
+                username = request.session['username']
+                application = form.cleaned_data["application"]
+                pay_expected = form.cleaned_data["pay_expected"]
+                company = request.session['activejob']
+                print (company)
+                temp = JobApplication.objects.create(company_name=company,user_name=username, application_text=application,
+                                                 pay_expected=pay_expected, status=False)
+                temp.save()
+            return HttpResponseRedirect('/registration/userprofile/')
+        except :
+            return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
 
     return render(request, 'post_application.html', {'form': form})
 
 
-def editprofileuser(request):
+def edit_profile_user(request):
     form = ProfileAdd()
     if request.method == 'POST':
         form = ProfileAdd(request.POST, request.FILES)
@@ -157,22 +164,6 @@ def edit_profile_company(request):
         return HttpResponseRedirect('/registration/companyprofile/')
     return render(request, 'ProfileEdit.html', {'form': form})
 
-def update_profile(request):
-    form = ProfileAdd()
-    if request.method == 'POST':
-        form = ProfileAdd(request.POST, request.FILES)
-        print (form.is_valid())
-        profile_img = form.cleaned_data['profile_img']
-        website_linked = form.cleaned_data['website_linked']
-        user_introduction = form.cleaned_data['user_introduction']
-        username_temp = request.session['username']
-        user_temp = JobSeeker.objects.get(user_name=username_temp)
-        user_temp.img=profile_img
-        user_temp.website_linked=website_linked
-        user_temp.user_introduction=user_introduction
-        user_temp.save()
-        return HttpResponseRedirect('/registration/userprofile/')
-    return render(request, 'ProfileEdit.html', {'form': form})
 
 
 def login_user(request):
@@ -215,14 +206,35 @@ def login_Company(request):
 
     return render(request, 'login_company.html', {'form': form})
 
-def job_view(request):
+def displayjob(request):
     try:
         username = request.session['companyname']
-        username_temp = UserDetails.objects.get(user_name=username)
-        return render(request, 'profile_user.html',{'user':username_temp})
+        job_temp = JobDetails.objects.get(company_name=username)
+        print (job_temp.details)
+        return render(request, 'job_view.html',{'user':job_temp})
     except:
         return HttpResponse('invalid request')
 
+def update_profile(request):
+    form = ProfileAdd()
+    if request.method == 'POST':
+        form = ProfileAdd(request.POST, request.FILES)
+        print (form.is_valid())
+        profile_img = form.cleaned_data['profile_img']
+        website_linked = form.cleaned_data['website_linked']
+        user_introduction = form.cleaned_data['user_introduction']
+        username_temp = request.session['username']
+        print (username_temp)
+        user_temp = UserDetails.objects.get(user_name=username_temp)
+        print (user_temp)
+        user_temp.img=profile_img
+        user_temp.save()
+        user_temp.website_linked=website_linked
+        user_temp.user_introduction=user_introduction
+        user_temp.save()
+        print (user_temp.website_linked)
+        return HttpResponseRedirect('/registration/userprofile/')
+    return render(request, 'ProfileEdit.html', {'form': form})
 
 
 def search_job(request):
@@ -235,14 +247,16 @@ def search_job(request):
             try:
                 search_check = JobDetails.objects.get(genre=search_tmp)
                 if search_check.pay == pay_tmp:
-                    return HttpResponse("Search successfull")
+                    request.session['activejob'] = search_check.company_name
+                    return render(request,'all_jobs.html',{'search':search_check})
+
                 else:
                     return HttpResponse("Seach Not Found")
 
             except:
                 return HttpResponse("Search Not Found")
 
-    return render(request, 'JobApplication/JobApplication.html', {'form': form})
+    return render(request, 'search.html', {'form': form})
 
 
 def userprofile(request):
@@ -258,6 +272,10 @@ def companyprofile(request):
 
 
     return render(request, 'profile_company.html',{'user':username_temp})
+
+def home(request):
+    return render(request, 'home.html')
+
 
 
 def logout(request):

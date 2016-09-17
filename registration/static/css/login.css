@@ -176,22 +176,22 @@ ul {
 			.followus
 			{
 				float:right;
-			 font-family: verdana;
-			padding-right:3%;
+				font:ont-family: verdana;
+				padding-right:3%;
 			}
 			
-					body
-					{
-						
-						background-repeat: no-repeat;
-						background-size: cover;
-					}
+			body
+			{
+
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
 					
-    .loginuser img
-    {
-    	position: absolute;
-    	margin-top: 7%;
-    	margin-left: 12%;
-    	height: 70%;
-    	width: 40%;
-    }
+   			 .loginuser img
+			{
+				position: absolute;
+				margin-top: 7%;
+				margin-left: 12%;
+				height: 70%;
+				width: 40%;
+			}

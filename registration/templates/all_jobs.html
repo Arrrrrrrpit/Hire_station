@@ -10,13 +10,13 @@
 
 			<header>
 			<div>
-				<ul>
-				<li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+			 <ul>
+				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
 				  <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
 				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 				  <li id="login"><a href="{% url 'registration:login User' %}">login User</a></li>
-				  <li id="login"><a href="{% url 'registration:login company' %}">login company</a></li>
-				  <li id="signup"><a href="#about">Signup</a>
+				  <li id="login"><a href="{% url 'registration:login company' %}">login Company</a></li>
+				  <li id="signup"><a href="#Signup">Signup</a>
 				  <ul class="dropdown">
 				  <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
 				  <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
@@ -29,8 +29,12 @@
 			</header>
 	</head>
 	<body background="{% static '../static/image/blue.png' %}">
-        <h3>You are succesfully Logged Out</h3>
 
+       <p> Search Successfull  </p>
+       <p> Job Details :{{ search.details }}</p>
+       <p> Job Pay : {{ search.pay }}</p>
+       <p> Job Deadline : {{ search.deadline }}</p>
+       <a href="{% url 'registration:application' %}">Submit Applicationn</a>
 		<footer>
 			<div class="Manageby">
 			<h4> MANAGE AND PUBLISHEDBY:</h4>
@@ -44,10 +48,10 @@
 				<a href="https://www.facebook.com">
 				<img id="link" alt="followus" src="{% static '../static/image/facebook.png' %}" >
 				<a href="http://www.twitter.com">
-				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}">
+				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}" >
 				<a href="https://www.youtube.com">
 				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
-            </div>
+			</div>
 		</footer>
  </body>
 </html>
