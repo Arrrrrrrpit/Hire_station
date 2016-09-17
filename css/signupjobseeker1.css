@@ -1,5 +1,4 @@
-
-		ul {
+ul {
 				list-style-type: none;
 				margin: 0;
 				padding: 0;
@@ -11,6 +10,8 @@
 			li {
 				float: left;
 				font-size:152%;
+				
+				margin:1% 2% 1% 2%;
 			}
 
 			
@@ -18,8 +19,8 @@
 			li a {
 				display: block;
 				color: white;
-				text-align: center;
-				padding: 4% 3%;
+				
+			
 				text-decoration: none;
 			}
 
@@ -27,15 +28,14 @@
 			{
 				background-color: #D5DBDB;
 				color:black;
-				padding: 4% 3%;
+				
 			}
 
 			.active {
 				background-color: #D6EAF8  ;
 				color:black;
-					padding: 4% 3%;
+				
 			}
-			
 			
 			li ul.dropdown
 			{
@@ -49,6 +49,7 @@
 			width:9%;
 			 padding: 1%;
 			
+		   
 
 			}
 			
@@ -59,7 +60,8 @@
 			li:hover ul.dropdown{
 				display:block;
 			}
-		#signup
+			
+			#signup
 			{
 				float:right;
 			}
@@ -67,26 +69,41 @@
 		#login
 		{
 			float:right;
+			
 		}	
-		
+		#img1
+		{   background-size: cover;
+			width:90%;
+			height:80%;
+			padding:3% 0% 2% 13%;
+			
+		}
 		.image
-	{
-		float:left;
-		clear:right;
-		padding:5% 2% 0% 10%;
-	}
-			.login
-			{
-				padding:5% 10%;
-			}
-			form {
-		  border: 1px solid #c6c7cc;
-		  border-radius: 5px;
+		{	
+			float:left;
+			clear:right;
+			
+		}
+		.login
+		{
+			
+			
+		}
+		.login
+		{ padding-right:5%;
+		padding-top:2%;
+			
+		}
+		form {
+		  border: 1% solid #c6c7cc;
+		  border-radius: 3%;
 		  font-size:100%;
 		  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 		  overflow: hidden;
 		  width: 30%;
 		  float:right;
+		  background-color:white;
+		  
 
 		}
 		fieldset {
@@ -95,7 +112,7 @@
 		  padding: 0;
 		}
 		input {
-		  border-radius: 5px;
+		  border-radius: 3%;
 		  font-size: 100%;
 		  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
 		  margin: 0;
@@ -112,10 +129,10 @@
 		.account-info input {
 		  background: #fff;
 		  border: 1% solid #c6c7cc;
-		   box-shadow: inset 0 1% 1% rgba(0, 0, 0, .1);
+		   
 		  color: #636466;
-		  padding: 6px;
-		  margin-top: 6px;
+		  padding: 2%;
+		  margin-top: 2%;
 		  width: 100%;
 		}
 		.account-action {
@@ -132,4 +149,3 @@
 		  float: left;
 		  padding: 2% 3%;
 		}
-			
