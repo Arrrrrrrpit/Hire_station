@@ -3,11 +3,11 @@
 <html>
 	<head>
 			<link rel="stylesheet" type="text/css" href="{%  static '../static/css/profile.css' %} ">
-		
-			
 
 
-	
+
+
+
 			<header>
 			<div>
 				<ul>
@@ -21,39 +21,15 @@
 				  <li><a href="#">Job seeker</a></li>
 				  </ul>
 				  </li>
-				  
-				 
+
+
 				</ul>
 			</div>
 			</header>
 	</head>
 	<body background="{% static '../static/image/blue.png' %}">
+        <h3>You are succesfully Logged Out</h3>
 
-		<div class="profile">
-			<h2>Company Name : {{ user.user_name }}</h2>
-            <div class="personal">
-            	<h3>Personal Details</h3>
-                <p>First Name : {{ user.first_name }}<p>
-                <p>Last Name : {{ user.last_name }}<p>
-            </div>
-            <div class="contact">
-            	<h3>Contact Details</h3>
-                <p>Email Id: {{ user.email_id }}<p>
-                <p>Address : {{ user.address }}<p>
-                <p>Contact Number : {{ user.contact_number }}<p>
-            </div>
-            <div class="official">
-            	<h3>Official Details </h3>
-                <p>Website Linked : <a href="google.com">{{ user.website_linked }}</a></p>
-                <p>User Introduction : {{ user.user_introduction }}</p>
-            </div>
-
-		</div>
-		   <a href="{% url 'registration:logout' %}">logout</a>
-        	   <a href="{% url 'registration:update' %}">edit profile</a>
-
-			
-	
 		<footer>
 			<div class="Manageby">
 			<h4> MANAGE AND PUBLISHEDBY:</h4>
@@ -70,7 +46,7 @@
 				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}">
 				<a href="https://www.youtube.com">
 				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
-			</div>
+            </div>
 		</footer>
  </body>
 </html>

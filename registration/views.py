@@ -60,7 +60,7 @@ def get_comapny(request):
             password_temp = form.cleaned_data["password"]
             address_temp = form.cleaned_data["address"]
             contact_temp = form.cleaned_data["contact"]
-            request.session['username'] = user_name_temp
+            request.session['companyname'] = user_name_temp
             job_obj1 = JobProvider.objects.create(company_name=user_name_temp, first_name=first_name_temp,
                                                   last_name=last_name_temp,
                                                   email_id=email_temp, password=password_temp,
@@ -81,18 +81,21 @@ def get_job(request):
     if request.method == 'POST':
         form = JobSubmit(request.POST)
         print(form.is_valid())
-        if form.is_valid():
-            company_name = "kunal organisation"
-            genre = form.cleaned_data["genre"]
-            details = form.cleaned_data["details"]
-            pay = form.cleaned_data["pay"]
-            dead_line = form.cleaned_data["dead_line"]
-            pub_date = timezone.now()
-        temp = JobDetails.objects.create(company_name=company_name, genre=genre, details=details, pay=pay,
-                                         deadline=dead_line, pub_date=pub_date)
-        temp.save()
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
-
+        try :
+            username = request.session['companyname']
+            if form.is_valid():
+                company_name = username
+                genre = form.cleaned_data["genre"]
+                details = form.cleaned_data["details"]
+                pay = form.cleaned_data["pay"]
+                dead_line = form.cleaned_data["dead_line"]
+                pub_date = timezone.now()
+            temp = JobDetails.objects.create(company_name=company_name, genre=genre, details=details, pay=pay,
+                                             deadline=dead_line, pub_date=pub_date)
+            temp.save()
+            return HttpResponseRedirect('/registration/companyprofile/')
+        except :
+            return HttpResponseRedirect('/registration/jobseeker/thanks/')
     return render(request, 'post_job.html', {'form': form})
 
 
@@ -109,10 +112,10 @@ def get_application(request):
         temp.save()
         return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
-    return render(request, 'JobApplication/JobApplication.html', {'form': form})
+    return render(request, 'post_application.html', {'form': form})
 
 
-def edit_profile_user(request):
+def editprofileuser(request):
     form = ProfileAdd()
     if request.method == 'POST':
         form = ProfileAdd(request.POST, request.FILES)
@@ -142,7 +145,7 @@ def edit_profile_company(request):
         profile_img = form.cleaned_data['profile_img']
         website_linked = form.cleaned_data['website_linked']
         user_introduction = form.cleaned_data['user_introduction']
-        username_temp = request.session['username']
+        username_temp = request.session['companyname']
         user_temp = JobProvider.objects.get(company_name=username_temp )
         temp = UserDetails.objects.create(user_name=user_temp.company_name, first_name=user_temp.first_name,
                                           last_name=user_temp.last_name,
@@ -152,6 +155,23 @@ def edit_profile_company(request):
 
         temp.save()
         return HttpResponseRedirect('/registration/companyprofile/')
+    return render(request, 'ProfileEdit.html', {'form': form})
+
+def update_profile(request):
+    form = ProfileAdd()
+    if request.method == 'POST':
+        form = ProfileAdd(request.POST, request.FILES)
+        print (form.is_valid())
+        profile_img = form.cleaned_data['profile_img']
+        website_linked = form.cleaned_data['website_linked']
+        user_introduction = form.cleaned_data['user_introduction']
+        username_temp = request.session['username']
+        user_temp = JobSeeker.objects.get(user_name=username_temp)
+        user_temp.img=profile_img
+        user_temp.website_linked=website_linked
+        user_temp.user_introduction=user_introduction
+        user_temp.save()
+        return HttpResponseRedirect('/registration/userprofile/')
     return render(request, 'ProfileEdit.html', {'form': form})
 
 
@@ -186,7 +206,7 @@ def login_Company(request):
             try:
                 Companyname_check = JobProvider.objects.get(company_name=companyname_tmp)
                 if Companyname_check.password == password_tmp:
-                    request.session['username'] = companyname_tmp
+                    request.session['companyname'] = companyname_tmp
                     return HttpResponseRedirect('/registration/companyprofile/')
                 else:
                     return HttpResponse("unsuccessful")
@@ -194,6 +214,15 @@ def login_Company(request):
                 return HttpResponse("unsuccesful")
 
     return render(request, 'login_company.html', {'form': form})
+
+def job_view(request):
+    try:
+        username = request.session['companyname']
+        username_temp = UserDetails.objects.get(user_name=username)
+        return render(request, 'profile_user.html',{'user':username_temp})
+    except:
+        return HttpResponse('invalid request')
+
 
 
 def search_job(request):
@@ -219,14 +248,12 @@ def search_job(request):
 def userprofile(request):
     username = request.session['username']
     username_temp = UserDetails.objects.get(user_name=username)
-
-
     return render(request, 'profile_user.html',{'user':username_temp})
 
 
 
 def companyprofile(request):
-    username = request.session['username']
+    username = request.session['companyname']
     username_temp = UserDetails.objects.get(user_name=username)
 
 
@@ -235,8 +262,12 @@ def companyprofile(request):
 
 def logout(request):
    try:
-      del request.session['username']
-   except:
+      del request.session['companyname']
+      return render(request, 'logout.html')
+   except :
+       del request.session['username']
+       return render(request, 'logout.html')
+   finally:
       pass
-   return HttpResponse("<strong>You are logged out.</strong>")
+
 

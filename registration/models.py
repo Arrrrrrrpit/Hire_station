@@ -30,9 +30,9 @@ class JobProvider(models.Model):
 
 
 class JobDetails(models.Model):
-    company_name = models.CharField(primary_key=True, max_length=20)
+    company_name = models.CharField(primary_key=False, max_length=20)
     genre = models.CharField(max_length=20)
-    details = models.CharField(max_length=100000)
+    details = models.CharField(primary_key=True,max_length=100000)
     pay = models.IntegerField(default=0)
     deadline = models.CharField(max_length=20)
     pub_date = models.DateTimeField('date published')
