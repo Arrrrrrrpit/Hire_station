@@ -77,23 +77,35 @@ ul {
 		margin-left: 6%;
 
     }
-    .personal
+    .personal 
     {
        float: left;
-       margin-left: 25%;
+       margin-left: 14%;
+    }
+    .personal p 
+    {
+    	text-align: left;
     }
 		
-	.contact
+	.contact 
 	{
 		float: right;
-		margin-right: 25%;
+		margin-right: 5%;
 	}
-	.official
+	.contact p
+	{
+      text-align: left;
+	}
+	.official 
 	{
 		float: left;
-		margin-top: 6%;
+		
 		margin-left: 25%;
 	}
+    .official p 
+    {
+    	text-align: left;
+    }
 		
 		
 		
@@ -135,3 +147,16 @@ ul {
 						background-size: cover;
 					}
 					
+p
+{
+
+ text-align: center;
+ font-size: 25px;
+ font-family: monospace;
+
+}
+form input.submit
+{
+	float: left;
+	margin-left: 40%;
+}

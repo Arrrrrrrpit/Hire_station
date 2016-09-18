@@ -13,7 +13,7 @@
 				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
 				  <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
 				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
-				  <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
+				  
 
 
 				  </ul>
@@ -26,9 +26,17 @@
 	</head>
 
 	<body background="{% static './image/blue.png' %}">
+		
 	
             <div class="companyform">
 				<form method="post">
+					{% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+                    {% endif %}
 			        {% csrf_token %}
 				    {{ form.as_p }}
 			    <fieldset class="account-action">
@@ -53,7 +61,7 @@
 		 
 		<footer>
 			<div class="Manageby">
-			<h4> MANAGE AND PUBLISHEDBY:</h4>
+			<h4> MANAGE AND PUBLISHED BY:</h4>
 				<div>VAIBHAV BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
 			</div>
 			<div class="followus">

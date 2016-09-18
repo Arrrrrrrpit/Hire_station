@@ -1,0 +1,50 @@
+{% load static %}
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="{% static './css/loggedIn.css' %}">
+		
+			
+
+
+	
+			<header>
+			<div>
+				<ul>
+				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+				  <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
+				  
+
+
+				  </ul>
+				  </li>
+				  
+				 
+				</ul>
+			</div>
+			</header>
+	</head>
+
+	<body background="{% static './image/blue.png' %}">
+		<p>Already Logged In</p>
+		
+	
+	    
+		<footer>
+			<div class="Manageby">
+			<h4> MANAGE AND PUBLISHED BY:</h4>
+				<div>VAIBHAV BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+			</div>
+			<div class="followus">
+				<h4>FOLLOW US:</h4>
+				<a href="https://www.facebook.com">
+				<img id="link" alt="followus" src="{% static './image/facebook.png' %}" >
+				<a href="http://www.twitter.com">
+				<img id="link" alt="followus" src="{% static './image/twitter.png' %}">
+				<a href="https://www.youtube.com">
+				<img id="link" alt="followus" src="{% static './image/youtube.png' %}" >
+			</div>
+		</footer>
+ </body>
+</html>

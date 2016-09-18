@@ -10,7 +10,7 @@ class JobSeeker(models.Model):
     email_id = models.EmailField()
     password = models.CharField(max_length=20)
     address = models.TextField()
-    contact_number = models.IntegerField(default=0)
+    contact_number = models.IntegerField()
 
 
 """ defining the job provider registration field """
@@ -23,7 +23,7 @@ class JobProvider(models.Model):
     email_id = models.EmailField()
     password = models.CharField(max_length=20)
     address = models.TextField()
-    contact_number = models.IntegerField(default=0)
+    contact_number = models.IntegerField()
 
 
 """ defining the job request submit field """
@@ -61,7 +61,7 @@ class UserDetails(models.Model):
     contact_number = models.IntegerField(default=0)
     img = models.ImageField(null=True, blank=True, upload_to='media/', height_field="height_field",
                               width_field="width_field")
-    website_linked = models.CharField(max_length=100 , default= "")
+    website_linked = models.URLField()
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     user_introduction = models.CharField(max_length=20000, default= "")

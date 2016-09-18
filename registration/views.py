@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister, ProfileAdd, LogInCompany, LogInUser, SearchJob
 from .models import JobSeeker, JobDetails, JobProvider, JobApplication, UserDetails
 from django.utils import timezone
+from django.contrib import messages
+from passlib.hash import pbkdf2_sha256
 
 
 def checkuserlogin(request):
@@ -27,21 +29,28 @@ def get_user(request):
     if request.method == 'POST':
         form = UserRegister(request.POST)
         print(form.is_valid())
-        if form.is_valid():
-            user_name_temp = form.cleaned_data["user_name"]
-            first_name_temp = form.cleaned_data["first_name"]
-            last_name_temp = form.cleaned_data["last_name"]
-            email_temp = form.cleaned_data["email"]
-            password_temp = form.cleaned_data["password"]
-            address_temp = form.cleaned_data["address"]
-            contact_temp = form.cleaned_data["contact"]
-            job_obj = JobSeeker.objects.create(user_name=user_name_temp, first_name=first_name_temp,
-                                               last_name=last_name_temp,
-                                               email_id=email_temp, password=password_temp,
-                                               address=address_temp, contact_number=contact_temp)
-            request.session['username'] = user_name_temp
-            job_obj.save()
-            return HttpResponseRedirect('/registration/userprofile/edit/')
+        try:
+            if form.is_valid():
+                    user_name_temp = form.cleaned_data["user_name"]
+                    first_name_temp = form.cleaned_data["first_name"]
+                    last_name_temp = form.cleaned_data["last_name"]
+                    email_temp = form.cleaned_data["email"]
+                    password_temp = form.cleaned_data["password"]
+                    enc_password=pbkdf2_sha256.encrypt(password_temp)
+                    address_temp = form.cleaned_data["address"]
+                    contact_temp = form.cleaned_data["contact"]
+
+                    job_obj = JobSeeker.objects.create(user_name=user_name_temp, first_name=first_name_temp,
+                                                           last_name=last_name_temp,
+                                                           email_id=email_temp, password=enc_password,
+                                                           address=address_temp, contact_number=contact_temp)
+                    request.session['username'] = user_name_temp
+                    job_obj.save()
+
+
+                    return HttpResponseRedirect('/registration/userprofile/edit/')
+        except:
+            messages.error(request, 'This Username already exits')
 
     return render(request, 'register_user.html', {'form': form})
 
@@ -50,30 +59,31 @@ def get_comapny(request):
     form = CompanyRegister()
     if request.method == 'POST':
         form = CompanyRegister(request.POST)
-        print("hello")
+        try:
+            if form.is_valid():
+                user_name_temp = form.cleaned_data["company_name"]
+                first_name_temp = form.cleaned_data["first_name"]
+                last_name_temp = form.cleaned_data["last_name"]
+                email_temp = form.cleaned_data["email"]
+                password_temp = form.cleaned_data["password"]
+                enc_password = pbkdf2_sha256.encrypt(password_temp)
+                address_temp = form.cleaned_data["address"]
+                contact_temp = form.cleaned_data["contact"]
+                request.session['companyname'] = user_name_temp
+                job_obj1 = JobProvider.objects.create(company_name=user_name_temp, first_name=first_name_temp,
+                                                      last_name=last_name_temp,
+                                                      email_id=email_temp, password=enc_password,
+                                                      address=address_temp, contact_number=contact_temp)
+                job_obj1.save()
 
-        if form.is_valid():
-            user_name_temp = form.cleaned_data["company_name"]
-            first_name_temp = form.cleaned_data["first_name"]
-            last_name_temp = form.cleaned_data["last_name"]
-            email_temp = form.cleaned_data["email"]
-            password_temp = form.cleaned_data["password"]
-            address_temp = form.cleaned_data["address"]
-            contact_temp = form.cleaned_data["contact"]
-            request.session['companyname'] = user_name_temp
-            job_obj1 = JobProvider.objects.create(company_name=user_name_temp, first_name=first_name_temp,
-                                                  last_name=last_name_temp,
-                                                  email_id=email_temp, password=password_temp,
-                                                  address=address_temp, contact_number=contact_temp)
-            job_obj1.save()
-
-            return HttpResponseRedirect('/registration/companyprofile/edit/')
-
+                return HttpResponseRedirect('/registration/companyprofile/edit/')
+        except:
+             messages.error(request, 'This CompanyName already exits')
     return render(request, 'register_company.html', {'form': form})
 
 
 def thanks(request):
-    return HttpResponse("looks like you are already logged in")
+    return render(request,'loggedIn.html')
 
 
 def get_job(request):
@@ -81,7 +91,7 @@ def get_job(request):
     if request.method == 'POST':
         form = JobSubmit(request.POST)
         print(form.is_valid())
-        try :
+        try:
             username = request.session['companyname']
             if form.is_valid():
                 company_name = username
@@ -95,7 +105,7 @@ def get_job(request):
             temp.save()
             return HttpResponseRedirect('/registration/companyprofile/')
         except :
-            return HttpResponseRedirect('/registration/jobseeker/thanks/')
+            messages.error(request, 'Looks like you are Not Logged in')
     return render(request, 'post_job.html', {'form': form})
 
 
@@ -103,21 +113,18 @@ def get_application(request):
     form = ApplicationSubmit()
     if request.method == 'POST':
         form = ApplicationSubmit(request.POST)
-        print (form.is_valid())
-        try :
+        try:
             if form.is_valid():
-                username = request.session['username']
+                username = request.session["username"]
                 application = form.cleaned_data["application"]
                 pay_expected = form.cleaned_data["pay_expected"]
                 company = request.session['activejob']
-                print (company)
                 temp = JobApplication.objects.create(company_name=company,user_name=username, application_text=application,
                                                  pay_expected=pay_expected, status=False)
                 temp.save()
             return HttpResponseRedirect('/registration/userprofile/')
-        except :
+        except:
             return HttpResponseRedirect('/registration/jobseeker/thanks/')
-
 
     return render(request, 'post_application.html', {'form': form})
 
@@ -126,8 +133,6 @@ def edit_profile_user(request):
     form = ProfileAdd()
     if request.method == 'POST':
         form = ProfileAdd(request.POST, request.FILES)
-        print (form.is_valid())
-
         profile_img = form.cleaned_data['profile_img']
         website_linked = form.cleaned_data['website_linked']
         user_introduction = form.cleaned_data['user_introduction']
@@ -176,13 +181,13 @@ def login_user(request):
             password_tmp = form.cleaned_data["password"]
             try:
                 username_check = JobSeeker.objects.get(user_name=username_tmp)
-                if username_check.password == password_tmp:
+                if  pbkdf2_sha256.verify(password_tmp,username_check.password):
                     request.session['username'] = username_tmp
                     return HttpResponseRedirect('/registration/userprofile/')
                 else:
-                    return HttpResponseRedirect('/registration/loginuser/')
+                    messages.error(request,"Password Incorrect")
             except ObjectDoesNotExist:
-                return HttpResponseRedirect('/registration/loginuser/')
+                messages.error(request,"SignUp First")
 
     return render(request, 'login_user.html', {'form': form})
 
@@ -196,13 +201,13 @@ def login_Company(request):
             password_tmp = form.cleaned_data["password"]
             try:
                 Companyname_check = JobProvider.objects.get(company_name=companyname_tmp)
-                if Companyname_check.password == password_tmp:
+                if pbkdf2_sha256.verify(password_tmp,Companyname_check.password):
                     request.session['companyname'] = companyname_tmp
                     return HttpResponseRedirect('/registration/companyprofile/')
                 else:
-                    return HttpResponse("unsuccessful")
+                    messages.error(request,"Password Incorrect")
             except ObjectDoesNotExist:
-                return HttpResponse("unsuccesful")
+                messages.error(request,"SignUp First")
 
     return render(request, 'login_company.html', {'form': form})
 
