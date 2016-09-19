@@ -42,7 +42,8 @@ class JobDetails(models.Model):
 
 
 class JobApplication(models.Model):
-    company_name = models.CharField(default="guest",max_length=40)
+    company_name = models.CharField(default="guest", max_length=40)
+    details = models.ForeignKey(JobDetails, default='Null', on_delete=models.CASCADE)
     user_name= models.CharField(primary_key=True, default="guest",max_length=20)
     application_text = models.CharField(max_length=100000)
     pay_expected = models.IntegerField(default=0)

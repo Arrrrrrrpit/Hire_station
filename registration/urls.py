@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'^userprofile/$', views.userprofile, name='profile'),
     url(r'^logout/$', views.logout, name='logout'),
     url(r'^companyprofile/$', views.companyprofile, name='profile'),
-    url(r'^updateprofile/$',views.update_profile,name='update'),
+    url(r'^updateprofileuser/$',views.update_profile_user,name='updateuser'),
+    url(r'^updateprofilecompany/$',views.update_profile_company,name='updatecompany'),
     url(r'^jobview/$',views.displayjob,name = 'display'),
+    url(r'^applicationview/$', views.displayapplication, name='viewapplication'),
 ]

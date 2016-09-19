@@ -133,6 +133,7 @@ def edit_profile_user(request):
     form = ProfileAdd()
     if request.method == 'POST':
         form = ProfileAdd(request.POST, request.FILES)
+	print (form.is_valid())
         profile_img = form.cleaned_data['profile_img']
         website_linked = form.cleaned_data['website_linked']
         user_introduction = form.cleaned_data['user_introduction']
@@ -211,16 +212,29 @@ def login_Company(request):
 
     return render(request, 'login_company.html', {'form': form})
 
+
 def displayjob(request):
     try:
         username = request.session['companyname']
-        job_temp = JobDetails.objects.get(company_name=username)
-        print (job_temp.details)
-        return render(request, 'job_view.html',{'user':job_temp})
-    except:
-        return HttpResponse('invalid request')
+        job_temp = JobDetails.objects.filter(company_name=username)
+        return render(request, 'job_view.html', {'user': job_temp})
 
-def update_profile(request):
+    except:
+        return HttpResponse('unsucessful')
+
+
+
+def displayapplication(request):
+
+        username = request.session['username']
+        app_temp = JobApplication.objects.filter(user_name=username)
+        return render(request, 'application_view.html', {'user': app_temp})
+
+
+        #return HttpResponse('unsucessful')
+
+
+def update_profile_user(request):
     form = ProfileAdd()
     if request.method == 'POST':
         form = ProfileAdd(request.POST, request.FILES)
@@ -229,9 +243,7 @@ def update_profile(request):
         website_linked = form.cleaned_data['website_linked']
         user_introduction = form.cleaned_data['user_introduction']
         username_temp = request.session['username']
-        print (username_temp)
         user_temp = UserDetails.objects.get(user_name=username_temp)
-        print (user_temp)
         user_temp.img=profile_img
         user_temp.save()
         user_temp.website_linked=website_linked
@@ -242,24 +254,38 @@ def update_profile(request):
     return render(request, 'ProfileEdit.html', {'form': form})
 
 
+def update_profile_company(request):
+    form = ProfileAdd()
+    if request.method == 'POST':
+        form = ProfileAdd(request.POST, request.FILES)
+        print (form.is_valid())
+        profile_img = form.cleaned_data['profile_img']
+        website_linked = form.cleaned_data['website_linked']
+        user_introduction = form.cleaned_data['user_introduction']
+        username_temp = request.session['companyname']
+        user_temp = UserDetails.objects.get(user_name=username_temp)
+        user_temp.img=profile_img
+        user_temp.save()
+        user_temp.website_linked=website_linked
+        user_temp.user_introduction=user_introduction
+        user_temp.save()
+        print (user_temp.website_linked)
+        return HttpResponseRedirect('/registration/companyprofile/')
+    return render(request, 'ProfileEdit.html', {'form': form})
+
 def search_job(request):
     form = SearchJob()
-    if request.method == 'POST':
-        form = SearchJob(request.POST)
-        if form.is_valid():
-            search_tmp = form.cleaned_data["search"]
-            pay_tmp = form.cleaned_data["pay_Salary"]
-            try:
-                search_check = JobDetails.objects.get(genre=search_tmp)
-                if search_check.pay == pay_tmp:
-                    request.session['activejob'] = search_check.company_name
-                    return render(request,'all_jobs.html',{'search':search_check})
+    try:
+        if request.method == 'POST':
+            form = SearchJob(request.POST)
+            if form.is_valid():
+                search_tmp = form.cleaned_data["search"]
+                pay_tmp = form.cleaned_data["pay_Salary"]
+                search_check = JobDetails.objects.filter(genre=search_tmp)
+                return render(request,'all_jobs.html',{'search':search_check})
 
-                else:
-                    return HttpResponse("Seach Not Found")
-
-            except:
-                return HttpResponse("Search Not Found")
+    except:
+        return HttpResponse("Search Not still Found")
 
     return render(request, 'search.html', {'form': form})
 

@@ -1,0 +1,64 @@
+{% load static %}
+
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="{%  static '../static/css/profile.css' %} ">
+
+
+
+
+
+			<header>
+			<div>
+				<ul>
+				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
+				  <li><a href="{% url 'registration:updateuser' %}">Edit Profile</a></li>
+
+				  </li>
+
+
+				</ul>
+			</div>
+			</header>
+	</head>
+	<body background="{% static '../static/image/blue.png' %}">
+
+		<div class="profile">
+
+              {% for JobApplication in user %}
+                  <div class="">
+                     <h1>Job Details</h1>
+                     <h2>User Name : {{ JobApplication.user_name }}</h2>
+                     <p>Details : {{ JobApplication.application_text }}<p>
+                  </div>
+                  <div class="s">
+                     <h3>Pay</h3>
+                     <p>Pay: {{ JobApplication.pay_expected }}<p>
+                  </div>
+              {% endfor %}
+
+
+		</div>
+
+		<footer>
+			<div class="Manageby">
+			<h4> MANAGE AND PUBLISHEDBY:</h4>
+				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+			</div>
+			<div class="companylogo">
+						<img id="img1" src="{% static '../static/image/book1.png' %}" alt="company logo" >
+			</div>
+			<div class="followus">
+				<h4>FOLLOW US:</h4>
+				<a href="https://www.facebook.com">
+				<img id="link" alt="followus" src="{% static '../static/image/facebook.png' %}" >
+				<a href="http://www.twitter.com">
+				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}" >
+				<a href="https://www.youtube.com">
+				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
+			</div>
+		</footer>
+ </body>
+</html>

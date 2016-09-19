@@ -15,7 +15,9 @@ class UserRegister(forms.Form):
 
 
 class CompanyRegister(forms.Form):
-    company_name = forms.CharField(required="true", label="Company name", max_length=20)
+    company_name = forms.CharField(required="true", label="Company name", max_length=20,
+                                    widget=forms.TextInput(attrs={'placeholder': 'Company Name' })
+                                    )
     first_name = forms.CharField(required="true", label="first name", max_length=20)
     last_name = forms.CharField(required="true", label="last name", max_length=20)
     email = forms.EmailField(required="true", label="email id")

@@ -30,11 +30,16 @@
 	</head>
 	<body background="{% static '../static/image/blue.png' %}">
 
-       <p> Search Successfull  </p>
-       <p> Job Details :{{ search.details }}</p>
-       <p> Job Pay : {{ search.pay }}</p>
-       <p> Job Deadline : {{ search.deadline }}</p>
-       <a href="{% url 'registration:application' %}">Submit Applicationn</a>
+      <h3> Search Successfull  </h3>
+     {%  for JobDetails in search %}
+
+         <p> Job Details :{{ JobDetails.details }}</p>
+         <p> Job Pay : {{ JobDetails.pay }}</p>
+         <p> Job Deadline : {{ JobDetails.deadline }}</p>
+         <a href="{% url 'registration:application' %}">Submit Application</a>
+
+     {% endfor %}
+
 		<footer>
 			<div class="Manageby">
 			<h4> MANAGE AND PUBLISHEDBY:</h4>

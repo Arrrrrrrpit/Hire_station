@@ -1,76 +1,84 @@
-ul.nav{
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-				overflow: hidden;
-				background-color:black ;
-				cursor: pointer;
+ul {
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+					background-color:black ;
+					cursor: pointer;
+
+				}
+
+				li {
+					float: left;
+					font-size:152%;
+					 z-index:1;
+					margin:1% 2% 1% 2%;
+				}
+
+
+
+				li a {
+					display: block;
+					color: white;
+					 z-index:1;
+
+					text-decoration: none;
+				}
+
+				li a:hover:not(.active)
+				{
+					background-color: #D5DBDB;
+					color:black;
+
+				}
+
+				.active {
+					background-color: #D6EAF8  ;
+					color:black;
+					 z-index:1;
+
+				}
 				
-			}
+				li ul.dropdown
+				{
 
-			li {
-				float: left;
-				font-size:152%;
-				margin:1% 1% 0% 1%;
-			}
-
-			
-
-			li a {
-				display: block;
+				background-color: black;
+				display: none;
+				position: absolute;
 				color: white;
-				text-align: center;
-				padding: 4% 3%;
-				font-family: verdana;
-				text-decoration: none;
-			}
-
-			li a:hover:not(.active)
-			{
-				background-color: #D5DBDB;
-				color:black;
-				padding: 4% 3%;
-			}
-
-			.active {
-				background-color: #D6EAF8  ;
-				color:black;
-					padding: 4% 3%;
-			}
-			
-			li ul.dropdown
-			{
+				 font-family: verdana;
+				 font-size:50%;
+				width:8%;
+				padding:1%;
 				 
-			background-color: black;
-			display: none;
-			position: absolute;
-			color: white;
-			 font-family: verdana;
-			 font-size:50%;
-			width:9%;
-			 padding: 1%;
-			
-		    }
-			
-			li:hover ul.dropdown
-			{display:block;
-			color: black;
-			}
-			li:hover ul.dropdown{
+				 z-index:1;
+
+
+
+				}
+
+
+				li:hover ul.dropdown{
+				background-color: #212121;
 				display:block;
-			}
+				z-index:50;
+				color:#fff;
+				}
 
-			
+				#signup
+				{
+					float:right;
+					margin-right: 2%;
 
-		#signup
-			{
-				float:right;
-			}
+				}
 
-		#login
-		{
-			float:right;
-		}	
+				#login
+				{
+					float:right;
+					margin-right: 3%;
+					padding-right: 3%;
+				}
+				
 		#img1
 		{   background-size: cover;
 			width:85%;
@@ -78,10 +86,7 @@ ul.nav{
 			padding:3% 5% 2% 13%;
 			
 		}
-		.login
-		{
-			padding:2% 6% 3% 2%;
-		}
+		
 		.image
 		{	
 			float:left;
@@ -99,6 +104,7 @@ ul.nav{
 		  float:right;
 		  background-color:white;
 		  padding-left: 5%;
+		  margin-top:6%;
 		  
 		  
 
@@ -153,13 +159,14 @@ ul.nav{
 		  color: #fff;
 		  cursor: pointer;
 		  font-weight: bold;
-		  float: left;
-		  padding: 2% 3%;
+		  float: right;
+		  padding: 2% 3% 2% 8%;
+		
 		}
 		
 		
 	footer
-		{    margin-top:41%;
+		{    margin-top:45%;
 
 		     width:99.80%;
 			position:absolute;
@@ -183,4 +190,4 @@ ul.nav{
 		padding-right:3%;
 		}
 		
-		
+        

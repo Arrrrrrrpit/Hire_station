@@ -46,10 +46,11 @@
 				display: none;
 				position: absolute;
 				color: white;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				 font-family: verdana;
 				 font-size:50%;
-				width:13%;
-				 padding: 1%;
+				width:8%;
+				padding:1%;
+				 
 				 z-index:1;
 
 
@@ -67,12 +68,17 @@
 				#signup
 				{
 					float:right;
+					margin-right: 2%;
+
 				}
 
 				#login
 				{
 					float:right;
+					margin-right: 3%;
+					padding-right: 3%;
 				}
+				
 
 				.companyrights
 				{width:100%;
@@ -96,13 +102,13 @@
 
 					margin-top:0px;
 				  padding: 5% 0% 0% 5%;
-				  font-family:"verdana", Helvetica, Arial, Helvetica Neue;
+				  font-family:verdana;
 				}
 
 				.textheading
 				{
 					font-size:360%;
-					font-family: 'Open Sans', sans-serif;
+					font-family: verdana;
 					 font-weight: bold;
 					 letter-spacing: 5px;
 					 margin-bottom:8%;
@@ -119,7 +125,7 @@
 					letter-spacing: 3px;
 					padding:0% 0% 0% 15%;
 
-						font-family: 'Open Sans', sans-serif;
+						font-family:verdana;
 					  color:#000080;
 					  text-shadow: 3px 3px 3px #aaa;
 				}
@@ -131,7 +137,7 @@
 					letter-spacing: 4%;
 					padding:0% 0% 0% 43%;
 
-					 font-family: 'Open Sans', sans-serif;
+					 font-family: verdana;
 					  color:#000080;
 					  text-shadow: 3px 3px 3px #aaa;
 
@@ -172,7 +178,7 @@
 				}
 				h1
 				{
-					 font-family:"Palatino Linotype",serif;
+					 font-family:verdana;
 				}
 				.genreheading
 				{    position:relative;
@@ -202,7 +208,7 @@
 
 				.scriberheading
 				{
-				 font-family:"Palatino Linotype",serif;
+				 font-family:verdana;
 				}
 
 				.aboutscriber
@@ -214,7 +220,7 @@
 					 display:block;
 					 font-size:125%;
 					 width:91%;
-					 font-family:"Cambria",serif;
+					 font-family:verdana;
 				}
 
 
@@ -239,7 +245,7 @@
 					margin-left:8%;
 					margin-top:2%;
 					margin-bottom:1%;
-					font-family:"verdana";
+					font-family:verdana;
 				}
 				.companyinfotext
 				{
@@ -254,7 +260,7 @@
 					 margin:0% 4% 0% 15%;
 					 margin-top:2%;
 					margin-bottom:1%;
-					font-family:"verdana";
+					font-family:verdana;
 				}
 				.additionalservicestext
 				{
@@ -268,7 +274,7 @@
 					margin-right:7%;
 					margin-top:2%;
 					margin-bottom:1%;
-					font-family:"verdana";
+					font-family:verdana;
 				}
 				.browsertext
 				{
@@ -297,12 +303,12 @@
 					float:left;
 					clear:right;
 					padding-right:15%;
-					 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+					 font-family:verdana;
 				}
 				.followus
 				{
 					float:right;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				 font-family: verdana;
 				padding-right:2%;
 				}
 
