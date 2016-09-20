@@ -14,8 +14,8 @@
 				    <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
 				    <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 				    <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
-				    <li><a href="{% url 'registration:updateuser' %}">Edit Profile</a></li>
-                    <li><a href="{% url 'registration:profileuser' %}">Profile</a></li>
+				    <li><a href="{% url 'registration:updatecompany' %}">Edit Profile</a></li>
+                    <li><a href="{% url 'registration:profilecompany' %}">Profile</a></li>
 
 				  </li>
 
@@ -30,13 +30,15 @@
 
               {% for JobApplication in user %}
                   <div class="">
-                     <h1>Job Details</h1>
-                     <h2>User Name : {{ JobApplication.user_name }}</h2>
-                     <p>Details : {{ JobApplication.application_text }}<p>
+                     <h1>Application Details</h1>
+                     <p><strong>Application submitted on job detail : </strong>{{ JobApplication.details }}</p>
+                     <p><strong>User Name : </strong>{{ JobApplication.user_name }}</p>
+                     <p><strong>Application :</strong> {{ JobApplication.application_text }}<p>
+                     <p><strong>Email Id User:</strong> {{ JobApplication.email_user }}</p>
+                     <a href="{% url 'registration:confirmjob' JobApplication.application_text %}"><p><strong> Accept</strong></p></a>
                   </div>
                   <div class="s">
-                     <h3>Pay</h3>
-                     <p>Pay: {{ JobApplication.pay_expected }}<p>
+                     <p><strong>Pay Expected: </strong>{{ JobApplication.pay_expected }}<p>
                   </div>
               {% endfor %}
 

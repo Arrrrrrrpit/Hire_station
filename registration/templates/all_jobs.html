@@ -14,8 +14,6 @@
 				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
 				  <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
 				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
-				  <li id="login"><a href="{% url 'registration:login User' %}">login User</a></li>
-				  <li id="login"><a href="{% url 'registration:login company' %}">login Company</a></li>
 				  <li id="signup"><a href="#Signup">Signup</a>
 				  <ul class="dropdown">
 				  <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
@@ -30,13 +28,12 @@
 	</head>
 	<body background="{% static '../static/image/blue.png' %}">
 
-      <h3> Search Successfull  </h3>
+      <h3> Search Successfull Click the respective job detail to submit application  </h3>
      {%  for JobDetails in search %}
 
-         <p> Job Details :{{ JobDetails.details }}</p>
+         <a href="{% url 'registration:application' JobDetails.details %}"> <p> Job Details :{{ JobDetails.details }}</p></a>
          <p> Job Pay : {{ JobDetails.pay }}</p>
          <p> Job Deadline : {{ JobDetails.deadline }}</p>
-         <a href="{% url 'registration:application' %}">Submit Application</a>
 
      {% endfor %}
 

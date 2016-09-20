@@ -16,15 +16,25 @@
 				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 				  <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
 				  <li><a href="{% url 'registration:updatecompany' %}">Edit Profile</a></li>
-				 
+                  <li><a href="{% url 'registration:display' %}">View Job</a></li>
+                  <li><a href="{% url 'registration:submittedapplication' %}">Applications</a></li>
+
 				</ul>
 			</div>
 			</header>
 	</head>
 	<body background="{% static '../static/image/blue.png' %}">
 
+
 		<div class="profile">
 			<h2>Company Name : {{ user.user_name }}</h2>
+            {% if messages %}
+		                         <ul class="messages">
+		                            {% for message in messages %}
+		                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		                            {% endfor %}
+		                         </ul>
+            {% endif %}
             <div class="personal">
             	<h3>Personal Details</h3>
                 <p>First Name : {{ user.first_name }}<p>
@@ -38,7 +48,7 @@
             </div>
             <div class="official">
             	<h3>Official Details </h3>
-                <p>Website Linked : <a href="google.com">{{ user.website_linked }}</a></p>
+                <p>Website Linked : <a href="{{user.website_linked }}">{{ user.website_linked }}</a></p>
                 <p>User Introduction : {{ user.user_introduction }}</p>
                 <div>
 

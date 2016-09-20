@@ -2,24 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57625718-043b-4e08-804d-c34124096b76" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0002_auto_20160912_1659.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0003_auto_20160913_1320.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0004_auto_20160913_1351.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0005_auto_20160913_1359.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0006_auto_20160913_1413.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0007_jobapplication_user_name.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0008_auto_20160913_1427.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0009_userdetails.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0010_auto_20160915_1248.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0011_auto_20160915_1507.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0012_auto_20160915_1510.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0013_auto_20160917_0434.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0014_jobapplication_company_name.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0015_auto_20160919_0029.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0016_auto_20160919_0031.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0017_auto_20160919_0059.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration/migrations/0018_jobapplication_details.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/content_aggregator_v/settings.py" afterPath="$PROJECT_DIR$/content_aggregator_v/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/forms.py" afterPath="$PROJECT_DIR$/registration/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/registration/migrations/0001_initial.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/models.py" afterPath="$PROJECT_DIR$/registration/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/static/css/home.css" afterPath="$PROJECT_DIR$/registration/static/css/home.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/static/css/login.css" afterPath="$PROJECT_DIR$/registration/static/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/static/css/post_job.css" afterPath="$PROJECT_DIR$/registration/static/css/post_job.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/static/css/profile.css" afterPath="$PROJECT_DIR$/registration/static/css/profile.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/static/css/signupcompany.css" afterPath="$PROJECT_DIR$/registration/static/css/signupcompany.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/static/css/signupjobseeker.css" afterPath="$PROJECT_DIR$/registration/static/css/signupjobseeker.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/ProfileEdit.html" afterPath="$PROJECT_DIR$/registration/templates/ProfileEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/login_company.html" afterPath="$PROJECT_DIR$/registration/templates/login_company.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/login_user.html" afterPath="$PROJECT_DIR$/registration/templates/login_user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/post_job.html" afterPath="$PROJECT_DIR$/registration/templates/post_job.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/all_jobs.html" afterPath="$PROJECT_DIR$/registration/templates/all_jobs.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/application_view.html" afterPath="$PROJECT_DIR$/registration/templates/application_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/job_view.html" afterPath="$PROJECT_DIR$/registration/templates/job_view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/loggedIn.html" afterPath="$PROJECT_DIR$/registration/templates/loggedIn.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/profile_company.html" afterPath="$PROJECT_DIR$/registration/templates/profile_company.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/profile_user.html" afterPath="$PROJECT_DIR$/registration/templates/profile_user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/register_company.html" afterPath="$PROJECT_DIR$/registration/templates/register_company.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/templates/register_user.html" afterPath="$PROJECT_DIR$/registration/templates/register_user.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/urls.py" afterPath="$PROJECT_DIR$/registration/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/registration/views.py" afterPath="$PROJECT_DIR$/registration/views.py" />
     </list>
     <ignored path="Content_aggregator.iws" />
@@ -43,7 +55,110 @@
     <favorites_list name="Content_aggregator" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="submitted_application.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/templates/submitted_application.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="36" column="84" selection-start-line="36" selection-start-column="84" selection-end-line="36" selection-end-column="84" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="loggedIn.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/templates/loggedIn.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="56" column="30" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile_company.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/templates/profile_company.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/static/css/profile.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="114" column="25" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register_company.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/templates/register_company.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="748">
+              <caret line="44" column="20" selection-start-line="44" selection-start-column="20" selection-end-line="50" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="signupcompany.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/static/css/signupcompany.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="118" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/registration/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="478">
+              <caret line="48" column="68" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/registration/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,8 +179,6 @@
         <option value="$PROJECT_DIR$/registration/scsc.py" />
         <option value="$PROJECT_DIR$/../stuff/scriber kanika/profile.html" />
         <option value="$PROJECT_DIR$/registration/templates/profile.html" />
-        <option value="$PROJECT_DIR$/registration/templates/job_view.html" />
-        <option value="$PROJECT_DIR$/registration/urls.py" />
         <option value="$PROJECT_DIR$/registration/templates/post_job.html" />
         <option value="$PROJECT_DIR$/registration/templates/home.html" />
         <option value="$PROJECT_DIR$/registration/templates/login_company.html" />
@@ -73,19 +186,27 @@
         <option value="$PROJECT_DIR$/registration/templates/logout.html" />
         <option value="$PROJECT_DIR$/registration/templates/post_application.html" />
         <option value="$PROJECT_DIR$/registration/templates/ProfileEdit.html" />
-        <option value="$PROJECT_DIR$/registration/templates/register_company.html" />
         <option value="$PROJECT_DIR$/registration/templates/register_user.html" />
         <option value="$PROJECT_DIR$/registration/static/css/home.css" />
         <option value="$PROJECT_DIR$/registration/static/css/search.css" />
         <option value="$PROJECT_DIR$/registration/static/css/login.css" />
         <option value="$PROJECT_DIR$/registration/templates/search.html" />
-        <option value="$PROJECT_DIR$/registration/templates/profile_company.html" />
         <option value="$PROJECT_DIR$/registration/templates/profile_user.html" />
-        <option value="$PROJECT_DIR$/registration/templates/all_jobs.html" />
-        <option value="$PROJECT_DIR$/registration/forms.py" />
-        <option value="$PROJECT_DIR$/registration/models.py" />
         <option value="$PROJECT_DIR$/content_aggregator_v/settings.py" />
+        <option value="$PROJECT_DIR$/registration/forms.py" />
+        <option value="$PROJECT_DIR$/registration/templates/all_jobs.html" />
+        <option value="$PROJECT_DIR$/registration/templates/application_view.html" />
+        <option value="$PROJECT_DIR$/registration/templates/home_loggedin.html" />
+        <option value="$PROJECT_DIR$/registration/templates/home_loggedin_user.html" />
+        <option value="$PROJECT_DIR$/registration/templates/loggedIn.html" />
+        <option value="$PROJECT_DIR$/registration/templates/job_view.html" />
+        <option value="$PROJECT_DIR$/registration/models.py" />
+        <option value="$PROJECT_DIR$/registration/urls.py" />
         <option value="$PROJECT_DIR$/registration/views.py" />
+        <option value="$PROJECT_DIR$/registration/templates/register_company.html" />
+        <option value="$PROJECT_DIR$/registration/templates/profile_company.html" />
+        <option value="$PROJECT_DIR$/registration/static/css/profile.css" />
+        <option value="$PROJECT_DIR$/registration/templates/submitted_application.html" />
       </list>
     </option>
   </component>
@@ -189,6 +310,12 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="SearchEverywhereHistoryKey" value="to_&#9;null&#9;null" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\python project\Content_aggregator\registration\templates" />
+    </key>
   </component>
   <component name="RunManager" selected="Django server.Content_aggregator">
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -466,10 +593,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16544656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.019033674" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -505,68 +632,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/registration/templates/profile_company.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/templates/profile_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/templates/all_jobs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="51" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" column="42" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/templates/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="42" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/templates/register_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/registration/templates/profile_user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -678,13 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/registration/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/registration/scsc.py" />
     <entry file="file://$PROJECT_DIR$/../stuff/abc/Content_aggregator/registration/templates/ProfileEdit.html" />
     <entry file="file://$PROJECT_DIR$/../stuff/scriber kanika/profile.html" />
@@ -707,13 +765,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="90" selection-start-line="8" selection-start-column="90" selection-end-line="8" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/templates/register_company.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="90" selection-start-line="12" selection-start-column="90" selection-end-line="12" selection-end-column="90" />
         </state>
       </provider>
     </entry>
@@ -747,34 +798,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/registration/static/css/search.css" />
     <entry file="file://$PROJECT_DIR$/registration/static/css/home.css" />
-    <entry file="file://$PROJECT_DIR$/registration/templates/home.html" />
-    <entry file="file://$PROJECT_DIR$/registration/templates/job_view.html" />
-    <entry file="file://$PROJECT_DIR$/registration/templates/profile_user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/templates/profile_company.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/registration/templates/search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/templates/all_jobs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="51" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -790,49 +818,170 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/registration/views.py">
+    <entry file="file://$PROJECT_DIR$/sitevenv/lib/python2.7/site-packages/django/test/client.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="120" column="44" selection-start-line="120" selection-start-column="44" selection-end-line="120" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/registration/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="202">
+          <caret line="186" column="8" selection-start-line="186" selection-start-column="8" selection-end-line="186" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content_aggregator_v/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="99" column="1" selection-start-line="99" selection-start-column="1" selection-end-line="99" selection-end-column="1" />
+        <state relative-caret-position="136">
+          <caret line="89" column="32" selection-start-line="89" selection-start-column="32" selection-end-line="89" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/registration/models.py">
+    <entry file="file://$PROJECT_DIR$/registration/templates/profile_user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="63" column="38" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+        <state relative-caret-position="266">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="89" selection-start-line="0" selection-start-column="0" selection-end-line="271" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/home_loggedin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="88" selection-start-line="18" selection-start-column="88" selection-end-line="18" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/home_loggedin_user.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/application_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/all_jobs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/job_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/registration/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="238">
+          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="56" column="30" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="48" column="68" selection-start-line="48" selection-start-column="68" selection-end-line="48" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/loggedIn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/register_company.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="20" selection-start-line="44" selection-start-column="20" selection-end-line="50" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/static/css/signupcompany.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="111" column="8" selection-start-line="111" selection-start-column="8" selection-end-line="118" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/profile_company.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/static/css/profile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="114" column="25" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/templates/submitted_application.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="36" column="84" selection-start-line="36" selection-start-column="84" selection-end-line="36" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/registration/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="208" column="21" selection-start-line="208" selection-start-column="21" selection-end-line="208" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

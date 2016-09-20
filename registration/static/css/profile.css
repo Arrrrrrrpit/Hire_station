@@ -107,7 +107,14 @@ ul {
     	text-align: left;
     }
 		
-		
+		 ul.messages li
+			{
+				background-color: white;
+				color: red;
+				font-family: monospace;
+				width: 100%;
+
+			}
 		
 		
 		footer

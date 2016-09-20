@@ -6,6 +6,8 @@ from .models import JobSeeker, JobDetails, JobProvider, JobApplication, UserDeta
 from django.utils import timezone
 from django.contrib import messages
 from passlib.hash import pbkdf2_sha256
+from django.conf import settings
+from django.core.mail import send_mail
 
 
 def checkuserlogin(request):
@@ -39,15 +41,21 @@ def get_user(request):
                     enc_password=pbkdf2_sha256.encrypt(password_temp)
                     address_temp = form.cleaned_data["address"]
                     contact_temp = form.cleaned_data["contact"]
-
                     job_obj = JobSeeker.objects.create(user_name=user_name_temp, first_name=first_name_temp,
                                                            last_name=last_name_temp,
                                                            email_id=email_temp, password=enc_password,
                                                            address=address_temp, contact_number=contact_temp)
                     request.session['username'] = user_name_temp
                     job_obj.save()
+                    try :
+                        subject="Thankyou"
+                        message="Thanks for Your Registration on Scribber"
+                        from_email=settings.EMAIL_HOST_USER
 
-
+                        send_mail(subject,message,from_email,[email_temp],fail_silently=False)
+                    except:
+                        messages.error(request, 'Not Connected to internet or invalid email id provided ')
+                    print("hello")
                     return HttpResponseRedirect('/registration/userprofile/edit/')
         except:
             messages.error(request, 'This Username already exits')
@@ -75,6 +83,14 @@ def get_comapny(request):
                                                       email_id=email_temp, password=enc_password,
                                                       address=address_temp, contact_number=contact_temp)
                 job_obj1.save()
+                try:
+                    subject = "Thankyou"
+                    message = "Thanks for Your Registration on Scribber"
+                    from_email = settings.EMAIL_HOST_USER
+
+                    send_mail(subject, message, from_email, [email_temp], fail_silently=False)
+                except:
+                    messages.error(request, 'Not Connected to internet or invalid email id provided ')
 
                 return HttpResponseRedirect('/registration/companyprofile/edit/')
         except:
@@ -109,22 +125,23 @@ def get_job(request):
     return render(request, 'post_job.html', {'form': form})
 
 
-def get_application(request):
+def get_application(request,details):
     form = ApplicationSubmit()
     if request.method == 'POST':
-        form = ApplicationSubmit(request.POST)
-        try:
+            form = ApplicationSubmit(request.POST)
+
             if form.is_valid():
                 username = request.session["username"]
                 application = form.cleaned_data["application"]
                 pay_expected = form.cleaned_data["pay_expected"]
-                company = request.session['activejob']
-                temp = JobApplication.objects.create(company_name=company,user_name=username, application_text=application,
+                active_job = JobDetails.objects.get(details=details)
+                active_user = JobSeeker.objects.get(user_name=username)
+                print (active_job.details)
+                temp = JobApplication.objects.create(company_name=active_job.company_name,email_user=active_user.email_id,details=active_job.details,user_name=username, application_text=application,
                                                  pay_expected=pay_expected, status=False)
                 temp.save()
             return HttpResponseRedirect('/registration/userprofile/')
-        except:
-            return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
 
     return render(request, 'post_application.html', {'form': form})
 
@@ -133,7 +150,7 @@ def edit_profile_user(request):
     form = ProfileAdd()
     if request.method == 'POST':
         form = ProfileAdd(request.POST, request.FILES)
-	print (form.is_valid())
+        print (form.is_valid())
         profile_img = form.cleaned_data['profile_img']
         website_linked = form.cleaned_data['website_linked']
         user_introduction = form.cleaned_data['user_introduction']
@@ -151,24 +168,28 @@ def edit_profile_user(request):
 
 
 def edit_profile_company(request):
-    form = ProfileAdd()
-    if request.method == 'POST':
-        form = ProfileAdd(request.POST, request.FILES)
-        print (form.is_valid())
-        profile_img = form.cleaned_data['profile_img']
-        website_linked = form.cleaned_data['website_linked']
-        user_introduction = form.cleaned_data['user_introduction']
-        username_temp = request.session['companyname']
-        user_temp = JobProvider.objects.get(company_name=username_temp )
-        temp = UserDetails.objects.create(user_name=user_temp.company_name, first_name=user_temp.first_name,
-                                          last_name=user_temp.last_name,
-                                          email_id=user_temp.email_id, address=user_temp.address,
-                                          contact_number=user_temp.contact_number, img=profile_img,
-                                          website_linked=website_linked, user_introduction=user_introduction)
+        form = ProfileAdd()
+        try:
+            if request.method == 'POST':
+                form = ProfileAdd(request.POST, request.FILES)
+                print (form.is_valid())
+                profile_img = form.cleaned_data['profile_img']
+                website_linked = form.cleaned_data['website_linked']
+                user_introduction = form.cleaned_data['user_introduction']
+                username_temp = request.session['companyname']
+                user_temp = JobProvider.objects.get(company_name=username_temp )
+                temp = UserDetails.objects.create(user_name=user_temp.company_name, first_name=user_temp.first_name,
+                                                  last_name=user_temp.last_name,
+                                                  email_id=user_temp.email_id, address=user_temp.address,
+                                                  contact_number=user_temp.contact_number, img=profile_img,
+                                                  website_linked=website_linked, user_introduction=user_introduction)
 
-        temp.save()
-        return HttpResponseRedirect('/registration/companyprofile/')
-    return render(request, 'ProfileEdit.html', {'form': form})
+                temp.save()
+                return HttpResponseRedirect('/registration/companyprofile/')
+        except:
+            return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
+        return render(request, 'ProfileEdit.html', {'form': form})
 
 
 
@@ -225,52 +246,82 @@ def displayjob(request):
 
 
 def displayapplication(request):
-
+      try :
         username = request.session['username']
         app_temp = JobApplication.objects.filter(user_name=username)
         return render(request, 'application_view.html', {'user': app_temp})
 
+      except:
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
-        #return HttpResponse('unsucessful')
 
+def submitted_application(request):
+      try :
+        username = request.session['companyname']
+        app_temp = JobApplication.objects.filter(company_name=username)
+        return render(request, 'submitted_application.html', {'user': app_temp})
+
+      except:
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
+def accepting_letter(request,text):
+    try:
+        accepted_user = JobApplication.objects.get(application_text=text)
+        email_temp = accepted_user.email_user
+        subject = "Confirmation Letter "
+        message = "Your Job submitted for the job " + accepted_user.details + "for the company" + accepted_user.company_name + "has been accepted . Congratulations !!!!!"
+
+        from_email = settings.EMAIL_HOST_USER
+
+        send_mail(subject, message, from_email, [email_temp], fail_silently=False)
+        messages.success(request,"Email Sent")
+        return HttpResponseRedirect('/registration/companyprofile/')
+    except:
+        messages.error(request, 'Not Connected to internet or invalid email id provided ')
 
 def update_profile_user(request):
     form = ProfileAdd()
-    if request.method == 'POST':
-        form = ProfileAdd(request.POST, request.FILES)
-        print (form.is_valid())
-        profile_img = form.cleaned_data['profile_img']
-        website_linked = form.cleaned_data['website_linked']
-        user_introduction = form.cleaned_data['user_introduction']
-        username_temp = request.session['username']
-        user_temp = UserDetails.objects.get(user_name=username_temp)
-        user_temp.img=profile_img
-        user_temp.save()
-        user_temp.website_linked=website_linked
-        user_temp.user_introduction=user_introduction
-        user_temp.save()
-        print (user_temp.website_linked)
-        return HttpResponseRedirect('/registration/userprofile/')
+    try :
+            if request.method == 'POST':
+                form = ProfileAdd(request.POST, request.FILES)
+                print (form.is_valid())
+                profile_img = form.cleaned_data['profile_img']
+                website_linked = form.cleaned_data['website_linked']
+                user_introduction = form.cleaned_data['user_introduction']
+                username_temp = request.session['username']
+                user_temp = UserDetails.objects.get(user_name=username_temp)
+                user_temp.img=profile_img
+                user_temp.save()
+                user_temp.website_linked=website_linked
+                user_temp.user_introduction=user_introduction
+                user_temp.save()
+                print (user_temp.website_linked)
+                return HttpResponseRedirect('/registration/userprofile/')
+    except:
+            return HttpResponseRedirect('/registration/jobseeker/thanks/')
     return render(request, 'ProfileEdit.html', {'form': form})
 
 
 def update_profile_company(request):
     form = ProfileAdd()
-    if request.method == 'POST':
-        form = ProfileAdd(request.POST, request.FILES)
-        print (form.is_valid())
-        profile_img = form.cleaned_data['profile_img']
-        website_linked = form.cleaned_data['website_linked']
-        user_introduction = form.cleaned_data['user_introduction']
-        username_temp = request.session['companyname']
-        user_temp = UserDetails.objects.get(user_name=username_temp)
-        user_temp.img=profile_img
-        user_temp.save()
-        user_temp.website_linked=website_linked
-        user_temp.user_introduction=user_introduction
-        user_temp.save()
-        print (user_temp.website_linked)
-        return HttpResponseRedirect('/registration/companyprofile/')
+    try:
+            if request.method == 'POST':
+                form = ProfileAdd(request.POST, request.FILES)
+                print (form.is_valid())
+                profile_img = form.cleaned_data['profile_img']
+                website_linked = form.cleaned_data['website_linked']
+                user_introduction = form.cleaned_data['user_introduction']
+                username_temp = request.session['companyname']
+                user_temp = UserDetails.objects.get(user_name=username_temp)
+                user_temp.img=profile_img
+                user_temp.save()
+                user_temp.website_linked=website_linked
+                user_temp.user_introduction=user_introduction
+                user_temp.save()
+                print (user_temp.website_linked)
+                return HttpResponseRedirect('/registration/companyprofile/')
+    except:
+            return HttpResponseRedirect('/registration/jobseeker/thanks/')
     return render(request, 'ProfileEdit.html', {'form': form})
 
 def search_job(request):
@@ -285,24 +336,27 @@ def search_job(request):
                 return render(request,'all_jobs.html',{'search':search_check})
 
     except:
-        return HttpResponse("Search Not still Found")
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
     return render(request, 'search.html', {'form': form})
 
 
 def userprofile(request):
-    username = request.session['username']
-    username_temp = UserDetails.objects.get(user_name=username)
-    return render(request, 'profile_user.html',{'user':username_temp})
-
+    try:
+        username = request.session['username']
+        username_temp = UserDetails.objects.get(user_name=username)
+        return render(request, 'profile_user.html',{'user':username_temp})
+    except:
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
 
 def companyprofile(request):
-    username = request.session['companyname']
-    username_temp = UserDetails.objects.get(user_name=username)
-
-
-    return render(request, 'profile_company.html',{'user':username_temp})
+    try:
+        username = request.session['companyname']
+        username_temp = UserDetails.objects.get(user_name=username)
+        return render(request, 'profile_company.html',{'user':username_temp})
+    except:
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
 def home(request):
     return render(request, 'home.html')

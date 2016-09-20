@@ -43,11 +43,13 @@ class JobDetails(models.Model):
 
 class JobApplication(models.Model):
     company_name = models.CharField(default="guest", max_length=40)
-    details = models.ForeignKey(JobDetails, default='Null', on_delete=models.CASCADE)
-    user_name= models.CharField(primary_key=True, default="guest",max_length=20)
-    application_text = models.CharField(max_length=100000)
+    details = models.CharField(default="guest", max_length=10000)
+    user_name= models.CharField( default="guest", max_length=20)
+    application_text = models.CharField(primary_key=True, max_length=100000)
+    email_user = models.EmailField(default="kunal716338@gmail.com" )
     pay_expected = models.IntegerField(default=0)
-    status = models.BooleanField(default=10)
+    status = models.BooleanField(default=False)
+
 
 
 """ the user profile of any person """
