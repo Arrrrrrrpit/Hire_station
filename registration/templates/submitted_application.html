@@ -12,10 +12,27 @@
 			<div>
 				<ul>
 				    <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-				    <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
-				    <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
-				    <li><a href="{% url 'registration:updatecompany' %}">Edit Profile</a></li>
-                    <li><a href="{% url 'registration:profilecompany' %}">Profile</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  
+				  
+                    {% if flag == "on" %}
+                        <li id="login"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+
+                      </ul>
+                      <li id="signup"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li><a href="{% url 'registration:profilecompany' %}">Profile</a></li>
+                    {% endif %}
+
+                  </ul>
 
 				  </li>
 
@@ -28,7 +45,7 @@
 
 		<div class="profile">
 
-              {% for JobApplication in user %}
+                {% for JobApplication in user %}
                   <div class="">
                      <h1>Application Details</h1>
                      <p><strong>Application submitted on job detail : </strong>{{ JobApplication.details }}</p>
@@ -40,8 +57,7 @@
                   <div class="s">
                      <p><strong>Pay Expected: </strong>{{ JobApplication.pay_expected }}<p>
                   </div>
-              {% endfor %}
-
+                 {% endfor %}
 
 		</div>
 

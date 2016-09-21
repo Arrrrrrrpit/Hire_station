@@ -19,7 +19,7 @@
 
 				li a {
 					display: block;
-					color: white;
+					color:#A9A9A9;
 					 z-index:1;
 
 					text-decoration: none;
@@ -27,17 +27,11 @@
 
 				li a:hover:not(.active)
 				{
-					background-color: #D5DBDB;
-					color:black;
+					color:white;
 
 				}
 
-				.active {
-					background-color: #D6EAF8  ;
-					color:black;
-					 z-index:1;
-
-				}
+				
 				
 				li ul.dropdown
 				{
@@ -59,7 +53,7 @@
 
 
 				li:hover ul.dropdown{
-				background-color: #212121;
+				background-color: black;
 				display:block;
 				z-index:50;
 				color:#fff;
@@ -68,22 +62,22 @@
 				#signup
 				{
 					float:right;
-					margin-right: 2%;
+					margin-right: 4%;
 
 				}
 
 				#login
 				{
 					float:right;
-					margin-right: 3%;
-					padding-right: 3%;
+					margin-right: 2%;
+					padding-right: 1%;
 				}
-				
 
 				.companyrights
 				{width:100%;
 				height:50%;
 					background-color:#808080;
+					color:#A9A9A9;
 
 				}
 				.myslides
@@ -234,7 +228,9 @@
 				.companyrights
 				{
 					width:100%;
-					height:350px;;
+					height:350px;
+					background-color:#616161;
+					
 				}
 				.companyinfo
 				{	border: 1px solid black;
@@ -275,42 +271,64 @@
 					margin-top:2%;
 					margin-bottom:1%;
 					font-family:verdana;
+			
+					
 				}
 				.browsertext
 				{
 					padding-left:15%;
 				}
 				footer
-				{
-					 margin-right:0%;
-					 width:96%;
-					position:absolute;
-					background-color: 	#696969;
-					margin-left:-0.8%;
-					padding:2%;
-
-
-				}
-				.companylogo
-				{
-					float:left;
-					clear:right;
-					padding-top:1%;
-				}
-
-				.manageby
-				{   padding-left:1%;
-					float:left;
-					clear:right;
-					padding-right:15%;
-					 font-family:verdana;
-				}
-				.followus
-				{
-					float:right;
-				 font-family: verdana;
+			{   
+				 margin-right:0%;
+				 width:100%;
+				position:absolute;
+				padding:2%;
+				background-color: 	#2a2a2a;
+				font-size:110%;
+				
+				
+			}
+			.companylogo
+			{
+				float:left;
+				clear:right;
+				padding-top:1%;
+			}
+			
+			.manageby
+			{   padding-left:1%;
+				float:left;
+				clear:right;
+				padding-right:15%;
+				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			}
+			.followus
+			{
+				float:right;
+			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			     padding-right:0%;
+				 width:20%;
+			}
+			
+			#link
+			{
+				height:5%;
 				padding-right:2%;
+				
+			}
+			
+					
+			#link:hover
+			{
+				height:6%;
+				shadow:5% 5% 3% white;
+			}
+			
+				body{
+					margin:0;
+					padding:0;
 				}
-
+				
 
 

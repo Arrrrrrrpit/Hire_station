@@ -1,76 +1,87 @@
-ul {
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-				overflow: hidden;
-				background-color:black ;
-				cursor: pointer;
-			}
+ul{
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+					background-color:black ;
+					cursor: pointer;
 
-			li {
-				float: left;
-				font-size:152%;
+				}
+
+				li {
+					float: left;
+					font-size:152%;
+					 z-index:1;
+					margin:1% 2% 1% 2%;
+				}
+
+
+
+				li a {
+					display: block;
+					color:#A9A9A9;
+					 z-index:1;
+
+					text-decoration: none;
+				}
+
+				li a:hover:not(.active)
+				{
+					color:white;
+
+				}
+
 				
-				padding:1% 2% 0.4% 2%;
-			}
+				
+				li ul.dropdown
+				{
 
-			
-
-			li a {
-				display: block;
+				background-color: black;
+				display: none;
+				position: absolute;
 				color: white;
-				font-family: verdana;
-			
-				text-decoration: none;
-			}
-
-			li a:hover:not(.active)
-			{
-				background-color: #D5DBDB;
-				color:black;
-			
-				
-			}
-
-			.active {
-				background-color: #D6EAF8  ;
-				color:black;
-				
-			}
-			
-			li ul.dropdown
-			{
+				 font-family: verdana;
+				 font-size:50%;
+				width:8%;
+				padding:1%;
 				 
-			background-color: black;
-			display: none;
-			position: absolute;
-			color: white;
-			 font-family: verdana;
-			 font-size:50%;
-			width:9%;
-			 padding: 1%;
-			
-		   
+				 z-index:1;
 
-			}
-			
-			li:hover ul.dropdown
-			{display:block;
-			lor: black;
-			}
-			li:hover ul.dropdown{
+
+
+				}
+
+
+				li:hover ul.dropdown{
+				background-color: black;
 				display:block;
-			}
-			
-			#signup
-			{
-				float:right;
-			}
+				z-index:50;
+				color:#fff;
+				}
 
-		#login
-		{
-			float:right;
-		}
+				#signup
+				{
+					float:right;
+					margin-right: 4%;
+
+				}
+
+				
+				#login
+				{
+					float:right;
+					margin-right: 2%;
+					padding-right: 1%;
+				}
+				ul.messages 
+			{
+				background-color: white;
+				color: red;
+				font-family: monospace;
+
+				width: 100%;
+
+			}
 	.profile
 	{
 		font-family: verdana;
@@ -107,23 +118,17 @@ ul {
     	text-align: left;
     }
 		
-		 ul.messages li
-			{
-				background-color: white;
-				color: red;
-				font-family: monospace;
-				width: 100%;
-
-			}
 		
 		
 		footer
-			{    margin-top:29.2%;
+			{   margin-top: 100%;
 				 margin-right:0%;
 				 width:100%;
 				position:absolute;
-				background-color: 	#696969;
-				margin-left:-0.65%;
+				padding:2%;
+				background-color:#808080;
+				font-size:110%;
+				
 				
 			}
 			.companylogo
@@ -134,19 +139,43 @@ ul {
 			}
 			
 			.manageby
-			{   padding-left:2%;
+			{   padding-left:1%;
 				float:left;
 				clear:right;
 				padding-right:15%;
-				 font-family: verdana;
+				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 			}
 			.followus
 			{
 				float:right;
-			 font-family: verdana;
-			padding-right:3%;
+			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			     padding-right:0%;
+				 width:20%;
 			}
 			
+			#link
+			{
+				height:5%;
+				padding-right:2%;
+				
+			}
+			
+					
+			#link:hover
+			{
+				height:6%;
+				shadow:5% 5% 3% white;
+			}
+			
+				body{
+					margin:0;
+					padding:0;
+					background-color:#80CBC4;
+				}
+				
+
+
+
 					body
 					{
 						

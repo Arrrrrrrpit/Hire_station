@@ -11,9 +11,26 @@
 			<div>
 				<ul>
 				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-				  <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
-				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 				  
+				  
+                    {% if flag == "on" %}
+                        <li id="login"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+
+                      </ul>
+                      <li id="signup"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                    {% endif %}
+                    
+                  </ul>
 
 
 				  </ul>
@@ -26,8 +43,9 @@
 	</head>
 
 	<body background="{% static './image/blue.png' %}">
+            {% if post == "on" %}
 		
-	
+	        <li ><a href="{% url 'registration:profilecompany' %}"> Profile</a></li>
             <div class="companyform">
 				<form method="post">
 					{% if messages %}
@@ -47,14 +65,16 @@
 				
 			</div>
 	    <div class="img">
-           <img src="{% static './image/jobpost.png' %}" height="25%" width="20%" >
+           <img src="{% static './image/pic1.png' %}" height="50%" width="40%" >
 
 	    </div>
 	    <div class="content">
           <p class="post">It's always nice to hire the best talent available for the best efficiency and scribber offers you tha way to achieve the Same.<br>Post a job and hire the best one suited for the job,Posting the Job on Our site means that all our users can see the Job as well as they can apply for any job by searching according to the Genre and Pay fields.</p>
 
 	    </div>
-		
+            {% else %}
+              <h3>Please Login as a Company First :<a href="{% url 'registration:login company' %}">Login Company</a></h3>
+		    {% endif %}
 		 
 
 		 

@@ -1,4 +1,4 @@
-ul {
+	ul {
 					list-style-type: none;
 					margin: 0;
 					padding: 0;
@@ -19,7 +19,7 @@ ul {
 
 				li a {
 					display: block;
-					color: white;
+					color:#A9A9A9;
 					 z-index:1;
 
 					text-decoration: none;
@@ -27,17 +27,11 @@ ul {
 
 				li a:hover:not(.active)
 				{
-					background-color: #D5DBDB;
-					color:black;
+					color:white;
 
 				}
 
-				.active {
-					background-color: #D6EAF8  ;
-					color:black;
-					 z-index:1;
-
-				}
+				
 				
 				li ul.dropdown
 				{
@@ -59,7 +53,7 @@ ul {
 
 
 				li:hover ul.dropdown{
-				background-color: #212121;
+				background-color: black;
 				display:block;
 				z-index:50;
 				color:#fff;
@@ -68,22 +62,20 @@ ul {
 				#signup
 				{
 					float:right;
-					margin-right: 2%;
+					margin-right: 4%;
 
 				}
 
 				#login
 				{
 					float:right;
-					margin-right: 3%;
-					padding-right: 3%;
+					margin-right: 2%;
+					padding-right: 1%;
 				}
-
-
 			.myslides
-			{	padding:.5% 1% 2% 3%;
-				width:95%;
-				height:90%;
+			{	
+				width:100%;
+				height:100%;
 				opacity: 0.8;
 				z-index:-1;
 				top:30px;
@@ -105,12 +97,15 @@ ul {
 			}
 			.search
 			{
-			  	width:100%;
+			  	width:30%;
 			  	position:absolute;
-			  	margin-top:0px;
+			  	
 				z-index: 1;
-				padding: 15% 30% 30% 35%;
+				margin:17% 0% 0% 35%;
 				font-family:verdana;
+				border:2px solid black;
+				background-color:white;
+				border-radius:10%;
 
 			}
 			h1
@@ -131,35 +126,58 @@ ul {
 
 			}
 
-               footer
-				{
-					 margin-right:0%;
-					 width:100%;
-					position:absolute;
-					background-color: 	696969;
-					margin-left:-0.6%;
-					padding-bottom:1%;
-
+             footer
+			{   
+				 margin-right:0%;
+				 width:100%;
+				position:absolute;
+				padding:2%;
+				background-color: 	#2a2a2a;
+				font-size:110%;
+				
+				
+			}
+			.companylogo
+			{
+				float:left;
+				clear:right;
+				padding-top:1%;
+			}
+			
+			.manageby
+			{   padding-left:1%;
+				float:left;
+				clear:right;
+				padding-right:15%;
+				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			}
+			.followus
+			{
+				float:right;
+			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			     padding-right:0%;
+				 width:20%;
+			}
+			
+			#link
+			{
+				height:5%;
+				padding-right:2%;
+				
+			}
+			
+					
+			#link:hover
+			{
+				height:6%;
+				shadow:5% 5% 3% white;
+			}
+			
+				body{
+					margin:0;
+					padding:0;
+					background-color:#80CBC4;
 				}
+				
 
-				.manageby
-				{   padding-left:2%;
-					float:left;
-					clear:right;
-					padding-right:20%;
-					 font-family: verdana;
-				}
-				.followus
-				{
-					float:right;
-				 font-family: verdana;
-				padding-right:3%;
-				}
-
-						body
-						{
-
-							background-repeat: no-repeat;
-							background-size: cover;
-						}
 

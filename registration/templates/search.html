@@ -11,21 +11,25 @@
 			<div>
 				<ul>
 				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-				  <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
-				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
-				  <li id="login"><a href="">login</a>
-                  <ul class="dropdown">
-                  <li ><a href="{% url 'registration:login company' %}"> Company</a></li>
-         		  <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 				  
-				  </ul>
 				  
-				  <li id="signup"><a href="#about">Signup</a>
-				  <ul class="dropdown">
-				  <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
-				  <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
-				  </ul>
-				  </li>
+                    {% if flag == "on" %}
+                        <li id="login"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+
+                      </ul>
+                      <li id="signup"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                    {% endif %}
+                  </ul>
 				</ul>
 			</div>
 			</header>
@@ -49,6 +53,16 @@
             </div>
 
 		    <div></div>
+            <div>
+                {%  for JobDetails in list %}
+
+                 <a href="{% url 'registration:application' JobDetails.details %}"> <p> Job Details :{{ JobDetails.details }}</p></a>
+                 <p> Job Pay : {{ JobDetails.pay }}</p>
+                 <p> Job Deadline : {{ JobDetails.deadline }}</p>
+                    <p> Genre : {{ JobDetails.genre }}</p>
+
+                {% endfor %}
+            </div>
 	
 
 	<footer>

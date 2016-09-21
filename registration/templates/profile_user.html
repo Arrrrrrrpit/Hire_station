@@ -3,20 +3,30 @@
 <html>
 	<head>
 			<link rel="stylesheet" type="text/css" href="{%  static '../static/css/profile.css' %} ">
-		
-			
-
-
-	
-			<header>
+            <header>
 			<div>
 				<ul>
-                        <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-                        <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
-                        <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
-                        <li><a href="{% url 'registration:updateuser' %}">Edit Profile</a></li>
-                        <li><a href="{% url 'registration:viewapplication' %}">Submitted Application</a></li>
+                      <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  
+				  
+                    {% if flag == "on" %}
+                        <li id="login"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
 
+                      </ul>
+                      <li id="signup"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+
+                        <li style="float: right;"><a href="{% url 'registration:logout' %}">logout</a> </li>
+                    {% endif %}
+                  </ul>
 
 				  
 				 
@@ -25,8 +35,18 @@
 			</header>
 	</head>
 	<body background="{% static '../static/image/blue.png' %}">
+    <img src = "../{{ user.img }} " height="100px" width="100px">
 
 		<div class="profile">
+            {% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+            {% endif %}
+            <li><a href="{% url 'registration:viewapplication' %}">Applications</a></li>
+            <li><a href="{% url 'registration:updateuser' %}">Edit Profile</a></li>
 			<h2>User Name : {{ user.user_name }}</h2>
             <div class="personal">
             	<h3>Personal Details</h3>
@@ -38,10 +58,11 @@
                 <p>Email Id: {{ user.email_id }}<p>
                 <p>Address : {{ user.address }}<p>
                 <p>Contact Number : {{ user.contact_number }}<p>
+                <img src = "D:/python project/Content_aggregator/{{ user.img }} " height="100px" width="100px">
             </div>
             <div class="official">
             	<h3>Official Details </h3>
-                <p>Website Linked : <a href="google.com">{{ user.website_linked }}</a></p>
+                <p>Website Linked : <a href="{{user.website_linked }}" target="_blank">{{ user.website_linked }}</a></p>
                 <p>User Introduction : {{ user.user_introduction }}</p>
             </div>
 

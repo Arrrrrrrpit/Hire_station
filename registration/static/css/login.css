@@ -1,78 +1,77 @@
-ul {
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-				overflow: hidden;
-				background-color:black ;
-				cursor: pointer;
-			}
+				ul {
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+					background-color:black ;
+					cursor: pointer;
 
-			li {
-				float: left;
-				font-size:152%;
+				}
+
+				li {
+					float: left;
+					font-size:152%;
+					 z-index:1;
+					margin:1% 2% 1% 2%;
+				}
+
+
+
+				li a {
+					display: block;
+					color:#A9A9A9;
+					 z-index:1;
+
+					text-decoration: none;
+				}
+
+				li a:hover:not(.active)
+				{
+					color:white;
+
+				}
+
 				
-				padding:1% 2% 0.4% 2%;
-			}
+				
+				li ul.dropdown
+				{
 
-			
-
-			li a {
-				display: block;
+				background-color: black;
+				display: none;
+				position: absolute;
 				color: white;
-				font-family: verdana;
-
-			
-				text-decoration: none;
-			}
-
-			li a:hover:not(.active)
-			{
-				background-color: #D5DBDB;
-				color:black;
-			
-				
-			}
-
-			.active {
-				background-color: #D6EAF8  ;
-				color:black;
-				
-			}
-			
-			li ul.dropdown
-			{
+				 font-family: verdana;
+				 font-size:50%;
+				width:8%;
+				padding:1%;
 				 
-			background-color: black;
-			display: none;
-			position: absolute;
-			color: white;
-			 font-family: verdana;
-			 font-size:50%;
-			width:9%;
-			 padding: 1%;
-			
-		   
+				 z-index:1;
 
-			}
-			
-			li:hover ul.dropdown
-			{display:block;
-			color: black;
-			}
-			li:hover ul.dropdown{
+
+
+				}
+
+
+				li:hover ul.dropdown{
+				background-color: black;
 				display:block;
-			}
-			
-			#signup
-			{
-				float:right;
-			}
+				z-index:50;
+				color:#fff;
+				}
 
-		#login
-		{
-			float:right;
-		}
+				#signup
+				{
+					float:right;
+					margin-right: 4%;
 
+				}
+
+				#login
+				{
+					float:right;
+					margin-right: 2%;
+					padding-right: 1%;
+				}
 			.company
 			{   width:30%;
 				margin-left:5%;
@@ -165,36 +164,63 @@ ul {
 			
 		
 			footer
-			{    margin-top:45%;
+			{   
 				 margin-right:0%;
 				 width:100%;
 				position:absolute;
-				background-color: 	#696969;
-				margin-left:-0.8%;
+				padding:2%;
+				background-color: 	#2a2a2a;
+				font-size:110%;
+				margin-top:45%;
 				
+				
+			}
+			.companylogo
+			{
+				float:left;
+				clear:right;
+				padding-top:1%;
 			}
 			
 			.manageby
-			{   padding-left:2%;
+			{   padding-left:1%;
 				float:left;
 				clear:right;
-				padding-right:20%;
-				 font-family: verdana;
+				padding-right:15%;
+				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 			}
 			.followus
 			{
 				float:right;
-				font:ont-family: verdana;
-				padding-right:3%;
+			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			     padding-right:0%;
+				 width:20%;
 			}
 			
-			body
+			#link
 			{
-
-				background-repeat: no-repeat;
-				background-size: cover;
+				height:5%;
+				padding-right:2%;
+				
 			}
+			
 					
+			#link:hover
+			{
+				height:6%;
+				shadow:5% 5% 3% white;
+			}
+			
+				body{
+					margin:0;
+					padding:0;
+					background-color:#80CBC4;
+				}
+				
+
+
+
+				
    			 .loginuser img
 			{
 				position: absolute;

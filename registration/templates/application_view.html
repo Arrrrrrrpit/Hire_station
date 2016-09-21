@@ -14,7 +14,7 @@
 				    <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
 				    <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 				    <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
-				    <li><a href="{% url 'registration:updateuser' %}">Edit Profile</a></li>
+
                     <li><a href="{% url 'registration:profileuser' %}">Profile</a></li>
 
 				  </li>
@@ -25,12 +25,19 @@
 			</header>
 	</head>
 	<body background="{% static '../static/image/blue.png' %}">
+                    {% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+                    {% endif %}
 
 		<div class="profile">
 
               {% for JobApplication in user %}
                   <div class="">
-                     <h1>Job Details</h1>
+                     <h1>Application Details</h1>
                      <h2>User Name : {{ JobApplication.user_name }}</h2>
                      <p>Details : {{ JobApplication.application_text }}<p>
                   </div>
@@ -39,6 +46,7 @@
                      <p>Pay: {{ JobApplication.pay_expected }}<p>
                   </div>
               {% endfor %}
+
 
 
 		</div>

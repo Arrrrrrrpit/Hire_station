@@ -22,7 +22,7 @@
 	</head>
 
 	<body background="{% static './image/blue.png' %}">
-
+        {% if show == "on" %}
 
 		<div class="company">
 
@@ -35,6 +35,9 @@
 			   
 			    </fieldset>
 			    </form>
+                    {% else %}
+                       <h3>You are not logged In as User</h3>
+                    {% endif %}
 				
 			</div>
 		</div>
