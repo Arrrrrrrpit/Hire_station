@@ -1,3 +1,7 @@
+				ul.messages{
+					background:none;
+					color:red;
+				}
 				ul {
 					list-style-type: none;
 					margin: 0;

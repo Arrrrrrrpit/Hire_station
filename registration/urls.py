@@ -27,5 +27,7 @@ urlpatterns = [
     url(r'^jobview/$',views.displayjob,name = 'display'),
     url(r'^applicationview/$', views.displayapplication, name='viewapplication'),
     url(r'^submittedapplications/$', views.submitted_application, name='submittedapplication'),
+    url(r'^deletejob/(?P<text>.+)/$', views.Delete_job, name='Delete Job'),
+    url(r'^profilecheck/$', views.profile_check, name='profilecheck'),
 
 ]

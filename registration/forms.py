@@ -53,9 +53,9 @@ class ApplicationSubmit(forms.Form):
 
 
 class ProfileAdd(forms.Form):
-    profile_img = forms.ImageField()
-    website_linked = forms.URLField(label="Link your Website")
-    user_introduction = forms.CharField(label="Self Introduction")
+    profile_img = forms.ImageField(required=False)
+    website_linked = forms.URLField(required=False,label="Link your Website")
+    user_introduction = forms.CharField(required=False,label="Self Introduction")
 
 
 class LogInUser(forms.Form):

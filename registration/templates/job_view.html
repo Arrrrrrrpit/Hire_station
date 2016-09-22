@@ -41,6 +41,7 @@
                     <h3>Dead Line </h3>
                     <p>Dead line : {{JobDetails.deadline }}</p>
                   </div>
+              <a href="{% url 'registration:Delete Job' JobDetails.details %}"><p><strong> Delete Job</strong></p></a>
           {% endfor %}
 
 		</div>

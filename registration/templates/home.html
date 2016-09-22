@@ -31,6 +31,8 @@
                     {% endif %}
                     {% if flag == "off" %}
                       <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li><a href="{% url 'registration:profilecheck' %}">Profile</a></li>
+                        <li style="float: right;"><a href="{% url 'registration:logout' %}">Logout</a></li>
                     {% endif %}
                   </ul>
 
@@ -40,8 +42,16 @@
 			</div>
 			</header>
 	</head>
-	<body>   
-	
+	<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
+
+            {% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+            {% endif %}
+
 			<div class="herotext">
 				<div class="textheading">
 				<p> -Scriber Membership-</p>
@@ -69,7 +79,7 @@
 			</div>
 			
 			
-			
+
 			
 			
 		
@@ -273,6 +283,14 @@
 				x[myIndex3-1].style.display = "block";
 				setTimeout(element3, 4000);
 			}
+
+                window.history.forward();
+                function noBack()
+                {
+                    window.history.forward();
+                }
+<
+
 		</script>	
     </body>
 		

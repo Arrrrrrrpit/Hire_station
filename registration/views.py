@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import UserRegister, JobSubmit, ApplicationSubmit, CompanyRegister, ProfileAdd, LogInCompany, LogInUser, \
     SearchJob
-from .models import JobSeeker, JobDetails, JobProvider, JobApplication, UserDetails
+from .models import JobSeeker, JobDetails, JobProvider, JobApplication, UserDetails , JobsCompleted
 from django.utils import timezone
 from django.contrib import messages
 from passlib.hash import pbkdf2_sha256
@@ -11,20 +11,26 @@ from django.conf import settings
 from django.core.mail import send_mail
 
 
-def checkuserlogin(request):
-    if request.session.has_key('username'):
-        username = request.session['username']
-        return HttpResponseRedirect('/registration/jobseeker/thanks/', {"username": username})
-    else:
-        return HttpResponseRedirect('/registration/login/user')
 
+def checkuserlogin(request):
+    try:
+        if request.session.has_key('username') or request.session.has_key('companyname'):
+            username = request.session['username']
+            return HttpResponseRedirect('/registration/companyprofile', {"username": username})
+        else:
+            return HttpResponseRedirect('/registration/login/user')
+    except:
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
 def checkcompanylogin(request):
-    if request.session.has_key('companyname'):
-        companyname = request.session['companyname']
-        return HttpResponseRedirect('/registration/jobseeker/thanks/', {"username": companyname})
-    else:
-        return HttpResponseRedirect('/registration/login/company')
+    try:
+        if request.session.has_key('companyname') or request.session.has_key('username'):
+            companyname = request.session['companyname']
+            return HttpResponseRedirect('/registration/userprofile/', {"username": companyname})
+        else:
+            return HttpResponseRedirect('/registration/login/company')
+    except:
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
 
 def get_user(request):
@@ -34,6 +40,7 @@ def get_user(request):
 
     else:
         x = "on"
+
     if request.method == 'POST':
         form = UserRegister(request.POST)
         print(form.is_valid())
@@ -120,6 +127,11 @@ def get_job(request):
                 check = "on"
     except:
         check = "off"
+    if (request.session.has_key('username') or request.session.has_key('companyname')):
+        x = "off"
+
+    else:
+        x = "on"
     if request.method == 'POST':
         form = JobSubmit(request.POST)
         print(form.is_valid())
@@ -136,10 +148,10 @@ def get_job(request):
             temp = JobDetails.objects.create(company_name=company_name, genre=genre, details=details, pay=pay,
                                              deadline=dead_line, pub_date=pub_date)
             temp.save()
-            return HttpResponseRedirect('/registration/companyprofile/')
+            return HttpResponseRedirect('/registration/jobview/')
         except:
             messages.error(request, 'Looks like you are Not Logged in')
-    return render(request, 'post_job.html', {'form': form,'post':check})
+    return render(request, 'post_job.html', {'form': form,'post':check,'flag':x})
 
 
 def get_application(request, details):
@@ -204,8 +216,8 @@ def edit_profile_user(request):
 
 
 def edit_profile_company(request):
-    form = ProfileAdd()
-    try:
+        form = ProfileAdd()
+
         if request.method == 'POST':
             form = ProfileAdd(request.POST, request.FILES)
             print (form.is_valid())
@@ -222,10 +234,8 @@ def edit_profile_company(request):
 
             temp.save()
             return HttpResponseRedirect('/registration/companyprofile/')
-    except:
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
-    return render(request, 'ProfileEdit.html', {'form': form})
+        return render(request, 'ProfileEdit.html', {'form': form})
 
 
 def login_user(request):
@@ -290,17 +300,19 @@ def displayjob(request):
 
 
 def displayapplication(request):
-    try:
+
         username = request.session['username']
         app_temp = JobApplication.objects.filter(user_name=username)
-        return render(request, 'application_view.html', {'user': app_temp})
+        if(app_temp):
+           return render(request, 'application_view.html', {'user': app_temp})
+        else:
+           messages.error(request,"No Applications Submitted Till Now")
+           return render(request, 'application_view.html', {'user': app_temp})
 
-    except:
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
 
 def submitted_application(request):
-    try:
+
         if (request.session.has_key('username') or request.session.has_key('companyname')):
             x = "off"
 
@@ -308,31 +320,56 @@ def submitted_application(request):
             x = "on"
         username = request.session['companyname']
         app_temp = JobApplication.objects.filter(company_name=username)
-        return render(request, 'submitted_application.html', {'user': app_temp, 'flag': x})
+        if (app_temp):
+            return render(request, 'submitted_application.html', {'user': app_temp})
+        else:
+            messages.error(request, "No Applications Recieved Till Now")
+            return render(request, 'submitted_application.html', {'user': app_temp})
 
-    except:
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
+
+
 
 
 def accepting_letter(request, text):
     try:
         accepted_user = JobApplication.objects.get(application_text=text)
         email_temp = accepted_user.email_user
+        complete = JobsCompleted.objects.create(company_name =accepted_user.company_name,pay_given=accepted_user.pay_expected,user_name=accepted_user.user_name )
+        complete.save()
         subject = "Confirmation Letter "
-        message = "Your Job submitted for the job " + accepted_user.details + "for the company" + accepted_user.company_name + "has been accepted . Congratulations !!!!!"
+        message = "Your Job submitted for the job  " + accepted_user.details + " for the company " + accepted_user.company_name + " has been accepted . Congratulations !!!!!"
 
         from_email = settings.EMAIL_HOST_USER
 
         send_mail(subject, message, from_email, [email_temp], fail_silently=False)
         messages.success(request, "Email Sent")
+        accepted_user.delete()
         return HttpResponseRedirect('/registration/companyprofile/')
     except:
         messages.error(request, 'Not Connected to internet or invalid email id provided ')
 
+def Delete_job(request,text):
+
+    try:
+        username = request.session['companyname']
+        accepted_user = JobDetails.objects.get(details=text)
+        accepted_user.delete()
+        job_temp = JobDetails.objects.filter(company_name=username)
+
+        return render(request, 'job_view.html', {'user': job_temp})
+
+    except:
+        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
+
+
+
+
 
 def update_profile_user(request):
     form = ProfileAdd()
-    try:
+    if  request.session.has_key('username'):
         if request.method == 'POST':
             form = ProfileAdd(request.POST, request.FILES)
             print (form.is_valid())
@@ -342,20 +379,16 @@ def update_profile_user(request):
             username_temp = request.session['username']
             user_temp = UserDetails.objects.get(user_name=username_temp)
             user_temp.img = profile_img
-            user_temp.save()
             user_temp.website_linked = website_linked
             user_temp.user_introduction = user_introduction
             user_temp.save()
-            print (user_temp.website_linked)
             return HttpResponseRedirect('/registration/userprofile/')
-    except:
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
     return render(request, 'ProfileEdit.html', {'form': form})
 
 
 def update_profile_company(request):
     form = ProfileAdd()
-    try:
+    if request.session.has_key('companyname'):
         if request.method == 'POST':
             form = ProfileAdd(request.POST, request.FILES)
             print (form.is_valid())
@@ -365,14 +398,11 @@ def update_profile_company(request):
             username_temp = request.session['companyname']
             user_temp = UserDetails.objects.get(user_name=username_temp)
             user_temp.img = profile_img
-            user_temp.save()
             user_temp.website_linked = website_linked
             user_temp.user_introduction = user_introduction
             user_temp.save()
-            print (user_temp.website_linked)
             return HttpResponseRedirect('/registration/companyprofile/')
-    except:
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+
     return render(request, 'ProfileEdit.html', {'form': form})
 
 
@@ -399,64 +429,73 @@ def search_job(request):
 
 
 def userprofile(request):
-
+        x = "on"
         if (request.session.has_key('username') or request.session.has_key('companyname')):
             x = "off"
+        try:
+            username = request.session['username']
+            username_temp = UserDetails.objects.get(user_name=username)
 
-        else:
-            x = "on"
-
-        username = request.session['username']
-        username_temp = UserDetails.objects.get(user_name=username)
-        return render(request, 'profile_user.html', {'user': username_temp, 'flag': x})
-
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
+            return render(request, 'profile_user.html', {'user': username_temp, 'flag': x})
+        except:
+            return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
 
 def companyprofile(request):
-    try:
+
         if (request.session.has_key('username') or request.session.has_key('companyname')):
             x = "off"
 
         else:
             x = "on"
+        if request.session.has_key('companyname'):
+                username = request.session['companyname']
+                username_temp = UserDetails.objects.get(user_name=username)
+                return render(request, 'profile_company.html', {'user': username_temp, 'flag': x})
+        else:
+            return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
-        username = request.session['companyname']
-        username_temp = UserDetails.objects.get(user_name=username)
-        return render(request, 'profile_company.html', {'user': username_temp, 'flag': x})
-    except:
-        return HttpResponseRedirect('/registration/jobseeker/thanks/')
 
 
 def home(request):
-    if (request.session.has_key('username') or request.session.has_key('companyname')):
+    if request.session.has_key('username') or request.session.has_key('companyname'):
         x = "off"
 
     else:
         x = "on"
-    print (x)
-    return render(request, 'Home.html', {'flag': x})
+
+    return render(request, 'home.html', {'flag': x})
+
+def profile_check(request):
+    if request.session.has_key('username'):
+        return HttpResponseRedirect('/registration/userprofile/')
+    elif request.session.has_key('companyname'):
+        return HttpResponseRedirect('/registration/companyprofile/')
 
 
 def logout(request):
     try:
-        del request.session['username']
-        if (request.session.has_key('username') or request.session.has_key('companyname')):
-            x = "off"
+        try:
+            del request.session['username']
+            if (request.session.has_key('username') or request.session.has_key('companyname')):
+                x = "off"
 
-        else:
-            x = "on"
+            else:
+                x = "on"
 
-        return render(request, 'Home.html', {'flag': x})
+            return render(request, 'Home.html', {'flag': x})
+
+        except:
+            del request.session['companyname']
+            if (request.session.has_key('username') or request.session.has_key('companyname')):
+                x = "off"
+
+            else:
+                x = "on"
+
+            return render(request, 'Home.html', {'flag': x})
 
     except:
-        del request.session['companyname']
-        if (request.session.has_key('username') or request.session.has_key('companyname')):
-            x = "off"
-
-        else:
-            x = "on"
-
+        x="on"
+        messages.error(request, "You are already Logged out")
         return render(request, 'Home.html', {'flag': x})
-    finally:
-        pass
