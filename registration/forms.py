@@ -1,4 +1,5 @@
 from django import forms
+from django_summernote.admin import SummernoteWidget
 
 
 class UserRegister(forms.Form):
@@ -8,10 +9,11 @@ class UserRegister(forms.Form):
                                  widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
     last_name = forms.CharField(required="true", label="last name", max_length=20,
                                 widget=forms.TextInput(attrs={'placeholder': 'Last Name'}))
-    email = forms.EmailField(required="true", label="email id",widget=forms.TextInput(attrs={'placeholder': 'Email' }))
+    email = forms.EmailField(required="true", label="email id", widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(widget=forms.PasswordInput)
-    address = forms.CharField(required="true", label="address",widget=forms.TextInput(attrs={'placeholder': 'Address' }))
-    contact = forms.IntegerField(required="true",widget=forms.TextInput(attrs={'placeholder': 'Contact' }))
+    address = forms.CharField(required="true", label="address",
+                              widget=forms.TextInput(attrs={'placeholder': 'Address'}))
+    contact = forms.IntegerField(required="true", widget=forms.TextInput(attrs={'placeholder': 'Contact'}))
     widgets = {
         'password': forms.PasswordInput(),
     }
@@ -19,8 +21,8 @@ class UserRegister(forms.Form):
 
 class CompanyRegister(forms.Form):
     company_name = forms.CharField(required="true", label="Company name", max_length=20,
-                                    widget=forms.TextInput(attrs={'placeholder': 'Company Name' })
-                                    )
+                                   widget=forms.TextInput(attrs={'placeholder': 'Company Name'})
+                                   )
     first_name = forms.CharField(required="true", label="first name", max_length=20,
                                  widget=forms.TextInput(attrs={'placeholder': 'First Name'}))
     last_name = forms.CharField(required="true", label="last name", max_length=20,
@@ -28,34 +30,38 @@ class CompanyRegister(forms.Form):
     email = forms.EmailField(required="true", label="email id",
                              widget=forms.TextInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(widget=forms.PasswordInput)
-    address = forms.CharField(required="true", label="address",widget=forms.TextInput(attrs={'placeholder': 'Address' }))
-    contact = forms.IntegerField(required="true",widget=forms.TextInput(attrs={'placeholder': 'Contact' }))
+    address = forms.CharField(required="true", label="address",
+                              widget=forms.TextInput(attrs={'placeholder': 'Address'}))
+    contact = forms.IntegerField(required="true", widget=forms.TextInput(attrs={'placeholder': 'Contact'}))
     widgets = {
         'password': forms.PasswordInput(),
 
     }
 
 
-
 class JobSubmit(forms.Form):
     genre = forms.CharField(required="true", label="Genre", max_length=20,
                             widget=forms.TextInput(attrs={'placeholder': 'Genre'}))
     details = forms.CharField(required="true", label="Job Details", max_length=200000,
-                              widget=forms.TextInput(attrs={'placeholder': 'Details'}))
-    pay = forms.IntegerField(required="true",widget=forms.TextInput(attrs={'placeholder': 'Pay' }))
-    dead_line = forms.CharField(required="true",label="Dead Line",max_length=20,
+                              widget=SummernoteWidget(
+                                  attrs={'placeholder': 'Details', 'width': '100%', 'height': '300px'}))
+    pay = forms.IntegerField(required="true", widget=forms.TextInput(attrs={'placeholder': 'Pay'}))
+    dead_line = forms.CharField(required="true", label="Dead Line", max_length=20,
                                 widget=forms.TextInput(attrs={'placeholder': 'Deadline'}))
 
 
 class ApplicationSubmit(forms.Form):
-    application = forms.CharField(required="true", label="Job Application", max_length=200000)
+    application = forms.CharField(required="true", widget=SummernoteWidget(
+        attrs={'placeholder': 'Details', 'width': '90%', 'height': '500px'}), label="Job Application",
+                                  max_length=200000)
     pay_expected = forms.IntegerField(required="true")
 
 
 class ProfileAdd(forms.Form):
     profile_img = forms.ImageField(required=False)
-    website_linked = forms.URLField(required=False,label="Link your Website")
-    user_introduction = forms.CharField(required=False,label="Self Introduction")
+    website_linked = forms.URLField(required=False, label="Link your Website")
+    user_introduction = forms.CharField(widget=SummernoteWidget(
+                                  attrs={'placeholder': 'Details', 'width': '90%', 'height': '300px'}),required=False, label="Self Introduction")
 
 
 class LogInUser(forms.Form):
