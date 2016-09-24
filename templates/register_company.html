@@ -1,0 +1,76 @@
+  {% load static %}
+<html>
+<head>
+			<link rel="stylesheet" type="text/css" href="{% static '../static/css/signupcompany.css' %}">
+		
+			
+
+
+	
+			<header>
+			<div>
+				<ul class="nav">
+
+				   <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  
+				  
+                    {% if flag == "on" %}
+                        <li class="nav_right"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+
+                      </ul>
+                      <li class="nav_right"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li><a class="nav_left" href="{% url 'registration:profilecheck' %}">Profile</a></li>
+                        <li><a class="nav_right" href="{% url 'registration:logout' %}">Logout</a></li>
+                    {% endif %}
+                  </ul>
+
+				 
+				</ul>
+			</div>
+			</header>
+	</head>
+	<body >
+	<div class="image">
+			<img id="img1" src={% static '../static/image/stickynote.png' %} alt="company logo" >
+  
+    </div>
+                     
+                     	
+		            
+			<div class="login">
+				    
+			        <form  method="post">
+						<h1>Company</h1>
+				     {% if messages %}
+		                         <ul class="messages">
+		                            {% for message in messages %}
+		                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		                            {% endfor %}
+		                         </ul>
+		             {% endif %}
+
+				     {% csrf_token %}
+					 {{ form.as_p }}
+			 
+		  
+		  <fieldset class="account-action">
+			<input class="btn" type="submit" name="submit" value="Submit">
+		   
+		  </fieldset>
+		</form>
+		</div>
+
+		
+		
+ </body>
+</html>

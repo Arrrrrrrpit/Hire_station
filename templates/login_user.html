@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="{% static './css/login.css'  %}">
+		
+			
+
+
+	
+			<header>
+			<div>
+				<ul class="nav">
+				 <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a class="nav_left"href="{% url 'registration:Search Job' %}">Search</a></li>
+				  
+				  
+                    {% if flag == "on" %}
+                        <li class="nav_right"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job seeker</a></li>
+
+                      </ul>
+                      <li class="nav_right"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                    {% endif %}
+                  </ul>
+				 
+				</ul>
+			</div>
+			</header>
+	</head>
+	<body >
+		 
+		 
+		 <div class="loginuser">
+            <img src="{% static './image/world logo.png'%}" >
+		 </div>
+		 
+		 
+		 
+		 
+		 
+		 
+		 <div class="jobseeker">
+				<div class="jobseekerimg">
+				<img id="img1" src="{% static './image/jobseeker login.png' %}" alt="jobseeker logo" >
+				</div>
+				<div class="jobseekerheading">
+				<h1> JobSeeker Login</h1>
+				</div>
+			
+				<div class="jobseekerform">
+				<form method="post">
+					{% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+                    {% endif %}
+			 	    {% csrf_token %}
+					{{ form.as_p }}
+			 
+		  
+			  <fieldset class="account-action">
+				<input class="btn" type="submit" name="submit" value="Login">
+			   
+			  </fieldset>
+			</form>
+				
+			</div>
+		</div>
+		 
+		
+ </body>
+</html>

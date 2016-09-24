@@ -1,0 +1,64 @@
+{% load static %}
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="{% static './css/profile.css' %}">
+
+
+
+
+
+			<header>
+			<div>
+                <ul>
+				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+				  <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+				  <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
+
+
+				</ul>
+			</div>
+			</header>
+	</head>
+
+	<body background="{% static './image/blue.png' %}">
+        {% if show == "on" %}
+
+		<div class="company">
+
+				<div class="companyform">
+				<form method="post">
+			        {% csrf_token %}
+				    {{ form.as_p }}
+			    <fieldset class="account-action">
+				    <input class="btn" type="submit" name="submit" value="Submit">
+			   
+			    </fieldset>
+			    </form>
+                    {% else %}
+                       <h3>You are not logged In as User</h3>
+                    {% endif %}
+				
+			</div>
+		</div>
+		 
+
+		 
+
+		<footer>
+			<div class="Manageby">
+			<h4> MANAGE AND PUBLISHEDBY:</h4>
+				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+			</div>
+			<div class="followus">
+				<h4>FOLLOW US:</h4>
+				<a href="https://www.facebook.com">
+				<img id="link" alt="followus" src="{% static './image/facebook.png' %}" >
+				<a href="http://www.twitter.com">
+				<img id="link" alt="followus" src="{% static './image/twitter.png' %}">
+				<a href="https://www.youtube.com">
+				<img id="link" alt="followus" src="{% static './image/youtube.png' %}" >
+			</div>
+		</footer>
+ </body>
+</html>

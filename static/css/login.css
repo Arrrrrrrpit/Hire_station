@@ -1,0 +1,210 @@
+				.nav {
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+					background-color:black ;
+					cursor: pointer;
+
+				}
+				input {
+    /* border-radius: 3%; */
+    /* font-size: 100%; */
+    font-family: verdana;
+    padding: 5px;
+}
+				li {
+					float: left;
+					font-size:1em;
+					 z-index:1;
+					padding:1% 2% 1% 2%;
+				}
+
+				li:hover{
+					background-color:grey;
+				}
+				li:active{
+					background-color:red;
+					
+				}
+
+				li a {
+					display: block;
+					color:#A9A9A9;
+					 z-index:1;
+
+					text-decoration: none;
+				}
+
+				li a:hover:not(.active)
+				{
+					color:white;
+					
+
+				}
+
+				
+				
+				li ul.dropdown
+				{
+
+				background-color: black;
+				display: none;
+				position: absolute;
+				color: white;
+				 font-family: serif;
+				 font-size:1em;
+				width:auto;
+				padding:1% 0% 1% 1%;
+				margin-top:1%;
+				 
+				 z-index:1;
+				 margin-left:-1%;
+				
+
+
+
+				}
+
+
+				li:hover ul.dropdown{
+				background-color: black;
+				display:block;
+				z-index:50;
+				color:#fff;
+						margin-top:1%;
+						right:2px;
+				}
+
+				.nav_left
+				{
+					float:left;
+					
+
+				}
+
+				.nav_right
+				{
+					float:right;
+					padding:1%;
+					
+				}
+		.company
+			{   width:30%;
+				margin-left:5%;
+				margin-top:5%;
+				float:right;
+				clear:right;
+				margin-bottom:5%;
+				margin-right: 5%;
+				
+			}
+			
+			.jobseeker
+			{  width:30%;
+				margin-top:5%;
+				float:right;
+				margin-right:5%;
+				margin-bottom:5%;
+			
+			}
+		
+			form 
+			{
+			  border: 1% solid #c6c7cc;
+			  border-radius: 3%;
+			  font-size:100%;
+			  font-family: sans-serif;
+			  overflow: hidden;
+			  width: 40%;
+			  float:left;
+			  background-color:white;
+			  padding:0% 30% 0% 7%;
+		
+            }
+            form ul.messages
+			{
+				background-color: white;
+				color: red;
+				font-family: monospace;
+				width: 50%;
+				display: block;
+		    }
+
+			fieldset {
+			  border: 0;
+			  margin: 0;
+			  padding: 0;
+			}
+			
+			
+			.account-info 
+			{
+			  padding: 5% 5% 0 5%;
+			}
+			.account-info label
+			{
+			  color: #395870;
+			  display: block;
+			  font-weight: bold;
+			  margin-bottom: 5%;
+			}
+			.account-info input 
+			{
+			  background: #fff;
+			  border: 1% solid black;
+			   
+			  color: #636466;
+			  padding: 3%;
+			  margin-top: 2%;
+			  width: 100%;
+			}
+			.account-action {
+			  
+			  border-top: 1% solid #c6c7cc;
+			  padding: 5%;
+			}
+			.account-action .btn {
+			  background: linear-gradient(#49708f, #293f50);
+			  border: 1px solid #49708f;
+			  color: #fff;
+			  cursor: pointer;
+			  font-weight: bold;
+			  float: left;
+			  padding: 3% 4% 5% 4%;
+			 
+			 
+			}
+			@media only screen and (max-width: 600px)
+			{
+				.jobseeker
+				{
+					width:90%;
+					margin-left:25%;
+				}
+				.loginuser
+				{
+					visibility:hidden;
+					
+				}
+			}
+		
+			
+
+
+
+				
+   			 .loginuser img
+			{
+				position: absolute;
+				margin-top: 7%;
+				margin-left: 12%;
+				height: 70%;
+				width: 40%;
+				box-shadow:2% 2% 2% black;
+			}
+			body
+			{
+				background-color:#e1e3e4;
+				margin:0;
+			}

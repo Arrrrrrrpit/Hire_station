@@ -1,0 +1,189 @@
+			@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
+				body
+				{
+					margin:0;
+		
+				}
+				.nav
+				{
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+					background-color:black ;
+					cursor: pointer;
+
+				}
+
+				li {
+					float: left;
+					font-size:1em;
+					 z-index:1;
+					padding:1% 2% 1% 2%;
+				}
+
+				li:hover
+				{
+					background-color:grey;
+				}
+				li:active
+				{
+					background-color:red;
+					
+				}
+
+				li a 
+				{
+					display: block;
+					color:#A9A9A9;
+				    z-index:1;
+					 text-decoration: none;
+				}
+
+				li a:hover:not(.active)
+				{
+					color:white;
+					
+
+				}
+
+				
+				
+				li ul.dropdown
+				{
+
+				background-color: black;
+				display: none;
+				position: absolute;
+				color: white;
+				font-family: serif;
+				font-size:1em;
+				width:auto;
+				padding:1% 0% 1% 1%;
+				margin-top:1%;
+				 z-index:1;
+				 margin-left:-1%;
+				}
+
+
+				li:hover ul.dropdown
+				{
+				background-color: black;
+				display:block;
+				z-index:50;
+				color:#fff;
+				margin-top:1%;
+				right:2px;
+				}
+
+				.nav_left
+				{
+					float:left;
+				}
+
+				.nav_right
+				{
+					float:right;
+					padding:1%;
+					
+				}
+				.nav2
+				{
+					height:2%;
+				
+				}
+				.left_text
+				{
+					width:20%;
+				    float:left;
+					clear:right;
+					border:1px solid black;
+					margin:2%;
+				}
+				.text
+				{
+					padding-left:25%;
+					line-height: 250%;
+					font-size:1.5em;
+				}
+				ul.messages 
+				{
+				background-color: white;
+				color: red;
+				font-family: monospace;
+				width: 100%;
+
+				}
+				.info
+				{
+					float:left;
+					clear:right;
+					width:50%;
+				}
+			
+			
+				.advertisement
+				{
+					width:23%;
+					float:left;
+				}
+				img
+				{
+					height:40%;
+					width:75%;
+					padding-top:10%;
+					padding-left:20%;
+					z-index:-1;
+					opacity:.8;
+				}
+				
+				img:hover
+				{   
+					.hovertext
+					{    
+						<img class="add" src="{% static './image/logo1text.png' %}" >
+					}
+				}
+				.profile p
+				{
+					font-family: verdana;
+
+
+
+
+				}
+				.advertisement
+				{
+					float:right;
+				}
+		
+			
+				body{
+					margin:0;
+					padding:0;
+					background-color:#80CBC4;
+				}
+				
+
+
+
+					body
+					{
+						
+						background-repeat: no-repeat;
+						background-size: cover;
+					}
+					
+					p
+					{
+
+					 text-align: center;
+					 font-size: 25px;
+					 font-family: monospace;
+
+					}
+					form input.submit
+					{
+						float: left;
+						margin-left: 40%;
+					}

@@ -1,0 +1,114 @@
+{% load static %}
+
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="{%  static '../static/css/profile_user.css' %} ">
+            <header>
+			
+				<ul class="nav">
+                      <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a class="nav_left"href="{% url 'registration:Search Job' %}">Search</a></li>
+				  
+				  
+                    {% if flag == "on" %}
+                        <li class="nav_right"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job seeker</a></li>
+
+                      </ul>
+                      <li class="nav_right"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+
+                        <li><a class="nav_right" href="{% url 'registration:logout' %}">logout</a> </li>
+                    {% endif %}
+                  </ul>
+
+				  
+				 
+				</ul>
+			
+			</header>
+	</head>
+	<body>
+   
+		<div class="profile" >
+			<ul>
+            <li><a href="{% url 'registration:viewapplication' %}">Applications</a></li>
+            <li><a href="{% url 'registration:updateuser' %}">Edit Profile</a></li>
+			</ul>
+            {% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+            {% endif %}
+			
+		</div>
+		<div>
+			<div class="left_text" style="float:left;">
+				<div class="text">
+				<div><h2>Genre</h2></div>
+
+				<div>	Blog</div>
+				<div>	Novel</div>
+				<div>	Magzine</div>
+				<div>	Editorial</div>
+			
+				<div>	Short Story</div>
+				<div>	Fiction</div>
+				</div>
+		</div>		
+	
+			<div class="info" >			
+			<img src = "../{{ user.img }} " height="10px" width="10px">
+			<h2>User Name : {{ user.user_name }}</h2>
+            <div class="personal">
+            	<h3>Personal Details</h3>
+                <p>First Name : {{ user.first_name }}<p>
+                <p>Last Name : {{ user.last_name }}<p>
+            </div>
+            <div class="contact">
+            	<h3>Contact Details</h3>
+                <p>Email Id: {{ user.email_id }}<p>
+                <p>Address : {{ user.address }}<p>
+                <p>Contact Number : {{ user.contact_number }}<p>
+                <img src = "D:/python project/Content_aggregator/{{ user.img }} " height="100px" width="100px">
+            </div>
+            <div class="official">
+            	<h3>Official Details </h3>
+                <p>Website Linked : <a href="{{user.website_linked }}" target="_blank">{{ user.website_linked }}</a></p>
+                <p>User Introduction : {{ user.user_introduction }}</p>
+            </div>
+			</div>
+	</div>
+		
+
+        	   
+
+	
+		<footer>
+			<div class="Manageby">
+			<h4> MANAGE AND PUBLISHEDBY:</h4>
+				<div>VAIBHAV BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+			</div>
+			<div class="companylogo">
+						<img id="img1" src="{% static '../static/image/book1.png' %}" alt="company logo" >
+			</div>
+			<div class="followus">
+				<h4>FOLLOW US:</h4>
+				<a href="https://www.facebook.com">
+				<img id="link" alt="followus" src="{% static '../static/image/facebook.png' %}" >
+				<a href="http://www.twitter.com">
+				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}">
+				<a href="https://www.youtube.com">
+				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
+			</div>
+		</footer>
+ </body>
+</html>

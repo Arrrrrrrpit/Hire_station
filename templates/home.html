@@ -1,0 +1,294 @@
+{% load static %}
+<html>
+
+	<head>
+			<link rel="stylesheet" type="text/css" href="{% static './css/home.css'%}">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">			
+	</head>
+	<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
+	<header>
+			<div>
+                <ul class="nav">
+
+				   <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  
+				  
+                    {% if flag == "on" %}
+                        <li class="nav_right"><a href="">login</a>
+                      <ul class="dropdown" style="list-style:none;">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job Seeker</a></li>
+
+                      </ul>
+                      <li class="nav_right"><a href="">Signup</a>
+                      <ul class="dropdown" style="list-style:none;">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li><a class="nav_left" href="{% url 'registration:profilecheck' %}">Profile</a></li>
+                        <li><a class="nav_right" href="{% url 'registration:logout' %}">Logout</a></li>
+                    {% endif %}
+                  </ul>
+
+				  
+				 
+				</ul>
+			</div>
+			</header>
+
+            {% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+            {% endif %}
+
+			<div class="herotext">
+				<div class="textheading">
+				<p> -Scriber Membership-</p>
+				</div>
+
+				
+				<div class="text">
+				<p> Writing is the painting of voice.....</p>
+				</div>
+				
+				<div class="text2">
+				<p> Join Us</p>
+				</div>
+				
+				
+			
+			</div>
+	
+			<div class="animationimages" >
+			<img class="mySlides" src="{% static './image/hero1.png' %}" >
+			<img class="mySlides" src="{% static './image/hero2.png' %}" >
+			<img class="mySlides" src="{% static './image/hero3.png' %}" >	
+			
+			</div>
+			
+
+			
+			
+		
+			<div class="aboutscriber">
+				<div class="scriberheading">
+				<h2> About Scriber</h2>
+				</div>
+				<div class="scribertext">
+				<p>
+				<div>Aggregator refers to a web site or computer software that aggregates a specific type of information
+				from multiple online sources:</div>
+				<div>This project mainly focus on the writers group of our society those who are efficient enough to write professionally. </div>
+				<div>This website will provide them a platform to work in their respective writing domain from home or remote locations. </div>
+				<div>This website also benefit the organizations who require literature content or written material but not as frequent due to
+				which they have to hire someone.</div>
+				<div>So they can post their job in acquaintance with their specifications so that people can apply 
+				and post their job applications comfortably.</div></p>
+				</div>
+			</div>
+			
+		<div class="company">	
+		 <div class="animationcompany" >
+			<img class="slidecompany" src="{% static './image/advertisement3.png'  %}" >
+			<img class="slidecompany" src="{% static './image/advertisement3text.png'%}" >
+		</div>	
+		</div>
+		
+		<div class="genre">
+			<div class="genreimg1">
+			<img class="inkpot1" src="{% static './image/inkpot2.png' %}" >
+			</div>
+			
+			
+			
+			
+			
+			<div class="genreheading">
+			<h2>Genre</h2>
+			
+			
+			<div class="genretext">
+			<p>
+					<div id="genretext1"> Blog</div>
+					<div id="genretext1"> Novel</div>
+					<div id="genretext1"> Magzine</div>
+					<div id="genretext1"> Editorial</div>
+					<div id="genretext1"> Short Story</div>
+					<div id="genretext1"> Fiction</div>
+					
+					
+			</p>
+			</div>
+			</div>
+			<div class="genreimg2">
+			<img class="inkpot1" src="{% static './image/inkpot.png' %}" >
+			</div>
+			
+			
+		</div>
+		
+		
+		
+		<div class="jobseeker">	
+		 <div class="animationjobseeker" >
+			<img class="slidejobseeker" src="{% static './image/jobseekerphoto.png' %}" >
+			<img class="slidejobseeker" src="{% static './image/jobseekertext.png' %}" >
+		</div>	
+		</div>
+		
+		
+		<div class="companyrights">
+				<div class="companyrights_text">
+				<div class="companyinfotext1" id="companyinfo">
+				<h4>Company Info</h4> 
+				
+				<p>
+					<div>Projects</div>
+					<div>Contests</div>
+					<div>Sitemap</div>
+					<div>Freelancer Local</div>
+					<div>Services</div>
+					<div>Escrow</div>
+					<div>Warrior Forum</div>
+					<div>Freemarket</div>
+				</p>
+				</div>
+
+
+				</div>
+				<div class="companyrights_text">
+				<div class="companyinfotext1">
+					<h4>Additional Services</h4>
+					
+					<div>Projects</div>
+					<div>Contests</div>
+					<div>Sitemap</div>
+					<div>Freelancer Local</div>
+					<div>Services</div>
+					<div>Escrow</div>
+					<div>Warrior Forum</div>
+					<div>Freemarket</div>
+					
+					</p>
+					</div>
+				</div>
+				<div class="companyrights_text">
+			<div class="companyinfotext1">
+					
+					<h4>Browser</h4>
+					
+					<p>
+					<div>Projects</div>
+					<div>Contests</div>
+					<div>Freelancer Local</div>
+					<div>Services</div>
+					<div>Escrow</div>
+					<div>Warrior Forum</div>
+					<div>Freemarket</div>
+					<div>Escrow</div>
+					
+					
+					</p>
+					</div>
+				</div>
+		</div>
+		
+		<footer>
+			<div class="Manageby">
+			<h4> MANAGE AND PUBLISHEDBY:</h4>
+				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+			</div>
+			<div class="companylogo">
+						<img id="img1" src="{% static './image/book1.png' %}" alt="company logo" >
+			</div>
+			<div class="followus">
+				<h4>FOLLOW US:</h4>
+				<a href="https://www.facebook.com">
+				<img id="link" alt="followus" src="{% static './image/facebook.png' %}" >
+				<a href="http://www.twitter.com">
+				<img id="link" alt="followus" src="{% static './image/twitter.png'%}">
+				<a href="https://www.youtube.com">
+				<img id="link" alt="followus" src="{% static './image/youtube.png' %}" >
+			</div>
+		</footer>
+
+		
+		<script>
+			var myIndex1=0;
+			element1();
+			function element1()
+			{
+				var i;
+				var x=document.getElementsByClassName("mySlides");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex1++;
+				if(myIndex1 > x.length)
+				{
+				myIndex1=1;
+				}
+				x[myIndex1-1].style.display = "block";
+				setTimeout(element1, 2000);
+			}
+			
+			
+			
+			var myIndex2=0;
+			element2();
+			function element2()
+			{
+				var i;
+				var x=document.getElementsByClassName("slidecompany");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex2++;
+				if(myIndex2 > x.length)
+				{
+				myIndex2=1;
+				}
+				x[myIndex2-1].style.display = "block";
+				setTimeout(element2, 4000);
+			}
+			
+			
+			
+			var myIndex3=0;
+			element3();
+			function element3()
+			{
+				var i;
+				var x=document.getElementsByClassName("slidejobseeker");
+				for(i=0;i<x.length;i++)
+				{
+				x[i].style.display="none";
+				}
+				myIndex3++;
+				if(myIndex3 > x.length)
+				{
+				myIndex3=1;
+				}
+				x[myIndex3-1].style.display = "block";
+				setTimeout(element3, 4000);
+			}
+
+                window.history.forward();
+                function noBack()
+                {
+                    window.history.forward();
+                }
+
+
+		</script>	
+    </body>
+		
+</html>

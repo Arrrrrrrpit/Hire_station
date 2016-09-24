@@ -1,0 +1,69 @@
+{% load static %}
+
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="{%  static '../static/css/profile.css' %} ">
+
+
+
+
+
+			<header>
+			<div>
+			 <ul>
+				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				  
+				  
+                    {% if flag == "on" %}
+                        <li id="login"><a href="">login</a>
+                      <ul class="dropdown">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+
+                      </ul>
+                      <li id="signup"><a href="">Signup</a>
+                      <ul class="dropdown">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                    {% endif %}
+                    
+                  </ul>
+				</ul>
+			</div>
+			</header>
+	</head>
+	<body background="{% static '../static/image/blue.png' %}">
+
+      <h3> Search Successfull Click the respective job detail to submit application  </h3>
+     {%  for JobDetails in search %}
+
+         <a href="{% url 'registration:application' JobDetails.details %}"> <p> Job Details :{{ JobDetails.details }}</p></a>
+         <p> Job Pay : {{ JobDetails.pay }}</p>
+         <p> Job Deadline : {{ JobDetails.deadline }}</p>
+
+     {% endfor %}
+
+		<footer>
+			<div class="Manageby">
+			<h4> MANAGE AND PUBLISHEDBY:</h4>
+				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
+			</div>
+			<div class="companylogo">
+						<img id="img1" src="{% static '../static/image/book1.png' %}" alt="company logo" >
+			</div>
+			<div class="followus">
+				<h4>FOLLOW US:</h4>
+				<a href="https://www.facebook.com">
+				<img id="link" alt="followus" src="{% static '../static/image/facebook.png' %}" >
+				<a href="http://www.twitter.com">
+				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}" >
+				<a href="https://www.youtube.com">
+				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
+			</div>
+		</footer>
+ </body>
+</html>
