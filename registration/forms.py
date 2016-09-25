@@ -46,7 +46,7 @@ class JobSubmit(forms.Form):
                               widget=SummernoteWidget(
                                   attrs={'placeholder': 'Details', 'width': '100%', 'height': '300px'}))
     pay = forms.IntegerField(required="true", widget=forms.TextInput(attrs={'placeholder': 'Pay'}))
-    dead_line = forms.CharField(required="true", label="Dead Line", max_length=20,
+    dead_line = forms.IntegerField(required="true", label="Dead Line",
                                 widget=forms.TextInput(attrs={'placeholder': 'Deadline'}))
 
 
@@ -83,5 +83,5 @@ class LogInCompany(forms.Form):
 
 
 class SearchJob(forms.Form):
-    search = forms.CharField(required="true", label="search", max_length=100)
-    pay_Salary = forms.IntegerField(required="true")
+    search = forms.CharField(required="true", label="Genre", max_length=100)
+    pay_Salary = forms.IntegerField(required=False)

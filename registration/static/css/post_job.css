@@ -1,4 +1,11 @@
-				ul {
+				@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
+				
+				body{
+					margin:0;
+					    background-color:  #e1e3e4;
+		
+				}
+				.nav {
 					list-style-type: none;
 					margin: 0;
 					padding: 0;
@@ -10,12 +17,18 @@
 
 				li {
 					float: left;
-					font-size:152%;
+					font-size:1em;
 					 z-index:1;
-					margin:1% 2% 1% 2%;
+					padding:1% 2% 1% 2%;
 				}
 
-
+				li:hover{
+					background-color:grey;
+				}
+				li:active{
+					background-color:red;
+					
+				}
 
 				li a {
 					display: block;
@@ -28,6 +41,7 @@
 				li a:hover:not(.active)
 				{
 					color:white;
+					
 
 				}
 
@@ -40,12 +54,15 @@
 				display: none;
 				position: absolute;
 				color: white;
-				 font-family: verdana;
-				 font-size:50%;
-				width:8%;
-				padding:1%;
+				 font-family: serif;
+				 font-size:1em;
+				width:auto;
+				padding:1% 0% 1% 1%;
+				margin-top:1%;
 				 
 				 z-index:1;
+				 margin-left:-1%;
+				
 
 
 
@@ -57,22 +74,23 @@
 				display:block;
 				z-index:50;
 				color:#fff;
+						margin-top:1%;
+						right:2px;
 				}
 
-				#signup
+				.nav_left
+				{
+					float:left;
+					
+
+				}
+
+				.nav_right
 				{
 					float:right;
-					margin-right: 4%;
-
+					padding:1%;
+					
 				}
-
-				#login
-				{
-					float:right;
-					margin-right: 2%;
-					padding-right: 1%;
-				}
-
 			.company
 			{   width:30%;
 				margin-left:5%;
@@ -93,19 +111,23 @@
 			}
 
 			form {
-
 			  border: 1% solid #c6c7cc;
 			  border-radius: 3%;
 			  font-size:100%;
 			  font-family: verdana;
 			  overflow: hidden;
-			  width: 100%;
-			  height:500px;
+			  width: 54%;
 			  float:left;
 			  background-color:white;
-			  padding: 2%;
-			  margin-right:3%;
+			  padding: 7%;
 
+			  margin-left:20%;
+
+			}
+			#id_pay
+			{
+				padding-right:20px;
+				
 			}
 			form ul.messages
 			{
@@ -165,100 +187,30 @@
 			}
 
 
-			footer
+		
+			.companyform
+			{
+				margin-top: 10%;
+				float: right;
+				margin-right: 5%;
+
+			}
+			.img 
 			{   
-				 margin-right:0%;
-				 width:100%;
-				top:110%;
-				position:absolute;
-				padding:2%;
-				background-color: 	#2a2a2a;
-				font-size:110%;
-				
+			position: relative;
+			margin-left: 20%;
+			margin-top: 2%;
+			width: 55%;
+
+
 				
 			}
-			.companylogo
-			{
-				float:left;
-				clear:right;
-				padding-top:1%;
-			}
-			
-			.manageby
-			{   padding-left:1%;
-				float:left;
-				clear:right;
-				padding-right:15%;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			}
-			.followus
-			{
-				float:right;
-			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			     padding-right:0%;
-				 width:20%;
-			}
-			
-			#link
-			{
-				height:5%;
-				padding-right:2%;
+			.content .post
+			{   position: relative;
+				text-align: center;
+				font-size: 1.5em;
 				
+				font-family: verdana;
+				width: 55%;
+				margin-left: 4%;
 			}
-			
-					
-			#link:hover
-			{
-				height:6%;
-				shadow:5% 5% 3% white;
-			}
-			
-				body{
-					margin:0;
-					padding:0;
-					background-color:#80CBC4;
-				}
-				
-
-
-
-
-					body
-					{
-
-						background-repeat: no-repeat;
-						background-size: cover;
-					}
-
-.companyform
-{
-    margin-top: 10%;
-	float: right;
-	margin-right: 5%;
-
-}
-.img 
-{   
-position: relative;
-margin-left: 20%;
-margin-top: 2%;
-width: 55%;
-
-
-	
-}
-.content .post
-{   position: relative;
-	text-align: center;
-	font-size: 1.5em;
-	
-	font-family: verdana;
-	width: 55%;
-	margin-left: 4%;
-
-
-}
-#id_pay
-{
-	float:right;
-}

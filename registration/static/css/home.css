@@ -1,8 +1,13 @@
-				ul.messages{
-					background:none;
-					color:red;
+				
+				@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
+				@import 'https://fonts.googleapis.com/css?family=Varela+Round';
+				
+				body{
+					margin:0;
+					padding:0;
+		
 				}
-				ul {
+				.nav {
 					list-style-type: none;
 					margin: 0;
 					padding: 0;
@@ -14,12 +19,18 @@
 
 				li {
 					float: left;
-					font-size:152%;
+					font-size:1em;
 					 z-index:1;
-					margin:1% 2% 1% 2%;
+					padding:1% 2% 1% 2%;
 				}
 
-
+				li:hover{
+					background-color:grey;
+				}
+				li:active{
+					background-color:red;
+					
+				}
 
 				li a {
 					display: block;
@@ -32,6 +43,7 @@
 				li a:hover:not(.active)
 				{
 					color:white;
+					
 
 				}
 
@@ -44,49 +56,48 @@
 				display: none;
 				position: absolute;
 				color: white;
-				 font-family: verdana;
-				 font-size:50%;
-				width:8%;
-				padding:1%;
-				 
-				 z-index:1;
-
-
-
+				font-family: serif;
+				font-size:1em;
+				width:auto;
+				padding:1% 0% 1% 1%;
+				margin-top:1%;
+				z-index:1;
+				margin-left:-1%;
 				}
-
-
 				li:hover ul.dropdown{
 				background-color: black;
 				display:block;
 				z-index:50;
 				color:#fff;
+				margin-top:1%;
+				right:2px;
 				}
 
-				#signup
+				.nav_left
+				{
+					float:left;
+				}
+
+				.nav_right
 				{
 					float:right;
-					margin-right: 4%;
-
+					padding:1%;
+					
 				}
-
-				#login
+				li:active
 				{
-					float:right;
-					margin-right: 2%;
-					padding-right: 1%;
+					 background-color: grey; 
 				}
-
 				.companyrights
 				{width:100%;
 				height:50%;
-					background-color:#808080;
-					color:#A9A9A9;
+				background-color:#808080;
+				color:#A9A9A9;
 
 				}
 				.myslides
-				{	padding:.5% 1% 2% 3%;
-					width:95%;
+				{	
+					width:100%;
 					height:90%;
 					opacity: 0.8;
 					z-index:-1;
@@ -94,38 +105,35 @@
 
 				.herotext
 				{    position:absolute;
-				position-top:100px;
-					z-index:1;
+				     z-index:1;
 					 width:90%;
-
-					margin-top:0px;
-				  padding: 5% 0% 0% 5%;
-				  font-family:verdana;
+                     margin-top:0px;
+				     padding: 5% 0% 0% 5%;
+			        font-family: 'Varela Round', sans-serif;
 				}
 
 				.textheading
 				{
-					font-size:360%;
-					font-family: verdana;
+					font-size:6em;
+				    font-family: 'Varela Round', sans-serif;
 					 font-weight: bold;
-					 letter-spacing: 5px;
+					 letter-spacing: 2%;
 					 margin-bottom:8%;
-					 padding:0% 0% 0% 20%;
+					 padding:0% 0% 0% 10%;
 					 color:#000080;
-					  text-shadow: 4px 4px 4px #aaa;
+					  text-shadow: 2px 2px 1px #aaa;
 
 				}
 
 				.text
 				{
-					font-size:300%;
-					font-weight: bold;
+					font-size:3em;
+					font-weight: italic;
 					letter-spacing: 3px;
 					padding:0% 0% 0% 15%;
-
-						font-family:verdana;
-					  color:#000080;
-					  text-shadow: 3px 3px 3px #aaa;
+                    font-family: 'Varela Round', sans-serif;
+					color:#000080;
+					text-shadow: 1.5px 1.5px 1px #aaa;
 				}
 
 				.text2
@@ -134,10 +142,9 @@
 					font-weight: bold;
 					letter-spacing: 4%;
 					padding:0% 0% 0% 43%;
-
-					 font-family: verdana;
-					  color:#000080;
-					  text-shadow: 3px 3px 3px #aaa;
+					font-family: 'Varela Round', sans-serif;
+					 color:#000080;
+					 text-shadow: 3px 3px 3px #aaa;
 
 				}
 				.slidecompany
@@ -147,27 +154,28 @@
 				}
 				.slidejobseeker
 				{
-
 					width:90%;
 					padding-left:5%;
 				}
 
 				.genre
 				{
-					padding:2% 2% 2% 2%;
-					border: 1px solid black;
-					margin:4% 2% 2%  3%;
-					background-color: 	#F5F5DC;
-					display:block;
-					font-size:125%;
-
-					width:91%;
-					height:50%;
+				padding:2% 2% 2% 2%;
+				background-color:#4DA798;
+				display:block;
+				font-size:1.20em;
+				height:42%;
+				 font-family:"Cambria",serif;
 				}
-
-
-
-
+			
+				.inkpot1
+				{
+					height:40vmin;
+					width:35vmin;
+					
+				}
+				
+				
 				.genreimg1
 				{
 					position:relative;
@@ -176,163 +184,131 @@
 				}
 				h1
 				{
-					 font-family:verdana;
+					 font-family:"Palatino Linotype",serif;
 				}
 				.genreheading
 				{    position:relative;
 					 padding-left:28%;
-
+					 
 					  float:left;
 					  clear:right;
 				}
 				.genretext
 				{
 					padding-left:20%;
-					font-size:110%;
+					
 					width:100%;
 				}
-
-
+			
+				
 				.genreimg2
 				{
 					position:relative;
 					float:right;
-
-
+					
+					
 				}
+				
 
-
-
-
+		
+				
 				.scriberheading
 				{
-				 font-family:verdana;
+				 font-family:"Palatino Linotype",serif;
 				}
-
+		
 				.aboutscriber
 				{
-					padding:2% 2% 2% 2%;
-					 border: 1px solid black;
-					 margin:4% 2% 2%  3%;
-					 background-color: 	#F5F5DC;
+					padding:2% 4% 2% 4%;
+					
+					
+					 background-color: #4DA798;
 					 display:block;
-					 font-size:125%;
-					 width:91%;
-					 font-family:verdana;
+					 font-size:1.20em;
+					 
+					 font-family:"Cambria",serif;
 				}
-
-
+				
+				
 				.company
 				{
 					margin:2% 2% 2%  2%;
 					background-size:cover;
 					width:100%;
 				}
-
+				
 				.companyrights
 				{
 					width:100%;
-					height:350px;
-					background-color:#616161;
-					
+			
+					background-color:#3f3f3f;
 				}
-				.companyinfo
-				{	border: 1px solid black;
+				.companyrights_text
+				{	
 					display:block;
 					float:left;
 					clear:right;
-					padding:1% ;
-					margin-left:8%;
-					margin-top:2%;
-					margin-bottom:1%;
-					font-family:verdana;
+				
+				 font-family:"Cambria",serif;
+					width:33%;
+					color:#696969;
+					padding-top:3%;
 				}
-				.companyinfotext
+				.companyinfotext1
+				{ border: 1px solid #4DA798;
+					margin-left:30%;
+					width:40%;
+					padding:1% 1% 1% 10%;
+					
+					
+				
+				}
+				
+					footer
+				{   
+								 
+					height:18%;
+					padding:2%;
+					background-color: 	#2a2a2a;
+				
+					
+					
+				}
+				.companylogo
 				{
-					padding-left:22%;
+					float:left;
+					clear:right;
+					padding-top:1%;
 				}
-				.additionalservices
-				{    border: 1px solid black;
-					 display: block;
-					 float: left;
-					 clear:right;
-					 padding:1%;
-					 margin:0% 4% 0% 15%;
-					 margin-top:2%;
-					margin-bottom:1%;
-					font-family:verdana;
+				
+				.manageby
+				{   padding-left:1%;
+					float:left;
+					clear:right;
+					padding-right:15%;
+					 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 				}
-				.additionalservicestext
+				.followus
 				{
-					padding-left:30%;
-				}
-				.browser
-				{   border: 1px solid black;
-					display:block;
 					float:right;
-					padding:1%;
-					margin-right:7%;
-					margin-top:2%;
-					margin-bottom:1%;
-					font-family:verdana;
-			
-					
+					font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+					 padding-right:0%;
+					 width:20%;
 				}
-				.browsertext
+				
+				#link
 				{
-					padding-left:15%;
-				}
-				footer
-			{   
-				 margin-right:0%;
-				 width:100%;
-				position:absolute;
-				padding:2%;
-				background-color: 	#2a2a2a;
-				font-size:110%;
-				
-				
-			}
-			.companylogo
-			{
-				float:left;
-				clear:right;
-				padding-top:1%;
-			}
-			
-			.manageby
-			{   padding-left:1%;
-				float:left;
-				clear:right;
-				padding-right:15%;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			}
-			.followus
-			{
-				float:right;
-			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			     padding-right:0%;
-				 width:20%;
-			}
-			
-			#link
-			{
-				height:5%;
-				padding-right:2%;
-				
-			}
-			
+					height:25%;
+					padding-right:2%;
 					
-			#link:hover
-			{
-				height:6%;
-				shadow:5% 5% 3% white;
-			}
-			
-				body{
-					margin:0;
-					padding:0;
 				}
 				
-
+						
+				#link:hover
+				{
+					height:26%;
+					shadow:5% 5% 3% white;
+				}
+				
+					
 

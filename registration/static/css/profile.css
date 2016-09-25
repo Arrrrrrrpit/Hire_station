@@ -1,4 +1,13 @@
-ul{
+				@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
+				body
+				{
+					margin:0;
+					background-color:#e1e3e4;
+				
+		
+				}
+				.nav
+				{
 					list-style-type: none;
 					margin: 0;
 					padding: 0;
@@ -10,25 +19,32 @@ ul{
 
 				li {
 					float: left;
-					font-size:152%;
+					font-size:1em;
 					 z-index:1;
-					margin:1% 2% 1% 2%;
+					padding:1% 2% 1% 2%;
 				}
 
+				li:hover
+				{
+					background-color:grey;
+				}
+				li:active
+				{
+					background-color:red;
+					
+				}
 
-
-				li a {
+				li a 
+				{
 					display: block;
 					color:#A9A9A9;
-					 z-index:1;
-
-					text-decoration: none;
+				    z-index:1;
+					 text-decoration: none;
 				}
 
 				li a:hover:not(.active)
 				{
 					color:white;
-
 				}
 
 				
@@ -40,161 +56,109 @@ ul{
 				display: none;
 				position: absolute;
 				color: white;
-				 font-family: verdana;
-				 font-size:50%;
-				width:8%;
-				padding:1%;
-				 
+				font-family: serif;
+				font-size:1em;
+				width:auto;
+				padding:1% 0% 1% 1%;
+				margin-top:1%;
 				 z-index:1;
-
-
-
+				 margin-left:-1%;
 				}
 
 
-				li:hover ul.dropdown{
+				li:hover ul.dropdown
+				{
 				background-color: black;
 				display:block;
 				z-index:50;
 				color:#fff;
+				margin-top:1%;
+				right:2px;
 				}
 
-				#signup
+				.nav_left
 				{
-					float:right;
-					margin-right: 4%;
-
+					float:left;
 				}
 
-				
-				#login
+				.nav_right
 				{
 					float:right;
-					margin-right: 2%;
-					padding-right: 1%;
+					padding:1%;
+					
+				}
+				.left_text
+				{
+					width: 20%;
+					float: left;
+					clear: right;
+					border-right: 1px solid black;
+					padding: 2% 0% 2% 2%;
+					height: 100%;
+					background-color:#B0BEC5;
+				}
+				.text
+				{
+					padding-left:25%;
+					line-height: 250%;
+					font-size:1.5em;
 				}
 				ul.messages 
-			{
+				{
 				background-color: white;
 				color: red;
 				font-family: monospace;
-
 				width: 100%;
 
-			}
-	.profile p
-	{
-		font-family: verdana;
-
-
-
-
-    }
-    .personal 
-    {
-       float: left;
-       margin-left: 14%;
-    }
-    .personal p 
-    {
-    	text-align: left;
-    }
-		
-	.contact 
-	{
-		float: right;
-		margin-right: 5%;
-	}
-	.contact p
-	{
-      text-align: left;
-	}
-	.official 
-	{
-		float: left;
-		
-		margin-left: 25%;
-	}
-    .official p 
-    {
-    	text-align: left;
-    }
-		
-		
-		
-		footer
-			{   margin-top: 100%;
-				 margin-right:0%;
-				 width:100%;
-				position:absolute;
-				padding:2%;
-				background-color:#808080;
-				font-size:110%;
-				
-				
-			}
-			.companylogo
-			{
-				float:left;
-				clear:right;
-				padding-top:1%;
-			}
-			
-			.manageby
-			{   padding-left:1%;
-				float:left;
-				clear:right;
-				padding-right:15%;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			}
-			.followus
-			{
-				float:right;
-			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			     padding-right:0%;
-				 width:20%;
-			}
-			
-			#link
-			{
-				height:5%;
-				padding-right:2%;
-				
-			}
-			
-					
-			#link:hover
-			{
-				height:6%;
-				shadow:5% 5% 3% white;
-			}
-			
-				body{
-					margin:0;
-					padding:0;
-					background-color:#80CBC4;
+				}
+				form
+				{
+					width:50%;
+					float:left;
+					clear:right;
+					margin-top:10%;
+					font-family:verdana;
+				}
+				.advertisement
+				{
+					width:23%;
+					float:left;
+				}
+				img
+				{
+					height:40%;
+					width:75%;
+					padding-top:10%;
+					padding-left:20%;
+					z-index:-1;
+					opacity:.8;
 				}
 				
-
-
-
-					body
-					{
-						
-						background-repeat: no-repeat;
-						background-size: cover;
+				img:hover
+				{   
+					.hovertext
+					{    
+						<img class="add" src="{% static './image/logo1text.png' %}" >
 					}
-					
-p
-{
+				}
+				p
+					{
 
- text-align: center;
- font-size: 25px;
- font-family: monospace;
+					 text-align: center;
+					 font-size: 25px;
+					 font-family: verdana;
 
-}
-form input.submit
-{
-	float: left;
-	margin-left: 40%;
-}
+					}
+			form input.submit
+					{
+						float: left;
+						margin-left: 40%;
+						}
+			.right_text
+					{
+						width:20%;
+						height:110%;
+						border-left:1px solid black;
+						float:right;
+						background-color:#B0BEC5;
+					}

@@ -34,7 +34,7 @@ class JobDetails(models.Model):
     genre = models.CharField(max_length=20)
     details = models.CharField(primary_key=True,max_length=100000)
     pay = models.IntegerField(default=0)
-    deadline = models.CharField(max_length=20)
+    deadline = models.IntegerField()
     pub_date = models.DateTimeField('date published')
 
 

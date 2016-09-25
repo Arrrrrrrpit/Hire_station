@@ -5,33 +5,32 @@
 		
 			<header>
 			<div>
-				<ul>
-
-				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				<ul class="nav">
+				 <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a class="nav_left"href="{% url 'registration:Search Job' %}">Search</a></li>
 				  
 				  
                     {% if flag == "on" %}
-                        <li id="login"><a href="">login</a>
+                        <li class="nav_right"><a href="">login</a>
                       <ul class="dropdown">
                       <li ><a href="{% url 'registration:login company' %}">Company</a></li>
-                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job seeker</a></li>
 
                       </ul>
-                      <li id="signup"><a href="">Signup</a>
+                      <li class="nav_right"><a href="">Signup</a>
                       <ul class="dropdown">
                       <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
                       <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
                     {% endif %}
                     {% if flag == "off" %}
-                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
                     {% endif %}
                   </ul>
 				</ul>
 			</div>
 			</header>
 	</head>
-	<body background={% static '../static/image/blue.png' %}>
+	<body>
 	<div class="image">
 			<img id="img1" src={% static '../static/image/stickynote.png' %} alt="company logo" >
     </body>
@@ -40,6 +39,7 @@
 
 			<div class="login">
 			<form method="post">
+			<h1>Job seeker</h1>
 				{% if messages %}
                          <ul class="messages">
                             {% for message in messages %}
@@ -61,20 +61,6 @@
 		
 
 		
-		<footer>
-			<div class="Manageby">
-			<h4> MANAGE AND PUBLISHEDBY:</h4>
-				<div>VAIBHAV BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
-			</div>
-			<div class="followus">
-				<h4>FOLLOW US:</h4>
-				<a href="http://www.w3schools.com">
-				<img id="link" alt="followus" src={% static '../static/image/facebook.png' %} >
-				<a href="http://www.w3schools.com">
-				<img id="link" alt="followus" src={% static '../static/image/twitter.png' %}> 
-				<a href="http://www.w3schools.com">
-				<img id="link" alt="followus" src={% static '../static/image/youtube.png' %} >
-			</div>
-		</footer>
+		
 		</div>
 </html>

@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-			<link rel="stylesheet" type="text/css" href="{%  static '../static/css/profile.css' %} ">
+			<link rel="stylesheet" type="text/css" href="{%  static '../static/css/profile_company.css' %} ">
 		
 			
 
@@ -10,41 +10,48 @@
 	
 			<header>
 			<div>
-				<ul>
-				<li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				<ul class="nav">
+				<li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a class="nav_left" href="{% url 'registration:Search Job' %}">Search</a></li>
 				  
 				  
                     {% if flag == "on" %}
-                        <li id="login"><a href="">login</a>
+                        <li class="nav_right"><a href="">login</a>
                       <ul class="dropdown">
                       <li ><a href="{% url 'registration:login company' %}">Company</a></li>
-                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job seeker</a></li>
 
                       </ul>
-                      <li id="signup"><a href="">Signup</a>
+                      <li class="nav_right"><a href="">Signup</a>
                       <ul class="dropdown">
                       <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
                       <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
                     {% endif %}
                     {% if flag == "off" %}
-                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
-                        <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li class="nav_right"><a href="{% url 'registration:logout' %}">logout</a></li>
                     {% endif %}
                     
                   </ul>
+				   
               </ul>
+			  
+			  <div class="nav2">
+	<p><a class="nav2_link" href="{% url 'registration:submittedapplication' %}">Submitted Applications</a></p>
+                    <p><a  class="nav2_link" href="{% url 'registration:display' %}">View Jobs</a></p>
+                    <p><a class="nav2_link" href="{% url 'registration:updatecompany' %}">Edit Profile</a></p>
+					</div>
+       
 
 			</header>
 	</head>
-	<body background="{% static '../static/image/blue.png' %}">
-        <li><a href="{% url 'registration:submittedapplication' %}">Submitted Applications</a></li>
-                    <li><a href="{% url 'registration:display' %}">View Jobs</a></li>
-                    <li><a href="{% url 'registration:updatecompany' %}">Edit Profile</a></li>
+	<body >
+	
+			
 
-
+		<div class="info">
 		<div class="profile">
-			<h2>Company Name : {{ user.user_name }}</h2>
+			<h3>Company Name : {{ user.user_name }}</h3>
             {% if messages %}
 		                         <ul class="messages">
 		                            {% for message in messages %}
@@ -67,34 +74,27 @@
             	<h3>Official Details </h3>
                 <p>Website Linked : <a href="{{user.website_linked }}" target="_blank">{{ user.website_linked }}</a></p>
                 <p>User Introduction : {{ user.user_introduction|safe }}</p>
-                <div>
-
-
-        </div>
-            </div>
-
+                
+			</div>
+			</div>
+			</div>
+				</div>
+		<div class="right">
+		<div class="img1">
+			<img class="image1" src="{% static './image/add1.png' %}" >
 		</div>
-
-
-			
+		<div class="img2">
+			<img class="image1" src="{% static './image/add2.png' %}" >
+		</div>
+		<div class="img2">
+			<img class="image1" src="{% static './image/add3.png' %}" >
+		</div>
+		</div>
 	
-		<footer>
-			<div class="Manageby">
-			<h4> MANAGE AND PUBLISHEDBY:</h4>
-				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
-			</div>
-			<div class="companylogo">
-						<img id="img1" src="{% static '../static/image/book1.png' %}" alt="company logo" >
-			</div>
-			<div class="followus">
-				<h4>FOLLOW US:</h4>
-				<a href="https://www.facebook.com">
-				<img id="link" alt="followus" src="{% static '../static/image/facebook.png' %}" >
-				<a href="http://www.twitter.com">
-				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}">
-				<a href="https://www.youtube.com">
-				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
-			</div>
-		</footer>
+           
+         
+		
+	
+		
  </body>
 </html>

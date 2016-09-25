@@ -10,20 +10,34 @@
 
 			<header>
 			<div>
-				<ul>
-				    <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-				    <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
-				    <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
-				    <li id="login"><a href="{% url 'registration:logout' %}">logout</a></li>
-                    <li><a href="{% url 'registration:profilecompany' %}">Profile</a></li>
-                    
+				<ul class="nav">
+
+				   <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 
 
-				</ul>
+                    {% if flag == "on" %}
+                        <li class="nav_right"><a href="">login</a>
+                      <ul class="dropdown" style="list-style:none;">
+                      <li ><a href="{% url 'registration:login company' %}">Company</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job Seeker</a></li>
+
+                      </ul>
+                      <li class="nav_right"><a href="">Signup</a>
+                      <ul class="dropdown" style="list-style:none;">
+                      <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
+                      <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
+                    {% endif %}
+                    {% if flag == "off" %}
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li><a class="nav_left" href="{% url 'registration:profilecheck' %}">Profile</a></li>
+                        <li><a class="nav_right" href="{% url 'registration:logout' %}">Logout</a></li>
+                    {% endif %}
+                  </ul>
 			</div>
 			</header>
 	</head>
-	<body background="{% static '../static/image/blue.png' %}">
+	<body>
 
 		<div class="profile">
           {% for JobDetails in user %}
@@ -34,11 +48,11 @@
                      <p>Details : {{ JobDetails.details }}<p>
                   </div>
                   <div class="s">
-                     <h3>Pay</h3>
+
                      <p>Pay: {{ JobDetails.pay }}<p>
                   </div>
                   <div class="">
-                    <h3>Dead Line </h3>
+
                     <p>Dead line : {{JobDetails.deadline }}</p>
                   </div>
               <a href="{% url 'registration:Delete Job' JobDetails.details %}"><p><strong> Delete Job</strong></p></a>
@@ -46,23 +60,6 @@
 
 		</div>
 
-		<footer>
-			<div class="Manageby">
-			<h4> MANAGE AND PUBLISHEDBY:</h4>
-				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
-			</div>
-			<div class="companylogo">
-						<img id="img1" src="{% static '../static/image/book1.png' %}" alt="company logo" >
-			</div>
-			<div class="followus">
-				<h4>FOLLOW US:</h4>
-				<a href="https://www.facebook.com">
-				<img id="link" alt="followus" src="{% static '../static/image/facebook.png' %}" >
-				<a href="http://www.twitter.com">
-				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}" >
-				<a href="https://www.youtube.com">
-				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
-			</div>
-		</footer>
+
  </body>
 </html>

@@ -1,4 +1,17 @@
-				ul {
+					body{
+			margin:0px;
+			overflow-x:hidden;
+			padding:0;
+				}
+				
+
+
+			body{
+					margin:0;
+					background-color:#e1e3e4;
+		
+				}
+				.nav {
 					list-style-type: none;
 					margin: 0;
 					padding: 0;
@@ -10,12 +23,18 @@
 
 				li {
 					float: left;
-					font-size:152%;
+					font-size:1em;
 					 z-index:1;
-					margin:1% 2% 1% 2%;
+					padding:1% 2% 1% 2%;
 				}
 
-
+				li:hover{
+					background-color:grey;
+				}
+				li:active{
+					background-color:red;
+					
+				}
 
 				li a {
 					display: block;
@@ -28,6 +47,7 @@
 				li a:hover:not(.active)
 				{
 					color:white;
+					
 
 				}
 
@@ -35,20 +55,18 @@
 				
 				li ul.dropdown
 				{
-
+				list-style-type: none;
 				background-color: black;
 				display: none;
 				position: absolute;
 				color: white;
-				 font-family: verdana;
-				 font-size:50%;
-				width:8%;
-				padding:1%;
-				 
+				 font-family: serif;
+				 font-size:1em;
+				width:auto;
+				padding:1% 0% 1% 1%;
+				margin-top:1%;
 				 z-index:1;
-
-
-
+				 margin-left:-1%;
 				}
 
 
@@ -57,164 +75,160 @@
 				display:block;
 				z-index:50;
 				color:#fff;
+				margin-top:1%;
+				right:2px;
 				}
 
-				#signup
+				.nav_left
+				{
+					float:left;
+				}
+
+				.nav_right
 				{
 					float:right;
-					margin-right: 4%;
-
+					padding:1%;
 				}
+				
+				
+			#img1
+			{   background-size: cover;
+				width:85%;
+				height:90%;
+				padding:3% 5% 2% 13%;
+				
+			}
+			
+			.image
+			{	
+				float:left;
+				clear:right;
+				
+			}
 
-				#login
+			
+			form {
+			  border: 1% solid #c6c7cc;
+			  border-radius: 3%;
+			  font-size:100%;
+			  font-family: verdana;
+			  overflow: hidden;
+			  width: 20%;
+			  float:right;
+			  background-color:white;
+			  padding-left: 2%;
+			  margin-top:2%;
+			  margin-right:10%;
+			  
+			  
+
+			}
+			form ul.messages li
 				{
-					float:right;
-					margin-right: 2%;
-					padding-right: 1%;
+					background-color: white;
+					color: red;
+					font-family: monospace;
+					width: 80%;
+
 				}
-				
-		#img1
-		{   background-size: cover;
-			width:85%;
-			height:90%;
-			padding:3% 5% 2% 13%;
-			
-		}
-		
-		.image
-		{	
-			float:left;
-			clear:right;
-			
-		}
-		
-		form {
-		  border: 1% solid #c6c7cc;
-		  border-radius: 3%;
-		  font-size:100%;
-		  font-family: verdana;
-		  overflow: hidden;
-		  width: 28%;
-		  float:right;
-		  background-color:white;
-		  padding-left: 2%;
-		  margin-top:6%;
-		  margin-right:4%;
-		  
-		  
-
-		}
-		form ul.messages li
-			{
-				background-color: white;
-				color: red;
-				font-family: monospace;
-				width: 80%;
+			fieldset {
+			  border: 0;
+			  margin: 0;
+			  padding: 0;
+			}
+			input {
+			  border-radius: 3%;
+			  font-size: 100%;
+			  font-family:verdana;
+			  margin: 0;
+			}
+			.account-info {
+			  padding: 5% 5% 0 5%;
+			}
+			.account-info label {
+			  color: #395870;
+			  display: block;
+			  font-weight: bold;
+			  margin-bottom: 5%;
+			}
+			.account-info input {
+			  background: #fff;
+			  border: 1% solid #c6c7cc;
+			   
+			  color: #636466;
+			  padding: 2%;
+			  margin-top: 2%;
+			  width: 100%;
+			}
+			.account-action {
+			  background: #f0f0f2;
+			  border-top: 1% solid #c6c7cc;
+			  padding: 5%;
+			  margin-left: -17%;
 
 			}
-		fieldset {
-		  border: 0;
-		  margin: 0;
-		  padding: 0;
-		}
-		input {
-		  border-radius: 3%;
-		  font-size: 100%;
-		  font-family:verdana;
-		  margin: 0;
-		}
-		.account-info {
-		  padding: 5% 5% 0 5%;
-		}
-		.account-info label {
-		  color: #395870;
-		  display: block;
-		  font-weight: bold;
-		  margin-bottom: 5%;
-		}
-		.account-info input {
-		  background: #fff;
-		  border: 1% solid #c6c7cc;
-		   
-		  color: #636466;
-		  padding: 2%;
-		  margin-top: 2%;
-		  width: 100%;
-		}
-		.account-action {
-		  background: #f0f0f2;
-		  border-top: 1% solid #c6c7cc;
-		  padding: 5%;
-		  margin-left: -17%;
-
-		}
-		.account-action .btn {
-		  background: linear-gradient(#49708f, #293f50);
-		  border: 0;
-		  color: #fff;
-		  cursor: pointer;
-		  font-weight: bold;
-		  float: right;
-		  padding: 2% 3% 2% 8%;
-		
-		}
-		
-		
-	footer
-			{   
-				
-				 width:100%;
-				position:absolute;
-				padding:2%;
-				background-color: 	#2a2a2a;
-				font-size:110%;
-				margin-top:47.5%;
-				
-				
-			}
-			.companylogo
-			{
-				float:left;
-				clear:right;
-				padding-top:1%;
+			.account-action .btn {
+			  background: linear-gradient(#49708f, #293f50);
+			  border: 0;
+			  color: #fff;
+			  cursor: pointer;
+			  font-weight: bold;
+			  float: right;
+			  padding: 2% 3% 2% 8%;
+			
 			}
 			
-			.manageby
-			{   padding-left:1%;
-				float:left;
-				clear:right;
-				padding-right:15%;
-				 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			}
-			.followus
-			{
-				float:right;
-			    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			     padding-right:0%;
-				 width:20%;
-			}
 			
-			#link
-			{
-				height:5%;
-				padding-right:2%;
-				
-			}
-			
+		footer
+				{   
 					
-			#link:hover
-			{
-				height:6%;
-				shadow:5% 5% 3% white;
-			}
-			
-				body{
-					margin:0;
-					padding:0;
-					background-color:#80CBC4;
+					 width:100%;
+					position:absolute;
+					padding:2%;
+					background-color: 	#2a2a2a;
+					font-size:110%;
+					margin-top:47.5%;
+					
+					
+				}
+				.companylogo
+				{
+					float:left;
+					clear:right;
+					padding-top:1%;
 				}
 				
-
+				.manageby
+				{   padding-left:1%;
+					float:left;
+					clear:right;
+					padding-right:15%;
+					 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				}
+				.followus
+				{
+					float:right;
+					font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+					 padding-right:0%;
+					 width:20%;
+				}
+				
+				#link
+				{
+					height:5%;
+					padding-right:2%;
+					
+				}
+				
+						
+				#link:hover
+				{
+					height:6%;
+					shadow:5% 5% 3% white;
+				}
+				
+				
+			
 
 
 				

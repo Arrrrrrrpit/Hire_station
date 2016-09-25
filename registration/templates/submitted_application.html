@@ -10,13 +10,13 @@
 
 			<header>
 			<div>
-				<ul>
-				    <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+				<ul class="nav">
+				    <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
 				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
 				  
 				  
                     {% if flag == "on" %}
-                        <li id="login"><a href="">login</a>
+                        <li class="nav_right"><a href="">login</a>
                       <ul class="dropdown">
                       <li ><a href="{% url 'registration:login company' %}">Company</a></li>
                       <li ><a href="{% url 'registration:login User' %}"> User</a></li>
@@ -28,8 +28,9 @@
                       <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
                     {% endif %}
                     {% if flag == "off" %}
-                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
-                        <li><a href="{% url 'registration: profilecompany ' %}">Profile</a></li>
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li><a class="nav_right" href="{% url 'registration:profilecompany' %}">Profile</a></li>
+                        <li><a class="nav_right" href="{% url 'registration:logout' %}">Logout</a></li>
                     {% endif %}
 
                   </ul>
@@ -41,7 +42,7 @@
 			</div>
 			</header>
 	</head>
-	<body background="{% static '../static/image/blue.png' %}">
+	<body >
 
 		<div class="profile">
                 {% if messages %}
@@ -57,7 +58,7 @@
                      <h1>Application Details</h1>
                      <p><strong>Application submitted on job detail : </strong>{{ JobApplication.details }}</p>
                      <p><strong>User Name : </strong>{{ JobApplication.user_name }}</p>
-                     <p><strong>Application :</strong> {{ JobApplication.application_text }}<p>
+                     <p><strong>Application :</strong> {{ JobApplication.application_text|safe }}<p>
                      <p><strong>Email Id User:</strong> {{ JobApplication.email_user }}</p>
 
                   </div>
@@ -70,23 +71,6 @@
 
 		</div>
 
-		<footer>
-			<div class="Manageby">
-			<h4> MANAGE AND PUBLISHEDBY:</h4>
-				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
-			</div>
-			<div class="companylogo">
-						<img id="img1" src="{% static '../static/image/book1.png' %}" alt="company logo" >
-			</div>
-			<div class="followus">
-				<h4>FOLLOW US:</h4>
-				<a href="https://www.facebook.com">
-				<img id="link" alt="followus" src="{% static '../static/image/facebook.png' %}" >
-				<a href="http://www.twitter.com">
-				<img id="link" alt="followus" src="{% static '../static/image/twitter.png' %}" >
-				<a href="https://www.youtube.com">
-				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
-			</div>
-		</footer>
+
  </body>
 </html>

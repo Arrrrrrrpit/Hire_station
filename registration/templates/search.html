@@ -9,65 +9,79 @@
 	
 			<header>
 			<div>
-				<ul>
-				  <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
-				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
+				<ul class="nav">
+				  <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
+				   <li><a class="nav_left"href="{% url 'registration:Search Job' %}">Search</a></li>
 				  
 				  
                     {% if flag == "on" %}
-                        <li id="login"><a href="">login</a>
+                        <li class="nav_right"><a href="">login</a>
                       <ul class="dropdown">
                       <li ><a href="{% url 'registration:login company' %}">Company</a></li>
-                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job seeker</a></li>
 
                       </ul>
-                      <li id="signup"><a href="">Signup</a>
+                      <li class="nav_right"><a href="">Signup</a>
                       <ul class="dropdown">
                       <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
                       <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
                     {% endif %}
                     {% if flag == "off" %}
-                        <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
-                        <li style="float: right;"><a href="{% url 'registration:logout' %}">Logout</a></li>
-                        <li><a href="{% url 'registration:profilecheck' %}">Profile</a></li>
+                        <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+						<li><a class="nav_left"href="{% url 'registration:profilecheck' %}">Profile</a></li>
+                        <li><a class="nav_right"href="{% url 'registration:logout' %}">Logout</a></li>
+                        
                     {% endif %}
                   </ul>
 				</ul>
 			</div>
 			</header>
 	</head>
-	<body background="{% static './image/blue.png' %}">
-            <div class="search">
-                <h1> SEARCH:</h1>
-                <form  method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                     <input type="submit" value="Submit" />
-                 </form>
+	<body>
+			<div style="">
+				<div class="right_text">
+				<div  class="job">
+                {% if job == 0 %}
+                    <p><h3>No Job Found</h3></p>
+                    {% else %}
+					{%  for JobDetails in list %}
+                        <p> Genre : {{ JobDetails.genre }}</p>
+                        <p> Job Details :{{ JobDetails.details }}</p>
+                        <p> Job Pay : {{ JobDetails.pay }}</p>
+                        <p> Job Deadline : {{ JobDetails.deadline }}</p>
+                        <a  href="{% url 'registration:application' JobDetails.details %}"><p>Submit Application</p></a>
+                        <hr>
+					{% endfor %}
+                {% endif %}
 
-            </div>
+				</div>
+				</div>
+				<div  style=" width:30%; padding:9%; position:fixed;">
+				<div class="search">
+					<h3> SEARCH:</h3>
+					<form  method="post">
+                        {% if messages %}
+                         <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                         </ul>
+                    {% endif %}
+						{% csrf_token %}
+						{{ form.as_p }}
+						 <input type="submit" value="Submit" />
+					 </form>
 
-            <div class="animationimages" >
-             <img class="mySlides" src="{% static './image/hero1.png' %}" >
-			<img class="mySlides" src="{% static './image/hero2.png' %}" >
-			<img class="mySlides" src="{% static './image/hero3.png' %}" >
+				</div>
+				</div>
+			</div>
 
-            </div>
 
 		    <div></div>
-            <div>
-                {%  for JobDetails in list %}
-
-                 <a href="{% url 'registration:application' JobDetails.details %}"> <p> Job Details :{{ JobDetails.details }}</p></a>
-                 <p> Job Pay : {{ JobDetails.pay }}</p>
-                 <p> Job Deadline : {{ JobDetails.deadline }}</p>
-                    <p> Genre : {{ JobDetails.genre }}</p>
-
-                {% endfor %}
-            </div>
+            
 	
 
-	<footer>
+	<!-- <footer>
 			<div class="Manageby">
 			<h4> MANAGE AND PUBLISHEDBY:</h4>
 				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
@@ -81,27 +95,8 @@
 				<a href="https://www.youtube.com">
 				<img id="link" alt="followus" src="{% static './image/youtube.png' %}" >
 			</div>
-		</footer>
+		</footer> -->
 	
-		<script>
-			var myIndex1=0;
-			element1();
-			function element1()
-			{
-				var i;
-				var x=document.getElementsByClassName("mySlides");
-				for(i=0;i<x.length;i++)
-				{
-				x[i].style.display="none";
-				}
-				myIndex1++;
-				if(myIndex1 > x.length)
-				{
-				myIndex1=1;
-				}
-				x[myIndex1-1].style.display = "block";
-				setTimeout(element1, 4000);
-			}
-			</script>
+		
  </body>
 </html>

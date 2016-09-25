@@ -12,44 +12,62 @@
 	
 			<header>
 			<div>
-				<ul>
-                 <li><a class="active" href="{% url 'registration:home' %}">Home</a></li>
+				<ul class="nav">
+
+				   <li><a class="nav_left" href="{% url 'registration:home' %}">Home</a></li>
 				   <li><a href="{% url 'registration:Search Job' %}">Search</a></li>
-				  
-				  
+
+
                     {% if flag == "on" %}
-                        <li id="login"><a href="">login</a>
-                      <ul class="dropdown">
+                        <li class="nav_right"><a href="">login</a>
+                      <ul class="dropdown" style="list-style:none;">
                       <li ><a href="{% url 'registration:login company' %}">Company</a></li>
-                      <li ><a href="{% url 'registration:login User' %}"> User</a></li>
+                      <li ><a href="{% url 'registration:login User' %}"> Job Seeker</a></li>
 
                       </ul>
-                      <li id="signup"><a href="">Signup</a>
-                      <ul class="dropdown">
+                      <li class="nav_right"><a href="">Signup</a>
+                      <ul class="dropdown" style="list-style:none;">
                       <li><a href="{% url 'registration:registerCompany' %}">Company</a></li>
                       <li><a href="{% url 'registration:registerUser' %}">Job seeker</a></li>
                     {% endif %}
                     {% if flag == "off" %}
-                      <li><a href="{% url 'registration:Job Submit' %}">Post a job</a></li>
-                      
+                      <li><a class="nav_left" href="{% url 'registration:Job Submit' %}">Post a job</a></li>
+                        <li><a class="nav_left" href="{% url 'registration:profilecheck' %}">Profile</a></li>
+                        <li><a class="nav_right" href="{% url 'registration:logout' %}">Logout</a></li>
                     {% endif %}
-                    
                   </ul>
-              </ul>
 			</div>
 			</header>
 	</head>
-	<body background="{% static '../static/image/blue.png' %}">
+	<body>
+		<div class="left_text">
+				<div class="text">
+				<div><h2>Genre</h2></div>
 
+				<div>	Blog</div>
+				<div>	Novel</div>
+				<div>	Magzine</div>
+				<div>	Editorial</div>
+			
+				<div>	Short Story</div>
+				<div>	Fiction</div>
+				</div>
+		</div>
 		<form  method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{ form.as_p }}
               <input type="submit" value="Submit" class="submit" />
         </form>
+		<div class="right_text">
+		</div>
 
-	
-	
-		<footer>
+		<!-- <div class="advertisement">
+		<div class="hovertext">
+		</div>
+					<img class="add" src="{% static './image/logo1text.png' %}" >
+						<img class="add" src="{% static './image/logo1.png' %}" >
+		</div> -->
+		<!-- <footer>
 			<div class="Manageby">
 			<h4> MANAGE AND PUBLISHEDBY:</h4>
 				<div>VAIBHAB BAJPAI ||  KUNAL RAJPUT  || KANIKA SINGHAL</div>
@@ -66,6 +84,6 @@
 				<a href="https://www.youtube.com">
 				<img id="link" alt="followus" src="{% static '../static/image/youtube.png' %}" >
 			</div>
-		</footer>
+		</footer> -->
  </body>
 </html>
